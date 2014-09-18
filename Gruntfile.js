@@ -7,7 +7,7 @@ module.exports = function (grunt) {
                 stderr: true
             },
             server: {
-                command: 'java -cp JavaServer.jar main.Main 8080'
+                command: 'java -cp L1.2-1.0-jar-with-dependencies.jar main.Main 8080'
             }
         },
         fest: {
@@ -21,7 +21,7 @@ module.exports = function (grunt) {
                 options: {
                     template: function (data) {
                         return grunt.template.process(
-                            'var <%= name %>Tmpl = <%= contents %> ;',
+                            'define(function () { return <%= contents %> ; });',
                             {data: data}
                         );
                     }
@@ -40,7 +40,7 @@ module.exports = function (grunt) {
             server: {
                 files: [
                     'public_html/js/**/*.js',
-                    'public_html/css/**/*.css',
+                    'public_html/css/**/*.css'
                 ],
                 options: {
                     livereload: true
