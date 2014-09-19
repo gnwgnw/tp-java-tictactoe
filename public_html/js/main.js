@@ -20,9 +20,11 @@ require.config({
 define([
     'backbone',
     'router'
-], function(
-    Backbone,
-    router
-){
+    ],
+    function(
+        Backbone,
+        router
+    )
+{
     Backbone.history.start();
 });

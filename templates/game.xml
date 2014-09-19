@@ -1,7 +1,5 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
 	<p>
-		<span class='js-back'>
-			Back
-		</span>
+		<a href='#'> Back </a>
 	</p>
 </fest:template>

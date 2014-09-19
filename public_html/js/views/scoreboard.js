@@ -1,19 +1,20 @@
 define([
     'backbone',
     'tmpl/scoreboard'
-], function(
-    Backbone,
-    tmpl
-){
-
+    ],
+    function(
+        Backbone,
+        tmpl
+    )
+{
     var View = Backbone.View.extend({
 
         template: tmpl,
         initialize: function () {
-            // TODO
+            this.render();
         },
         render: function () {
-            // TODO
+            this.$el.html(this.template);
         },
         show: function () {
             // TODO
