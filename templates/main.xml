@@ -1,7 +1,0 @@
-<fest:template xmlns:fest="http://fest.mail.ru">
-	<h1>TicTacToe</h1>
-	
-	<p><a href='#login'> Login </a></p>
-	<p><a href='#scoreboard'> Scoreboard </a></p>
-	<p><a href='#game'> Game </a></p>
-</fest:template>
