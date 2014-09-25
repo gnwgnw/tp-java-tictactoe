@@ -2,6 +2,7 @@ package main;
 
 import frontend.Frontend;
 import frontend.SignInServlet;
+import frontend.SignOutServlet;
 import frontend.SignUpServlet;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
@@ -28,18 +29,20 @@ public class Main {
         AccountService accountService = new AccountService();
 
         Servlet frontend = new Frontend();
-        Servlet signup = new SignUpServlet(accountService);
-        Servlet signin = new SignInServlet(accountService);
+        Servlet signUp = new SignUpServlet(accountService);
+        Servlet signIn = new SignInServlet(accountService);
+        Servlet signOut = new SignOutServlet(accountService);
 
         Server server = new Server(port);
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(frontend), "/api/v1/auth/signin");
-        context.addServlet(new ServletHolder(signup), "/signup");
-        context.addServlet(new ServletHolder(signin), "/signin");
+        context.addServlet(new ServletHolder(signUp), "/signup");
+        context.addServlet(new ServletHolder(signIn), "/signin");
+        context.addServlet(new ServletHolder(signOut), "/signout");
 
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setDirectoriesListed(true);
-        resource_handler.setResourceBase("public_html");
+        resource_handler.setResourceBase("static");
 
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[]{resource_handler, context});

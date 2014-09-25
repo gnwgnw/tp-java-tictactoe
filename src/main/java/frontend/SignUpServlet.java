@@ -12,7 +12,7 @@ import java.io.IOException;
  * @author s.titaevskiy on 13.09.14.
  */
 public class SignUpServlet extends HttpServlet {
-    private AccountService accountService;
+    private final AccountService accountService;
 
     public SignUpServlet(AccountService accountService) {
         this.accountService = accountService;

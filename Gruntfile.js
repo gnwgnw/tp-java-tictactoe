@@ -7,21 +7,21 @@ module.exports = function (grunt) {
                 stderr: true
             },
             server: {
-                command: 'java -cp JavaServer.jar main.Main 8080'
+                command: 'java -cp L1.2-1.0-jar-with-dependencies.jar main.Main 8080'
             }
         },
         fest: {
             templates: {
                 files: [{
                     expand: true,
-                    cwd: 'templates',
+                    cwd: 'templates/frontend',
                     src: '*.xml',
-                    dest: 'public_html/js/tmpl'
+                    dest: 'static/js/tmpl'
                 }],
                 options: {
                     template: function (data) {
                         return grunt.template.process(
-                            'var <%= name %>Tmpl = <%= contents %> ;',
+                            'define(function () { return <%= contents %> ; });',
                             {data: data}
                         );
                     }
@@ -30,7 +30,7 @@ module.exports = function (grunt) {
         },
         watch: {
             fest: {
-                files: ['templates/*.xml'],
+                files: ['templates/frontend/*.xml'],
                 tasks: ['fest'],
                 options: {
                     interrupt: true,
@@ -39,8 +39,8 @@ module.exports = function (grunt) {
             },
             server: {
                 files: [
-                    'public_html/js/**/*.js',
-                    'public_html/css/**/*.css',
+                    'static/js/**/*.js',
+                    'static/css/**/*.css'
                 ],
                 options: {
                     livereload: true
