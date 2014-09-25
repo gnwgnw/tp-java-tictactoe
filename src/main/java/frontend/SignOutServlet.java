@@ -13,7 +13,7 @@ import java.io.IOException;
  * @author s.titaevskiy on 14.09.14.
  */
 public class SignOutServlet extends HttpServlet {
-    private AccountService accountService;
+    private final AccountService accountService;
 
     public SignOutServlet(AccountService accountService) {
         this.accountService = accountService;

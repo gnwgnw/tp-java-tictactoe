@@ -4,9 +4,9 @@ package main;
  * @author s.titaevskiy on 13.09.14.
  */
 public class UserProfile {
-    private String login;
-    private String email;
-    private String password;
+    private final String login;
+    private final String email;
+    private final String password;
 
     public UserProfile(String login, String email, String password) {
         this.login = login;
