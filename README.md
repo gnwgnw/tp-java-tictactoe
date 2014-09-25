@@ -5,9 +5,9 @@
 Учебный период: осенний семестр 2014г.
 
 ##Студенты
-Титаевский Сергей, [mrGexogen] [2], Titarvskiy.S@gmail.com
-Тимофеева Марина, [MarinaaaniraM] [3], MarinaaaniraM@yandex.ru
-Кравцов Илья, [kic2512] [4], kravcov2512@gmail.com
+- Титаевский Сергей, [mrGexogen] [2], Titarvskiy.S@gmail.com
+- Тимофеева Марина, [MarinaaaniraM] [3], MarinaaaniraM@yandex.ru
+- Кравцов Илья, [kic2512] [4], kravcov2512@gmail.com
 
 Подробное о проекте можно прочесть на сайте [Технопарка] [1]
 [1]: tp.mail.ru
