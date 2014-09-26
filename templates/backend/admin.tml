@@ -1,0 +1,11 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Admin page</title>
+</head>
+<body>
+<p>Server administration page</p>
+<p>Server status: ${status}</p>
+<p>Count of signups: ${signup}</p>
+<p>Count of signins: ${signin}</p>
+</body>
+</html>

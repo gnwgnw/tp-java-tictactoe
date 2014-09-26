@@ -1,4 +1,42 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
+	<h1>SignUp</h1>
+	<form method="POST" action="/signup">
+		<p>
+			Login
+			<input name="login" />
+		</p>
+		<p>
+			Email
+			<input name="email" type="email" />
+		</p>
+		<p>
+			Password
+			<input name="password" type="password" />
+		</p>
+		<p>
+			<button type="submit">SignUp</button>
+		</p>
+	</form>
+
+	<h1>SignIn</h1>
+	<form method="POST" action="/signin">
+		<p>
+			Login
+			<input name="login" />
+		</p>
+		<p>
+			Password
+			<input name="password" type="password" />
+		</p>
+		<p>
+			<button type="submit">SignIn</button>
+		</p>
+	</form>
+
+	<form method="POST" action="/signout">
+		<button type="submit">SignOut</button>
+	</form>
+
 	<p>
 		<a href='#'>Back</a>
 	</p>

@@ -1,0 +1,10 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>User page</title>
+</head>
+<body>
+<p>User page</p>
+<p>User login: ${login}</p>
+<p>User email: ${email}</p>
+</body>
+</html>

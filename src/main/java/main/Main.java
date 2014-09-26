@@ -29,7 +29,8 @@ public class Main {
         Servlet signUp = new SignUpServlet(accountService);
         Servlet signIn = new SignInServlet(accountService);
         Servlet signOut = new SignOutServlet(accountService);
-        Servlet adminPage = new AdminPageServlet();
+        Servlet adminPage = new AdminPageServlet(accountService);
+        Servlet userPage = new UserPageServlet(accountService);
 
         Server server = new Server(port);
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
@@ -37,6 +38,7 @@ public class Main {
         context.addServlet(new ServletHolder(signIn), "/signin");
         context.addServlet(new ServletHolder(signOut), "/signout");
         context.addServlet(new ServletHolder(adminPage), AdminPageServlet.adminPageURL);
+        context.addServlet(new ServletHolder(userPage), "/userpage");
 
         ResourceHandler resource_handler = new ResourceHandler();
 //        resource_handler.setDirectoriesListed(true);
