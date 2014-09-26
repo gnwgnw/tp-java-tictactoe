@@ -1,5 +1,6 @@
 package main;
 
+import frontend.AdminPageServlet;
 import frontend.SignInServlet;
 import frontend.SignOutServlet;
 import frontend.SignUpServlet;
@@ -31,12 +32,14 @@ public class Main {
         Servlet signUp = new SignUpServlet(accountService);
         Servlet signIn = new SignInServlet(accountService);
         Servlet signOut = new SignOutServlet(accountService);
+        Servlet adminPage = new AdminPageServlet();
 
         Server server = new Server(port);
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.addServlet(new ServletHolder(signUp), "/signup");
         context.addServlet(new ServletHolder(signIn), "/signin");
         context.addServlet(new ServletHolder(signOut), "/signout");
+        context.addServlet(new ServletHolder(adminPage), AdminPageServlet.adminPageURL);
 
         ResourceHandler resource_handler = new ResourceHandler();
 //        resource_handler.setDirectoriesListed(true);
