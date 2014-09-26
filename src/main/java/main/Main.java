@@ -1,9 +1,6 @@
 package main;
 
-import frontend.AdminPageServlet;
-import frontend.SignInServlet;
-import frontend.SignOutServlet;
-import frontend.SignUpServlet;
+import frontend.*;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;

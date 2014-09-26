@@ -31,7 +31,7 @@ public class SignInServlet extends HttpServlet {
 
         HttpSession httpSession = request.getSession();
         String responseAnswer;
-        switch (accountService.signIn(login, password, httpSession)) {
+        switch (accountService.signIn(login, password, httpSession.toString())) {
             case OK:
                 responseAnswer = "The user " + login + " signin";
                 break;

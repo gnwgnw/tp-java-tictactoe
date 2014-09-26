@@ -27,7 +27,7 @@ public class SignOutServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
         HttpSession httpSession = request.getSession();
-        accountService.signOut(httpSession);
+        accountService.signOut(httpSession.toString());
 
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().println("Done");
