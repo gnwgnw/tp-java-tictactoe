@@ -37,7 +37,7 @@ public class Main {
         context.addServlet(new ServletHolder(signUp), "/signup");
         context.addServlet(new ServletHolder(signIn), "/signin");
         context.addServlet(new ServletHolder(signOut), "/signout");
-        context.addServlet(new ServletHolder(adminPage), AdminPageServlet.adminPageURL);
+        context.addServlet(new ServletHolder(adminPage), "/admin");
         context.addServlet(new ServletHolder(userPage), "/userpage");
 
         ResourceHandler resource_handler = new ResourceHandler();

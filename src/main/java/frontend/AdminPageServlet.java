@@ -15,7 +15,6 @@ import java.util.Map;
  * @author s.titaevskiy on 26.09.14.
  */
 public class AdminPageServlet extends HttpServlet {
-    public static final String adminPageURL = "/admin";
     private final AccountService accountService;
 
     public AdminPageServlet(AccountService accountService) {

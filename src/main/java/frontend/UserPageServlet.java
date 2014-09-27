@@ -27,12 +27,18 @@ public class UserPageServlet extends HttpServlet {
                       HttpServletResponse response) throws ServletException, IOException {
         HttpSession httpSession = request.getSession();
         UserProfile userProfile = accountService.getCurrentUserProfile(httpSession.toString());
-
         Map<String, Object> pageVariables = new HashMap<>();
-        pageVariables.put("login", userProfile.getLogin());
-        pageVariables.put("email", userProfile.getEmail());
+        String templateString;
+
+        if (userProfile != null) {
+            pageVariables.put("login", userProfile.getLogin());
+            pageVariables.put("email", userProfile.getEmail());
+            templateString = "userpage.tml";
+        }
+        else
+            templateString = "redirecttologin.tml";
 
         response.setStatus(HttpServletResponse.SC_OK);
-        response.getWriter().println(PageGenerator.getPage("userpage.tml", pageVariables));
+        response.getWriter().println(PageGenerator.getPage(templateString, pageVariables));
     }
 }
