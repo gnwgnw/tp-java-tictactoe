@@ -1,5 +1,3 @@
-var page = '#page';
-
 define([
     'backbone',
     'views/main',
@@ -23,7 +21,7 @@ define([
             '*default': 'defaultActions'
         },
         defaultActions: function () {
-            main.show(page);
+            $('#page').html(main.$el);
         },
         scoreboardAction: function () {
             $('#page').html(scoreboard.$el);

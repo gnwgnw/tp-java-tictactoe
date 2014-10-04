@@ -17,9 +17,8 @@ define([
             this.$el.html(this.template);
             return this;
         },
-        show: function (pageString) {
-            $(pageString).html(this.$el);
-            $('title').html('TicTacToe');
+        show: function () {
+            // TODO
         },
         hide: function () {
             // TODO
