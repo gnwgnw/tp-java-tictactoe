@@ -31,6 +31,7 @@ public class Main {
         Servlet signOut = new SignOutServlet(accountService);
         Servlet adminPage = new AdminPageServlet(accountService);
         Servlet userPage = new UserPageServlet(accountService);
+        Servlet scoreBoard = new ScoreBoardServlet();
 
         Server server = new Server(port);
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
@@ -39,6 +40,7 @@ public class Main {
         context.addServlet(new ServletHolder(signOut), "/signout");
         context.addServlet(new ServletHolder(adminPage), "/admin");
         context.addServlet(new ServletHolder(userPage), "/userpage");
+        context.addServlet(new ServletHolder(scoreBoard), "/scores");
 
         ResourceHandler resource_handler = new ResourceHandler();
 //        resource_handler.setDirectoriesListed(true);

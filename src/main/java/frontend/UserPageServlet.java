@@ -38,6 +38,7 @@ public class UserPageServlet extends HttpServlet {
         else
             templateString = "redirecttologin.tml";
 
+//        response.sendRedirect();
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().println(PageGenerator.getPage(templateString, pageVariables));
     }
