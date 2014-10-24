@@ -8,12 +8,14 @@ public class UserGameState {
     private final GameUser enemyGameUser;
     private final int whoseTurn;
     private final int[] field;
+    private final int winner;
 
-    public UserGameState(GameUser myGameUser, GameUser enemyGameUser, int whoseTurn, int[] field) {
+    public UserGameState(GameUser myGameUser, GameUser enemyGameUser, int whoseTurn, int[] field, int winner) {
         this.myGameUser = myGameUser;
         this.enemyGameUser = enemyGameUser;
         this.whoseTurn = whoseTurn;
         this.field = field;
+        this.winner = winner;
     }
 
     public GameUser getMyGameUser() {
@@ -30,5 +32,9 @@ public class UserGameState {
 
     public int[] getField() {
         return field;
+    }
+
+    public int getWinner() {
+        return winner;
     }
 }

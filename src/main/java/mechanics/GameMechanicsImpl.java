@@ -2,6 +2,7 @@ package mechanics;
 
 import base.GameMechanics;
 import base.WebSocketService;
+import utils.TimeHelper;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -12,6 +13,8 @@ import java.util.Set;
  * Created by titaevskiy.s on 24.10.14
  */
 public class GameMechanicsImpl implements GameMechanics {
+    private static final int STEP_TIME = 100;
+
     private final WebSocketService webSocketService;
 
     private Set<GameSession> allGameSessions = new HashSet<>();
@@ -23,9 +26,13 @@ public class GameMechanicsImpl implements GameMechanics {
         this.webSocketService = webSocketService;
     }
 
+    @SuppressWarnings("InfiniteLoopStatement")
     @Override
     public void run() {
-//TODO
+        while (true) {
+            gameStep();
+            TimeHelper.sleep(STEP_TIME);
+        }
     }
 
     @Override
@@ -60,5 +67,23 @@ public class GameMechanicsImpl implements GameMechanics {
 
         webSocketService.notifyStartGame(gameSession.getUserGameState(waiter));
         webSocketService.notifyStartGame(gameSession.getUserGameState(login));
+    }
+
+    private void gameOver(String first, String second, GameSession gameSession) {
+        webSocketService.notifyGameOver(gameSession.getUserGameState(first));
+        webSocketService.notifyGameOver(gameSession.getUserGameState(second));
+    }
+
+    private void gameStep() {
+        allGameSessions.stream().filter(GameSession::isFinished).forEach(gameSession -> {
+            String firstLogin = gameSession.getFirstLogin();
+            String secondLogin = gameSession.getSecondLogin();
+
+            gameOver(firstLogin, secondLogin, gameSession);
+
+            loginToGameSession.remove(gameSession.getFirstLogin());
+            loginToGameSession.remove(gameSession.getSecondLogin());
+            allGameSessions.remove(gameSession);
+        });
     }
 }

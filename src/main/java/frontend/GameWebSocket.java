@@ -61,6 +61,7 @@ public class GameWebSocket {
 
     public void gameOver(UserGameState userGameState) {
 //TODO
+        session.close();
     }
 
     public void updateGameState(UserGameState userGameState) {

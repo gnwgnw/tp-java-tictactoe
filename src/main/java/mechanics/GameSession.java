@@ -36,7 +36,7 @@ public class GameSession {
         GameUser myGameUser = loginToGameUser.get(login);
         GameUser enemyGameUser = (myGameUser == first) ? second : first;
 
-        return new UserGameState(myGameUser, enemyGameUser, whoseTurn, field);
+        return new UserGameState(myGameUser, enemyGameUser, whoseTurn, field, winner);
     }
 
     private int changeSign(int sign) {
@@ -105,5 +105,17 @@ public class GameSession {
             default:
                 return 0;
         }
+    }
+
+    public boolean isFinished() {
+        return winner > 0;
+    }
+
+    public String getFirstLogin() {
+        return first.getLogin();
+    }
+
+    public String getSecondLogin() {
+        return second.getLogin();
     }
 }
