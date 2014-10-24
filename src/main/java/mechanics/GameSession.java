@@ -14,6 +14,8 @@ public class GameSession {
     private int whoseTurn;
     private int[] field = new int[9];
 
+    private int winner;
+
     private Map<String, GameUser> loginToGameUser = new HashMap<>();
 
     public GameSession(String loginFirst, String loginSecond) {
@@ -48,11 +50,60 @@ public class GameSession {
         if (sign == whoseTurn && field[position] == 0) {
             field[position] = sign;
             whoseTurn = changeSign(sign);
+
             checkGameState();
         }
     }
 
     private void checkGameState() {
-//TODO
+        int sum;
+        for (int i = 0; i < 9; i += 3) {
+            sum = 0;
+            for (int j = 0; j < 3; ++j) {
+                sum += field[i + j];
+            }
+            if (chooseWinner(sum) > 0) {
+                return;
+            }
+        }
+
+        for (int i = 0; i < 3; ++i) {
+            sum = 0;
+            for (int j = 0; j < 9; j += 3) {
+                sum += field[i + j];
+            }
+            if (chooseWinner(sum) > 0) {
+                return;
+            }
+        }
+
+        sum = 0;
+        for (int i = 0; i < 9; i += 4) {
+            sum += field[i];
+        }
+        if (chooseWinner(sum) > 0) {
+            return;
+        }
+
+        sum = 0;
+        for (int i = 2; i < 8; i += 2) {
+            sum += field[i];
+        }
+        chooseWinner(sum);
+    }
+
+    private int chooseWinner(int sum) {
+        switch (sum) {
+            case GameUser.O * 3:
+                winner = GameUser.O;
+                return GameUser.O;
+
+            case GameUser.X * 3:
+                winner = GameUser.X;
+                return GameUser.X;
+
+            default:
+                return 0;
+        }
     }
 }
