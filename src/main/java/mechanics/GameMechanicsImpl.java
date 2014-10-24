@@ -25,7 +25,7 @@ public class GameMechanicsImpl implements GameMechanics {
 
     @Override
     public void run() {
-
+//TODO
     }
 
     @Override
@@ -41,7 +41,7 @@ public class GameMechanicsImpl implements GameMechanics {
 
     @Override
     public void doTurn(String login, long position) {
-
+//TODO
     }
 
     private void startGame(String waiter, String login) {

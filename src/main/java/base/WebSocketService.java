@@ -1,6 +1,7 @@
 package base;
 
 import frontend.GameWebSocket;
+import mechanics.UserGameState;
 
 /**
  * Created by titaevskiy.s on 24.10.14

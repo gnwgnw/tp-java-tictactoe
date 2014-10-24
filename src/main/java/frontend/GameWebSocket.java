@@ -1,8 +1,8 @@
 package frontend;
 
 import base.GameMechanics;
-import base.UserGameState;
 import base.WebSocketService;
+import mechanics.UserGameState;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketClose;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
@@ -59,14 +59,14 @@ public class GameWebSocket {
     }
 
     public void startGame(UserGameState userGameState) {
-
+//TODO
     }
 
     public void gameOver(UserGameState userGameState) {
-
+//TODO
     }
 
     public void updateGameState(UserGameState userGameState) {
-
+//TODO
     }
 }

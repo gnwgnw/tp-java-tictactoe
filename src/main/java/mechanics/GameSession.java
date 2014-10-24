@@ -1,7 +1,5 @@
 package mechanics;
 
-import base.UserGameState;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;

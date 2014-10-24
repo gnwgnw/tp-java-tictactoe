@@ -1,8 +1,8 @@
 package service;
 
-import base.UserGameState;
 import base.WebSocketService;
 import frontend.GameWebSocket;
+import mechanics.UserGameState;
 
 import java.util.HashMap;
 import java.util.Map;

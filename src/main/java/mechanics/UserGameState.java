@@ -1,6 +1,4 @@
-package base;
-
-import mechanics.GameUser;
+package mechanics;
 
 /**
  * Created by titaevskiy.s on 24.10.14
