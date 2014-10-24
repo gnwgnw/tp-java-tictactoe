@@ -16,17 +16,17 @@ public class WebSocketServiceImpl implements WebSocketService {
 
     @Override
     public void notifyStartGame(UserGameState userGameState) {
-        loginToSocket.get(userGameState.getMyLogin()).startGame(userGameState);
+        loginToSocket.get(userGameState.getMyGameUser().getLogin()).startGame(userGameState);
     }
 
     @Override
     public void notifyGameOver(UserGameState userGameState) {
-        loginToSocket.get(userGameState.getMyLogin()).gameOver(userGameState);
+        loginToSocket.get(userGameState.getMyGameUser().getLogin()).gameOver(userGameState);
     }
 
     @Override
     public void notifyUpdateGameState(UserGameState userGameState) {
-        loginToSocket.get(userGameState.getMyLogin()).updateGameState(userGameState);
+        loginToSocket.get(userGameState.getMyGameUser().getLogin()).updateGameState(userGameState);
     }
 
     @Override
