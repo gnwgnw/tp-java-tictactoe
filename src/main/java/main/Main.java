@@ -11,7 +11,7 @@ import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import service.AccountServiceImpl;
-import service.GameMechanicsImpl;
+import mechanics.GameMechanicsImpl;
 import service.WebSocketServiceImpl;
 import servlets.*;
 
