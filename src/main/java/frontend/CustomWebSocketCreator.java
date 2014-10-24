@@ -12,9 +12,9 @@ import org.eclipse.jetty.websocket.servlet.WebSocketCreator;
  * Created by titaevskiy.s on 23.10.14
  */
 public class CustomWebSocketCreator implements WebSocketCreator {
-    private GameMechanics gameMechanics;
-    private AccountService accountService;
-    private WebSocketService webSocketService;
+    private final GameMechanics gameMechanics;
+    private final AccountService accountService;
+    private final WebSocketService webSocketService;
 
     public CustomWebSocketCreator(GameMechanics gameMechanics, AccountService accountService, WebSocketService webSocketService) {
         this.gameMechanics = gameMechanics;

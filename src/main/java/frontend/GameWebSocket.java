@@ -17,9 +17,9 @@ import org.json.simple.parser.ParseException;
  */
 @WebSocket
 public class GameWebSocket {
-    private String myLogin;
-    private GameMechanics gameMechanics;
-    private WebSocketService webSocketService;
+    private final String myLogin;
+    private final GameMechanics gameMechanics;
+    private final WebSocketService webSocketService;
     private Session session;
 
     public GameWebSocket(String myLogin, GameMechanics gameMechanics, WebSocketService webSocketService) {
