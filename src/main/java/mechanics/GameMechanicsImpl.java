@@ -40,8 +40,15 @@ public class GameMechanicsImpl implements GameMechanics {
     }
 
     @Override
-    public void doTurn(String login, long position) {
-//TODO
+    public void doTurn(String login, int position) {
+        GameSession gameSession = loginToGameSession.get(login);
+        gameSession.doTurn(login, position);
+
+        UserGameState myGameState = gameSession.getUserGameState(login);
+        UserGameState enemyGameState = gameSession.getUserGameState(myGameState.getEnemyGameUser().getLogin());
+//TODO: check session state
+        webSocketService.notifyUpdateGameState(myGameState);
+        webSocketService.notifyUpdateGameState(enemyGameState);
     }
 
     private void startGame(String waiter, String login) {

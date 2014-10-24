@@ -19,7 +19,7 @@ public class GameSession {
     public GameSession(String loginFirst, String loginSecond) {
         Random random = new Random();
         int signFirst = (random.nextInt(1) == 0) ? GameUser.X : GameUser.O;
-        int signSecond = (GameUser.X + GameUser.O) - signFirst;
+        int signSecond = changeSign(signFirst);
 
         first = new GameUser(loginFirst, signFirst);
         second = new GameUser(loginSecond, signSecond);
@@ -35,5 +35,24 @@ public class GameSession {
         GameUser enemyGameUser = (myGameUser == first) ? second : first;
 
         return new UserGameState(myGameUser, enemyGameUser, whoseTurn, field);
+    }
+
+    private int changeSign(int sign) {
+        return (GameUser.X + GameUser.O) - sign;
+    }
+
+    public void doTurn(String login, int position) {
+        GameUser gameUser = loginToGameUser.get(login);
+        int sign = gameUser.getSign();
+
+        if (sign == whoseTurn && field[position] == 0) {
+            field[position] = sign;
+            whoseTurn = changeSign(sign);
+            checkGameState();
+        }
+    }
+
+    private void checkGameState() {
+//TODO
     }
 }

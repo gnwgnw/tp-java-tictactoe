@@ -8,5 +8,5 @@ public interface GameMechanics {
 
     void waitForEnemy(String login);
 
-    void doTurn(String login, long position);
+    void doTurn(String login, int position);
 }
