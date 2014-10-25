@@ -20,7 +20,7 @@ public class GameSession {
 
     public GameSession(String loginFirst, String loginSecond) {
         Random random = new Random();
-        int signFirst = (random.nextInt(1) == 0) ? GameUser.X : GameUser.O;
+        int signFirst = (random.nextInt(100) > 50) ? GameUser.X : GameUser.O;
         int signSecond = changeSign(signFirst);
 
         first = new GameUser(loginFirst, signFirst);
@@ -56,40 +56,9 @@ public class GameSession {
     }
 
     private void checkGameState() {
-        int sum;
-        for (int i = 0; i < 9; i += 3) {
-            sum = 0;
-            for (int j = 0; j < 3; ++j) {
-                sum += field[i + j];
-            }
-            if (chooseWinner(sum) > 0) {
-                return;
-            }
-        }
-
-        for (int i = 0; i < 3; ++i) {
-            sum = 0;
-            for (int j = 0; j < 9; j += 3) {
-                sum += field[i + j];
-            }
-            if (chooseWinner(sum) > 0) {
-                return;
-            }
-        }
-
-        sum = 0;
-        for (int i = 0; i < 9; i += 4) {
-            sum += field[i];
-        }
-        if (chooseWinner(sum) > 0) {
+        if (checkLines() || checkRows() || checkPriDiagonals() || checkAddDiagonals()) {
             return;
         }
-
-        sum = 0;
-        for (int i = 2; i < 8; i += 2) {
-            sum += field[i];
-        }
-        chooseWinner(sum);
     }
 
     private int chooseWinner(int sum) {
@@ -117,5 +86,47 @@ public class GameSession {
 
     public String getSecondLogin() {
         return second.getLogin();
+    }
+
+    private boolean checkLines() {
+        for (int i = 0; i < 9; i += 3) {
+            int sum = 0;
+            for (int j = 0; j < 3; ++j) {
+                sum += field[i + j];
+            }
+            if (chooseWinner(sum) > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkRows() {
+        for (int i = 0; i < 3; ++i) {
+            int sum = 0;
+            for (int j = 0; j < 9; j += 3) {
+                sum += field[i + j];
+            }
+            if (chooseWinner(sum) > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkPriDiagonals() {
+        int sum = 0;
+        for (int i = 0; i < 9; i += 4) {
+            sum += field[i];
+        }
+        return chooseWinner(sum) > 0;
+    }
+
+    private boolean checkAddDiagonals() {
+        int sum = 0;
+        for (int i = 2; i < 8; i += 2) {
+            sum += field[i];
+        }
+        return chooseWinner(sum) > 0;
     }
 }

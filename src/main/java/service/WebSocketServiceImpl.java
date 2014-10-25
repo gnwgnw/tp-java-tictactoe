@@ -4,15 +4,15 @@ import base.WebSocketService;
 import frontend.GameWebSocket;
 import mechanics.UserGameState;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by titaevskiy.s on 24.10.14
  */
 public class WebSocketServiceImpl implements WebSocketService {
     //TODO: multi threads
-    private Map<String, GameWebSocket> loginToSocket = new HashMap<>();
+    private Map<String, GameWebSocket> loginToSocket = new ConcurrentHashMap<>();
 
     @Override
     public void notifyStartGame(UserGameState userGameState) {

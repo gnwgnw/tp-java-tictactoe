@@ -7,7 +7,6 @@ public class UserProfile {
     private final String login;
     private final String email;
     private final String password;
-    private int Score = 0;
 
     public UserProfile(String login, String email, String password) {
         this.login = login;

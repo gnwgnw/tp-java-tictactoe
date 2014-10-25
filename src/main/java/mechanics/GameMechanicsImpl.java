@@ -4,10 +4,10 @@ import base.GameMechanics;
 import base.WebSocketService;
 import utils.TimeHelper;
 
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by titaevskiy.s on 24.10.14
@@ -17,12 +17,12 @@ public class GameMechanicsImpl implements GameMechanics {
 
     private final WebSocketService webSocketService;
 
-    private Set<GameSession> allGameSessions = new HashSet<>();
-    private Map<String, GameSession> loginToGameSession = new HashMap<>();
-
+    private Set<GameSession> allGameSessions;
+    private Map<String, GameSession> loginToGameSession = new ConcurrentHashMap<>();
     private String waiter;
 
     public GameMechanicsImpl(WebSocketService webSocketService) {
+        allGameSessions = Collections.newSetFromMap(new ConcurrentHashMap<>());
         this.webSocketService = webSocketService;
     }
 
