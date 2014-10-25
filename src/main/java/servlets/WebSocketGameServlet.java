@@ -18,9 +18,9 @@ public class WebSocketGameServlet extends WebSocketServlet implements PageUrlSer
     private static final String pageUrl = "/gameplay";
     private static final int IDLE_TIME = 60 * 60 * 1000;    //TODO: debug
 
-    private GameMechanics gameMechanics;
-    private AccountService accountService;
-    private WebSocketService webSocketService;
+    private final GameMechanics gameMechanics;
+    private final AccountService accountService;
+    private final WebSocketService webSocketService;
 
     public WebSocketGameServlet(GameMechanics gameMechanics, AccountService accountService, WebSocketService webSocketService) {
         this.gameMechanics = gameMechanics;
