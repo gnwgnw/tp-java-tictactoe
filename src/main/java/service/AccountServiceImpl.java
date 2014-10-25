@@ -14,6 +14,14 @@ public class AccountServiceImpl implements AccountService {
     private Map<String, UserProfile> users = new HashMap<>();
     private Map<String, UserProfile> sessions = new HashMap<>();
 
+    //TODO refactoring
+    public AccountServiceImpl() {
+        UserProfile defaultUser1 = new UserProfile("defaultUser1", "defaultUser1@mail.ru", "123");
+        UserProfile defaultUser2 = new UserProfile("defaultUser2", "defaultUser2@mail.ru", "123");
+        users.put("defaultUser1", defaultUser1);
+        users.put("defaultUser2", defaultUser2);
+    }
+
     @Override
     public ResponsesCode signUp(String login, String email, String password) {
 //TODO validate the inputs param
