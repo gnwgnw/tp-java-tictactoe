@@ -3,7 +3,7 @@ package servlets;
 import base.AccountService;
 import base.PageUrlServlet;
 import base.UserProfile;
-import templater.PageGenerator;
+import utils.PageGenerator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

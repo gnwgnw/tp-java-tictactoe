@@ -9,8 +9,7 @@ import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketMessage;
 import org.eclipse.jetty.websocket.api.annotations.WebSocket;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.simple.JSONValue;
 
 /**
  * Created by titaevskiy.s on 23.10.14
@@ -37,12 +36,10 @@ public class GameWebSocket {
 
     @OnWebSocketMessage
     public void onMessage(String data) {
-        try {
-            JSONObject jsonObject = (JSONObject) new JSONParser().parse(data);
-            gameMechanics.doTurn(myLogin, (Long) jsonObject.get("position"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        JSONObject jsonObject = (JSONObject) JSONValue.parse(data);
+//TODO: move frontend constant to file
+        int position = (int) (long) jsonObject.get("position");
+        gameMechanics.doTurn(myLogin, position);
     }
 
     @OnWebSocketClose
@@ -64,6 +61,7 @@ public class GameWebSocket {
 
     public void gameOver(UserGameState userGameState) {
 //TODO
+        session.close();
     }
 
     public void updateGameState(UserGameState userGameState) {

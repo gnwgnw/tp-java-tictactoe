@@ -1,7 +1,7 @@
 package servlets;
 
 import base.PageUrlServlet;
-import templater.PageGenerator;
+import utils.PageGenerator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

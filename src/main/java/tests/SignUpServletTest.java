@@ -4,19 +4,22 @@ import base.AccountService;
 import base.ResponsesCode;
 import org.junit.Test;
 import servlets.SignUpServlet;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class SignUpServletTest {
-    HttpServletRequest request = mock(HttpServletRequest.class);
-    HttpServletResponse response = mock(HttpServletResponse.class);
     final AccountService accountService = mock(AccountService.class);
     //TODO possible?!
     final SignUpServlet signUpServlet = new SignUpServlet(accountService);
+    HttpServletRequest request = mock(HttpServletRequest.class);
+    HttpServletResponse response = mock(HttpServletResponse.class);
 
     @Test
     public void testDoPostOK() throws Exception {

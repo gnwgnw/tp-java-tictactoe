@@ -3,17 +3,19 @@ package tests;
 import base.AccountService;
 import org.junit.Test;
 import servlets.SignOutServlet;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
 
 public class SignOutServletTest {
-    HttpServletRequest request = mock(HttpServletRequest.class);
-    HttpServletResponse response = mock(HttpServletResponse.class);
     final AccountService accountService = mock(AccountService.class);
     //TODO possible?!
     final SignOutServlet signOutServlet = new SignOutServlet(accountService);
+    HttpServletRequest request = mock(HttpServletRequest.class);
+    HttpServletResponse response = mock(HttpServletResponse.class);
 
     @Test
     public void testDoPost() throws Exception {

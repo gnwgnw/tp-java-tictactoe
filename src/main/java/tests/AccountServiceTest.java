@@ -1,10 +1,11 @@
 package tests;
 
-import org.junit.Test;
-import base.UserProfile;
-import service.AccountServiceImpl;
 import base.ResponsesCode;
-import static org.junit.Assert.*;
+import base.UserProfile;
+import org.junit.Test;
+import service.AccountServiceImpl;
+
+import static org.junit.Assert.assertEquals;
 
 public class AccountServiceTest {
 

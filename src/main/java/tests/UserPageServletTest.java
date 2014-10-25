@@ -6,14 +6,16 @@ import servlets.UserPageServlet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import static org.mockito.Mockito.*;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class UserPageServletTest {
-    HttpServletRequest request = mock(HttpServletRequest.class);
-    HttpServletResponse response = mock(HttpServletResponse.class);
     final AccountService accountService = mock(AccountService.class);
     //TODO possible?!
     final UserPageServlet userPageServlet = new UserPageServlet(accountService);
+    HttpServletRequest request = mock(HttpServletRequest.class);
+    HttpServletResponse response = mock(HttpServletResponse.class);
 
     @Test
     public void testDoGet() throws Exception {

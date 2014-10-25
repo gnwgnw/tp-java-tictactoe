@@ -10,7 +10,7 @@
 - Кравцов Илья, [kic2512] [4], kravcov2512@gmail.com
 
 Подробное о проекте можно прочесть на сайте [Технопарка] [1]
-[1]: tp.mail.ru
+[1]: http://tp.mail.ru
 [2]: https://github.com/mrGexogen
 [3]: https://github.com/MarinaaaniraM
 [4]: https://github.com/kic2512
