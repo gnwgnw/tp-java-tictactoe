@@ -44,7 +44,7 @@ public class GameWebSocket {
 
     @OnWebSocketClose
     public void onClose(int statusCode, String reason) {
-//TODO: close gamesession if websocket is closed by timeout reason
+        gameMechanics.closeGameSession(myLogin);
         webSocketService.removeSocket(this);
     }
 

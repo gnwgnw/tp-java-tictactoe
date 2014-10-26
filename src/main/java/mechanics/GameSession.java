@@ -141,4 +141,8 @@ public class GameSession {
         }
         return true;
     }
+
+    public void closeGameSession() {
+        isFinished = true;
+    }
 }

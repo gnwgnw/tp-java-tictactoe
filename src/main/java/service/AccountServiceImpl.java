@@ -28,7 +28,8 @@ public class AccountServiceImpl implements AccountService {
 
         if (users.containsKey(login)) {
             return ResponsesCode.ALREADY_EXISTS;
-        } else {
+        }
+        else {
             UserProfile userProfile = new UserProfile(login, email, password);
             users.put(login, userProfile);
             return ResponsesCode.OK;
@@ -42,7 +43,8 @@ public class AccountServiceImpl implements AccountService {
         if (users.containsKey(login) && users.get(login).getPassword().equals(password)) {
             sessions.put(httpSessionId, users.get(login));
             return ResponsesCode.OK;
-        } else {
+        }
+        else {
             return ResponsesCode.WRONG_SIGNIN;
         }
     }

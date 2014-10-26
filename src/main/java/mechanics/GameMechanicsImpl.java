@@ -36,7 +36,8 @@ public class GameMechanicsImpl implements GameMechanics {
     public void waitForEnemy(String login) {
         if (waiter == null) {
             waiter = login;
-        } else {
+        }
+        else {
             startGame(waiter, login);
             waiter = null;
         }
@@ -56,6 +57,11 @@ public class GameMechanicsImpl implements GameMechanics {
         else {
             gameUpdate(myGameState, enemyGameState);
         }
+    }
+
+    @Override
+    public void closeGameSession(String login) {
+        loginToGameSession.get(login).closeGameSession();
     }
 
     private void startGame(String waiter, String login) {
