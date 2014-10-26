@@ -11,8 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Created by titaevskiy.s on 24.10.14
  */
 public class WebSocketServiceImpl implements WebSocketService {
-    //TODO: multi threads
-    private Map<String, GameWebSocket> loginToSocket = new ConcurrentHashMap<>();
+    private final Map<String, GameWebSocket> loginToSocket = new ConcurrentHashMap<>();
 
     @Override
     public void notifyStartGame(UserGameState userGameState) {

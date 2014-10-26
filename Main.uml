@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>main.Main</OriginalElement>
+  <nodes>
+    <node x="372.0" y="510.0">utils.TimeHelper</node>
+    <node x="35.666666666666515" y="323.0">mechanics.GameMechanicsImpl</node>
+    <node x="188.0" y="510.0">utils.PageGenerator</node>
+    <node x="1283.4542091836736" y="323.0">servlets.SignOutServlet</node>
+    <node x="61.49999999999977" y="101.0">mechanics.UserGameState</node>
+    <node x="1141.4542091836736" y="323.0">servlets.SignInServlet</node>
+    <node x="462.4542091836736" y="323.0">servlets.UserPageServlet</node>
+    <node x="938.7234126984126" y="202.0">base.PageUrlServlet</node>
+    <node x="969.57029478458" y="434.0">main.Main</node>
+    <node x="1495.024503968254" y="323.0">servlets.WebSocketGameServlet</node>
+    <node x="809.4542091836736" y="323.0">servlets.ScoreBoardServlet</node>
+    <node x="1518.3903769841268" y="202.0">frontend.CustomWebSocketCreator</node>
+    <node x="992.4542091836736" y="323.0">servlets.SignUpServlet</node>
+    <node x="630.4542091836736" y="323.0">servlets.AdminPageServlet</node>
+    <node x="283.9542091836736" y="202.0">base.UserProfile</node>
+    <node x="1643.8903769841268" y="101.0">frontend.GameWebSocket</node>
+    <node x="1815.8903769841268" y="202.0">service.WebSocketServiceImpl</node>
+    <node x="1098.0792091836736" y="101.0">base.AccountService</node>
+    <node x="273.4542091836736" y="323.0">service.AccountServiceImpl</node>
+    <node x="1631.8292091836736" y="0.0">base.WebSocketService</node>
+    <node x="0.0" y="510.0">base.ResponsesCode</node>
+    <node x="8.833333333333258" y="202.0">mechanics.GameSession</node>
+    <node x="26.645294784580074" y="0.0">mechanics.GameUser</node>
+    <node x="1448.0167091836736" y="0.0">base.GameMechanics</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="servlets.UserPageServlet" target="base.PageUrlServlet">
+      <point x="37.0" y="-15.5" />
+      <point x="573.4542091836736" y="283.0" />
+      <point x="948.4376984126984" y="283.0" />
+      <point x="-58.28571428571422" y="15.5" />
+    </edge>
+    <edge source="main.Main" target="servlets.AdminPageServlet">
+      <point x="-9.75" y="-15.5" />
+      <point x="992.32029478458" y="384.0" />
+      <point x="709.9542091836736" y="384.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="servlets.WebSocketGameServlet" target="base.PageUrlServlet">
+      <point x="-80.0" y="-15.5" />
+      <point x="1515.024503968254" y="273.0" />
+      <point x="1065.0091269841269" y="273.0" />
+      <point x="58.285714285714334" y="15.5" />
+    </edge>
+    <edge source="mechanics.GameMechanicsImpl" target="base.WebSocketService">
+      <point x="70.0" y="-15.5" />
+      <point x="193.16666666666652" y="303.0" />
+      <point x="249.78754251700695" y="303.0" />
+      <point x="249.78754251700695" y="71.0" />
+      <point x="1647.9292091836737" y="71.0" />
+      <point x="-64.39999999999998" y="15.5" />
+    </edge>
+    <edge source="main.Main" target="servlets.ScoreBoardServlet">
+      <point x="-3.25" y="-15.5" />
+      <point x="998.82029478458" y="374.0" />
+      <point x="890.9542091836736" y="374.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="service.WebSocketServiceImpl" target="frontend.GameWebSocket">
+      <point x="-47.5" y="-15.5" />
+      <point x="1863.3903769841268" y="182.0" />
+      <point x="1757.1403769841268" y="182.0" />
+      <point x="37.75" y="15.5" />
+    </edge>
+    <edge source="servlets.WebSocketGameServlet" target="frontend.CustomWebSocketCreator">
+      <point x="40.0" y="-15.5" />
+      <point x="1635.024503968254" y="303.0" />
+      <point x="1627.8903769841268" y="303.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="service.AccountServiceImpl" target="base.AccountService">
+      <point x="56.33333333333337" y="-15.5" />
+      <point x="414.28754251700695" y="303.0" />
+      <point x="424.9166666666665" y="303.0" />
+      <point x="424.9166666666665" y="152.0" />
+      <point x="1106.8292091836736" y="152.0" />
+      <point x="-61.25" y="15.5" />
+    </edge>
+    <edge source="mechanics.GameSession" target="mechanics.GameUser">
+      <point x="0.0" y="-15.5" />
+      <point x="70.83333333333326" y="182.0" />
+      <point x="50.99999999999977" y="182.0" />
+      <point x="50.99999999999977" y="81.0" />
+      <point x="78.64529478458007" y="81.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="mechanics.GameMechanicsImpl" target="mechanics.GameSession">
+      <point x="-70.0" y="-15.5" />
+      <point x="53.166666666666515" y="303.0" />
+      <point x="29.499999999999886" y="303.0" />
+      <point x="-41.33333333333334" y="15.5" />
+    </edge>
+    <edge source="servlets.AdminPageServlet" target="base.AccountService">
+      <point x="-39.75" y="-15.5" />
+      <point x="670.2042091836736" y="172.0" />
+      <point x="1141.8292091836736" y="172.0" />
+      <point x="-26.25" y="15.5" />
+    </edge>
+    <edge source="mechanics.UserGameState" target="mechanics.GameUser">
+      <point x="0.0" y="-15.5" />
+      <point x="131.99999999999977" y="81.0" />
+      <point x="113.3119614512467" y="81.0" />
+      <point x="34.66666666666666" y="15.5" />
+    </edge>
+    <edge source="servlets.SignUpServlet" target="base.AccountService">
+      <point x="32.25" y="-15.5" />
+      <point x="1089.2042091836736" y="303.0" />
+      <point x="1096.2042091836736" y="303.0" />
+      <point x="1096.2042091836736" y="182.0" />
+      <point x="1159.3292091836736" y="182.0" />
+      <point x="-8.75" y="15.5" />
+    </edge>
+    <edge source="service.WebSocketServiceImpl" target="base.WebSocketService">
+      <point x="47.5" y="-15.5" />
+      <point x="1958.3903769841268" y="61.0" />
+      <point x="1776.7292091836734" y="61.0" />
+      <point x="64.39999999999998" y="15.5" />
+    </edge>
+    <edge source="frontend.CustomWebSocketCreator" target="frontend.GameWebSocket">
+      <point x="82.125" y="-15.5" />
+      <point x="1710.0153769841268" y="182.0" />
+      <point x="1681.6403769841268" y="182.0" />
+      <point x="-37.75" y="15.5" />
+    </edge>
+    <edge source="frontend.CustomWebSocketCreator" target="base.WebSocketService">
+      <point x="27.375" y="-15.5" />
+      <point x="1655.2653769841268" y="182.0" />
+      <point x="1633.3903769841268" y="182.0" />
+      <point x="1633.3903769841268" y="81.0" />
+      <point x="1680.1292091836735" y="81.0" />
+      <point x="-32.200000000000045" y="15.5" />
+    </edge>
+    <edge source="frontend.GameWebSocket" target="base.WebSocketService">
+      <point x="37.75" y="-15.5" />
+      <point x="1757.1403769841268" y="81.0" />
+      <point x="1712.3292091836736" y="81.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="servlets.SignOutServlet" target="base.AccountService">
+      <point x="34.25" y="-15.5" />
+      <point x="1386.2042091836736" y="172.0" />
+      <point x="1194.3292091836736" y="172.0" />
+      <point x="26.25" y="15.5" />
+    </edge>
+    <edge source="main.Main" target="servlets.SignOutServlet">
+      <point x="16.25" y="-15.5" />
+      <point x="1018.32029478458" y="394.0" />
+      <point x="1351.9542091836736" y="394.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="main.Main" target="servlets.SignUpServlet">
+      <point x="3.25" y="-15.5" />
+      <point x="1005.32029478458" y="374.0" />
+      <point x="1056.9542091836736" y="374.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="main.Main" target="servlets.SignInServlet">
+      <point x="9.75" y="-15.5" />
+      <point x="1011.82029478458" y="384.0" />
+      <point x="1202.4542091836736" y="384.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="servlets.WebSocketGameServlet" target="base.WebSocketService">
+      <point x="80.0" y="-15.5" />
+      <point x="1675.024503968254" y="303.0" />
+      <point x="1805.3903769841268" y="303.0" />
+      <point x="1805.3903769841268" y="71.0" />
+      <point x="1744.5292091836736" y="71.0" />
+      <point x="32.200000000000045" y="15.5" />
+    </edge>
+    <edge source="servlets.AdminPageServlet" target="base.PageUrlServlet">
+      <point x="39.75" y="-15.5" />
+      <point x="749.7042091836736" y="293.0" />
+      <point x="967.8662698412697" y="293.0" />
+      <point x="-38.85714285714289" y="15.5" />
+    </edge>
+    <edge source="mechanics.GameSession" target="mechanics.UserGameState">
+      <point x="41.333333333333314" y="-15.5" />
+      <point x="112.16666666666652" y="182.0" />
+      <point x="131.99999999999977" y="182.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="servlets.SignInServlet" target="base.AccountService">
+      <point x="30.5" y="-15.5" />
+      <point x="1232.9542091836736" y="182.0" />
+      <point x="1176.8292091836736" y="182.0" />
+      <point x="8.75" y="15.5" />
+    </edge>
+    <edge source="service.AccountServiceImpl" target="base.UserProfile">
+      <point x="-56.33333333333334" y="-15.5" />
+      <point x="301.6208758503402" y="303.0" />
+      <point x="311.4542091836736" y="303.0" />
+      <point x="-27.5" y="15.5" />
+    </edge>
+    <edge source="servlets.SignInServlet" target="base.PageUrlServlet">
+      <point x="-30.5" y="-15.5" />
+      <point x="1171.9542091836736" y="293.0" />
+      <point x="1026.1519841269842" y="293.0" />
+      <point x="19.428571428571445" y="15.5" />
+    </edge>
+    <edge source="main.Main" target="service.AccountServiceImpl">
+      <point x="-22.75" y="-15.5" />
+      <point x="979.32029478458" y="404.0" />
+      <point x="357.9542091836736" y="404.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="main.Main" target="service.WebSocketServiceImpl">
+      <point x="29.25" y="-15.5" />
+      <point x="1031.32029478458" y="414.0" />
+      <point x="1910.8903769841268" y="414.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="frontend.GameWebSocket" target="base.GameMechanics">
+      <point x="-37.75" y="-15.5" />
+      <point x="1681.6403769841268" y="51.0" />
+      <point x="1575.7667091836736" y="51.0" />
+      <point x="54.75" y="15.5" />
+    </edge>
+    <edge source="servlets.ScoreBoardServlet" target="base.PageUrlServlet">
+      <point x="0.0" y="-15.5" />
+      <point x="890.9542091836736" y="303.0" />
+      <point x="987.2948412698412" y="303.0" />
+      <point x="-19.428571428571445" y="15.5" />
+    </edge>
+    <edge source="servlets.WebSocketGameServlet" target="base.AccountService">
+      <point x="-40.0" y="-15.5" />
+      <point x="1555.024503968254" y="263.0" />
+      <point x="1478.57029478458" y="263.0" />
+      <point x="1478.57029478458" y="162.0" />
+      <point x="1211.8292091836736" y="162.0" />
+      <point x="43.75" y="15.5" />
+    </edge>
+    <edge source="main.Main" target="mechanics.GameMechanicsImpl">
+      <point x="-29.25" y="-15.5" />
+      <point x="972.82029478458" y="414.0" />
+      <point x="123.16666666666652" y="414.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="servlets.SignOutServlet" target="base.PageUrlServlet">
+      <point x="-34.25" y="-15.5" />
+      <point x="1317.7042091836736" y="283.0" />
+      <point x="1045.5805555555555" y="283.0" />
+      <point x="38.85714285714289" y="15.5" />
+    </edge>
+    <edge source="mechanics.GameMechanicsImpl" target="base.GameMechanics">
+      <point x="35.0" y="-15.5" />
+      <point x="158.16666666666652" y="293.0" />
+      <point x="212.99999999999977" y="293.0" />
+      <point x="212.99999999999977" y="61.0" />
+      <point x="1466.2667091836736" y="61.0" />
+      <point x="-54.75" y="15.5" />
+    </edge>
+    <edge source="servlets.UserPageServlet" target="base.AccountService">
+      <point x="-37.0" y="-15.5" />
+      <point x="499.45420918367364" y="162.0" />
+      <point x="1124.3292091836736" y="162.0" />
+      <point x="-43.75" y="15.5" />
+    </edge>
+    <edge source="servlets.SignUpServlet" target="base.PageUrlServlet">
+      <point x="-32.25" y="-15.5" />
+      <point x="1024.7042091836736" y="303.0" />
+      <point x="1006.7234126984126" y="303.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="main.Main" target="servlets.WebSocketGameServlet">
+      <point x="22.75" y="-15.5" />
+      <point x="1024.82029478458" y="404.0" />
+      <point x="1595.024503968254" y="404.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="servlets.WebSocketGameServlet" target="base.GameMechanics">
+      <point x="0.0" y="-15.5" />
+      <point x="1595.024503968254" y="253.0" />
+      <point x="1507.8903769841268" y="253.0" />
+      <point x="1507.8903769841268" y="61.0" />
+      <point x="1502.7667091836736" y="61.0" />
+      <point x="-18.25" y="15.5" />
+    </edge>
+    <edge source="main.Main" target="servlets.UserPageServlet">
+      <point x="-16.25" y="-15.5" />
+      <point x="985.82029478458" y="394.0" />
+      <point x="536.4542091836736" y="394.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="frontend.CustomWebSocketCreator" target="base.AccountService">
+      <point x="-82.125" y="-15.5" />
+      <point x="1545.7653769841268" y="152.0" />
+      <point x="1229.3292091836736" y="152.0" />
+      <point x="61.25" y="15.5" />
+    </edge>
+    <edge source="frontend.CustomWebSocketCreator" target="base.GameMechanics">
+      <point x="-27.375" y="-15.5" />
+      <point x="1600.5153769841268" y="182.0" />
+      <point x="1622.3903769841268" y="182.0" />
+      <point x="1622.3903769841268" y="61.0" />
+      <point x="1539.2667091836736" y="61.0" />
+      <point x="18.25" y="15.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6512086827824372" x="1002.4999999999999" y="270.5" />
+  <SelectedNodes>
+    <node>main.Main</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

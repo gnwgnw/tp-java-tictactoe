@@ -9,4 +9,6 @@ public interface GameMechanics {
     void waitForEnemy(String login);
 
     void doTurn(String login, int position);
+
+    void closeGameSession(String login);
 }
