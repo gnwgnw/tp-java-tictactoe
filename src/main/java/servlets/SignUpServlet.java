@@ -41,7 +41,6 @@ public class SignUpServlet extends HttpServlet implements PageUrlServlet {
                 responseAnswer = "Unknown error";
                 break;
         }
-
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().println(responseAnswer);
     }

@@ -36,8 +36,7 @@ public class GameMechanicsImpl implements GameMechanics {
     public void waitForEnemy(String login) {
         if (waiter == null) {
             waiter = login;
-        }
-        else {
+        } else {
             startGame(waiter, login);
             waiter = null;
         }
