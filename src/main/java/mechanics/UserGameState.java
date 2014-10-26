@@ -9,13 +9,15 @@ public class UserGameState {
     private final int whoseTurn;
     private final int[] field;
     private final int winner;
+    private final boolean isFinished;
 
-    public UserGameState(GameUser myGameUser, GameUser enemyGameUser, int whoseTurn, int[] field, int winner) {
+    public UserGameState(GameUser myGameUser, GameUser enemyGameUser, int whoseTurn, int[] field, int winner, boolean isFinished) {
         this.myGameUser = myGameUser;
         this.enemyGameUser = enemyGameUser;
         this.whoseTurn = whoseTurn;
         this.field = field;
         this.winner = winner;
+        this.isFinished = isFinished;
     }
 
     public GameUser getMyGameUser() {
@@ -36,5 +38,9 @@ public class UserGameState {
 
     public int getWinner() {
         return winner;
+    }
+
+    public boolean isFinished() {
+        return isFinished;
     }
 }

@@ -13,24 +13,21 @@ import java.util.concurrent.ConcurrentHashMap;
  * Created by titaevskiy.s on 24.10.14
  */
 public class GameMechanicsImpl implements GameMechanics {
-    private static final int STEP_TIME = 100;
+    private static final int STEP_TIME = 1000;
 
     private final WebSocketService webSocketService;
 
-    private Set<GameSession> allGameSessions;
-    private Map<String, GameSession> loginToGameSession = new ConcurrentHashMap<>();
+    private final Set<GameSession> allGameSessions = Collections.newSetFromMap(new ConcurrentHashMap<>());
+    private final Map<String, GameSession> loginToGameSession = new ConcurrentHashMap<>();
     private String waiter;
 
-    public GameMechanicsImpl(WebSocketService webSocketService) {
-        allGameSessions = Collections.newSetFromMap(new ConcurrentHashMap<>());
-        this.webSocketService = webSocketService;
-    }
+    public GameMechanicsImpl(WebSocketService webSocketService) { this.webSocketService = webSocketService;}
 
     @SuppressWarnings("InfiniteLoopStatement")
     @Override
     public void run() {
         while (true) {
-            gameStep();
+            clearGameSessions();
             TimeHelper.sleep(STEP_TIME);
         }
     }
@@ -53,9 +50,13 @@ public class GameMechanicsImpl implements GameMechanics {
 
         UserGameState myGameState = gameSession.getUserGameState(login);
         UserGameState enemyGameState = gameSession.getUserGameState(myGameState.getEnemyGameUser().getLogin());
-//TODO: check session state
-        webSocketService.notifyUpdateGameState(myGameState);
-        webSocketService.notifyUpdateGameState(enemyGameState);
+
+        if (gameSession.isFinished()) {
+            gameOver(myGameState, enemyGameState);
+        }
+        else {
+            gameUpdate(myGameState, enemyGameState);
+        }
     }
 
     private void startGame(String waiter, String login) {
@@ -69,18 +70,18 @@ public class GameMechanicsImpl implements GameMechanics {
         webSocketService.notifyStartGame(gameSession.getUserGameState(login));
     }
 
-    private void gameOver(String first, String second, GameSession gameSession) {
-        webSocketService.notifyGameOver(gameSession.getUserGameState(first));
-        webSocketService.notifyGameOver(gameSession.getUserGameState(second));
+    private void gameOver(UserGameState first, UserGameState second) {
+        webSocketService.notifyGameOver(first);
+        webSocketService.notifyGameOver(second);
     }
 
-    private void gameStep() {
+    private void gameUpdate(UserGameState first, UserGameState second) {
+        webSocketService.notifyUpdateGameState(first);
+        webSocketService.notifyUpdateGameState(second);
+    }
+
+    private void clearGameSessions() {
         allGameSessions.stream().filter(GameSession::isFinished).forEach(gameSession -> {
-            String firstLogin = gameSession.getFirstLogin();
-            String secondLogin = gameSession.getSecondLogin();
-
-            gameOver(firstLogin, secondLogin, gameSession);
-
             loginToGameSession.remove(gameSession.getFirstLogin());
             loginToGameSession.remove(gameSession.getSecondLogin());
             allGameSessions.remove(gameSession);

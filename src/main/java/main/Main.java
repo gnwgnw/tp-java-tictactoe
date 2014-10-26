@@ -30,7 +30,7 @@ public class Main {
         }
 
         String portString = args[0];
-        int port = Integer.valueOf(portString);
+        final int port = Integer.valueOf(portString);
         System.out.append("Starting at port: ").append(portString).append('\n');
 
         Server server = new Server(port);
@@ -39,7 +39,7 @@ public class Main {
         WebSocketService webSocketService = new WebSocketServiceImpl();
         GameMechanics gameMechanics = new GameMechanicsImpl(webSocketService);
 
-        Set<PageUrlServlet> servlets = new LinkedHashSet<>();
+        final Set<PageUrlServlet> servlets = new LinkedHashSet<>();
         servlets.add(new SignUpServlet(accountService));
         servlets.add(new SignInServlet(accountService));
         servlets.add(new SignOutServlet(accountService));
@@ -52,6 +52,8 @@ public class Main {
         for (PageUrlServlet servlet : servlets) {
             context.addServlet(new ServletHolder((Servlet) servlet), servlet.getPageUrl());
         }
+
+        servlets.clear();
 
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setResourceBase("static");

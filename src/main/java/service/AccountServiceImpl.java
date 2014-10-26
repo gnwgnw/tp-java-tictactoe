@@ -11,8 +11,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author s.titaevskiy on 13.09.14.
  */
 public class AccountServiceImpl implements AccountService {
-    private Map<String, UserProfile> users = new ConcurrentHashMap<>();
-    private Map<String, UserProfile> sessions = new ConcurrentHashMap<>();
+    private final Map<String, UserProfile> users = new ConcurrentHashMap<>();
+    private final Map<String, UserProfile> sessions = new ConcurrentHashMap<>();
 
     public AccountServiceImpl() {
         users.put("qwerty", new UserProfile("qwerty", "email", "12345"));

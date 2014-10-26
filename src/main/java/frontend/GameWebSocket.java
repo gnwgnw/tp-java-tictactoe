@@ -38,12 +38,13 @@ public class GameWebSocket {
     public void onMessage(String data) {
         JSONObject jsonObject = (JSONObject) JSONValue.parse(data);
 //TODO: move frontend constant to file
-        int position = (int) (long) jsonObject.get("position");
+        final int position = (int) (long) jsonObject.get("position");
         gameMechanics.doTurn(myLogin, position);
     }
 
     @OnWebSocketClose
     public void onClose(int statusCode, String reason) {
+//TODO: close gamesession if websocket is closed by timeout reason
         webSocketService.removeSocket(this);
     }
 
