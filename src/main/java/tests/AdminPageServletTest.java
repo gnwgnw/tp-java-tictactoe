@@ -3,21 +3,51 @@ package tests;
 import base.AccountService;
 import org.junit.Test;
 import servlets.AdminPageServlet;
+import utils.PageGenerator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 
 public class AdminPageServletTest {
     final AccountService accountService = mock(AccountService.class);
-    //TODO possible?!
     final AdminPageServlet adminPageServlet = new AdminPageServlet(accountService);
-    HttpServletRequest request = mock(HttpServletRequest.class);
-    HttpServletResponse response = mock(HttpServletResponse.class);
+    final HttpServletRequest request = mock(HttpServletRequest.class);
+    final HttpServletResponse response = mock(HttpServletResponse.class);
+    final StringWriter stringWriter = new StringWriter();
+    final PrintWriter printWriter = new PrintWriter(stringWriter);
+
+    int signUpCount = 2;
+    int signInCount = 1;
 
     @Test
-    public void testDoGet() throws Exception {
-        //TODO test
+    public void testDoGetPage() throws Exception {
+        Map<String, Object> pageVariables = new HashMap<>();
+        pageVariables.put("status", "run");
+        pageVariables.put("signup", signUpCount);
+        pageVariables.put("signin", signInCount);
+
+        when(request.getParameter("Shutdown")).thenReturn(null);
+        when(accountService.countSignIn()).thenReturn(signInCount);
+        when(accountService.countSignUp()).thenReturn(signUpCount);
+        when(response.getWriter()).thenReturn(printWriter);
+
+        adminPageServlet.doGet(request, response);
+
+        assertTrue(stringWriter.toString().contains(PageGenerator.getPage("admin.tml", pageVariables)));
+    }
+
+    @Test
+    public void testDoGetShutdown() throws Exception {
+        //TODO shutdown to RK 2
     }
 }

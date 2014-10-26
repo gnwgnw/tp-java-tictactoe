@@ -6,7 +6,7 @@
 
 ##Студенты
 - Титаевский Сергей, [mrGexogen] [2], Titarvskiy.S@gmail.com
-- Тимофеева Марина, [MarinaaaniraM] [3], MarinaaaniraM@yandex.ru
+- Тимофеева Марина, [MarinaaaniraM] [3], marinaaaniram@yandex.ru
 - Кравцов Илья, [kic2512] [4], kravcov2512@gmail.com
 
 Подробное о проекте можно прочесть на сайте [Технопарка] [1]

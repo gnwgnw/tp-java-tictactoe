@@ -4,38 +4,66 @@ import base.AccountService;
 import base.ResponsesCode;
 import org.junit.Test;
 import servlets.SignInServlet;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class SignInServletTest {
     final AccountService accountService = mock(AccountService.class);
-    //TODO possible?!
     final SignInServlet signInServlet = new SignInServlet(accountService);
-    HttpServletRequest request = mock(HttpServletRequest.class);
-    HttpServletResponse response = mock(HttpServletResponse.class);
-    HttpSession session = mock(HttpSession.class);
+    final HttpServletRequest request = mock(HttpServletRequest.class);
+    final HttpServletResponse response = mock(HttpServletResponse.class);
+    final HttpSession httpSession = mock(HttpSession.class);
+    final StringWriter stringWriter = new StringWriter();
+    final PrintWriter printWriter = new PrintWriter(stringWriter);
+
+    String loginString = "defaultUser1";
+    String passwordString = "123";
+    String sessionString = "session";
 
     @Test
-    public void testDoPost() throws Exception {
-        when(request.getParameter("login")).thenReturn("defaultUser1");
-        when(request.getParameter("password")).thenReturn("123");
-        when(request.getSession()).thenReturn(session);
-        when(session.getId()).thenReturn("session");
-
-        StringWriter stringWriter = new StringWriter();
-        PrintWriter printWriter = new PrintWriter(stringWriter);
+    public void testDoPostResponseOk() throws Exception {
+        when(request.getParameter("login")).thenReturn(loginString);
+        when(request.getParameter("password")).thenReturn(passwordString);
+        when(request.getSession()).thenReturn(httpSession);
+        when(httpSession.getId()).thenReturn(sessionString);
         when(response.getWriter()).thenReturn(printWriter);
-        when(accountService.signIn("defaultUser1", "123", "session")).thenReturn(ResponsesCode.OK);
+        when((accountService).signIn(loginString, passwordString, sessionString)).thenReturn(ResponsesCode.OK);
 
         signInServlet.doPost(request, response);
+        verify(accountService, atLeastOnce()).signIn(loginString, passwordString, sessionString);
         assertTrue(stringWriter.toString().contains("The user defaultUser1 signin"));
+    }
+
+    @Test
+    public void testDoPostResponseWrongSignIn() throws Exception {
+        when(request.getParameter("login")).thenReturn(loginString);
+        when(request.getParameter("password")).thenReturn(passwordString);
+        when(request.getSession()).thenReturn(httpSession);
+        when(httpSession.getId()).thenReturn(sessionString);
+        when(response.getWriter()).thenReturn(printWriter);
+        when(accountService.signIn(loginString, passwordString, sessionString)).thenReturn(ResponsesCode.WRONG_SIGNIN);
+
+        signInServlet.doPost(request, response);
+        verify(accountService, atLeastOnce()).signIn(loginString, passwordString, sessionString);
+        assertTrue(stringWriter.toString().contains("Enter correct login and password"));
+    }
+
+    @Test
+    public void testDoPostResponseUnknownError() throws Exception {
+        when(request.getParameter("login")).thenReturn(loginString);
+        when(request.getParameter("password")).thenReturn(passwordString);
+        when(request.getSession()).thenReturn(httpSession);
+        when(httpSession.getId()).thenReturn(sessionString);
+        when(response.getWriter()).thenReturn(printWriter);
+        when(accountService.signIn(loginString, passwordString, sessionString)).thenReturn(ResponsesCode.ALREADY_EXISTS);
+
+        signInServlet.doPost(request, response);
+        verify(accountService, atLeastOnce()).signIn(loginString, passwordString, sessionString);
+        assertTrue(stringWriter.toString().contains("Unknown error"));
     }
 }
