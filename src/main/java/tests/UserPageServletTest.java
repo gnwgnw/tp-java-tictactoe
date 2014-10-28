@@ -3,14 +3,12 @@ package tests;
 import base.AccountService;
 import base.UserProfile;
 import org.junit.Test;
-import servlets.SignInServlet;
 import servlets.UserPageServlet;
 import utils.PageGenerator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.HashMap;
