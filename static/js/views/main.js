@@ -8,20 +8,27 @@ define([
     )
 {
     var View = Backbone.View.extend({
-
+                
         template: tmpl,
-        initialize: function () {
-            this.render();
+        initialize: function () {            
+            this.render();                    
         },
-        render: function () {
+        render: function () {            
             this.$el.html(this.template);
             return this;
         },
-        show: function () {
-            // TODO
+        events: {
+            "show" : "show",
         },
-        hide: function () {
-            // TODO
+        show: function () {
+            this.$el.css({'display':'block'});
+            if (!$('#main').html()) {
+                $('#main').html(this.$el);                
+            }            
+            this.trigger("show");
+        },
+        hide: function () {            
+            this.$el.css({'display':'none'})
         }
 
     });

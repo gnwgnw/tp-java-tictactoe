@@ -13,11 +13,10 @@ define([
 
         template: tmpl,
         initialize: function () {            
-            this.render();            
+            this.render();
         },
         render: function () {            
-            Collection.each(function(col){
-                console.log(col.get('status'))
+            Collection.each(function(col){                
                 if (col.get('status')=='x') {
                     col.set({'img_url': '/img/x.jpg'});
                 }
@@ -28,14 +27,20 @@ define([
             this.$el.html( this.template( this.collection.toJSON() ) );
             return this;
         },
+        events:{
+            "show": "show"
+        },
         show: function () {
-            // TODO
+            this.$el.css({'display':'block'});                
+            if (!$('#game').html()) {            
+                $('#game').html(this.$el);
+            }                        
+            this.trigger("show");
         },
         hide: function () {
-            // TODO
+            this.$el.css({'display':'none'})
         }
 
-    });
-    console.log('before return')
+    });    
     return new View({collection: Collection});
 });

@@ -11,8 +11,7 @@ define([
 
 		model: Model,
 		url: '/game',
-		initialize: function() {			
-			console.log('init collection');
+		initialize: function() {						
 		},
 		comparator: function(a, b) {
 			return a.get('position') - b.get('position');

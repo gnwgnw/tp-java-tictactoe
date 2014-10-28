@@ -13,17 +13,24 @@ define([
 
         template: tmpl,
         initialize: function() {
-            this.listenTo(this.collection, 'reset', this.render);
+            this.listenTo(this.collection, 'reset', this.render);      
         },
         render: function () {
             this.$el.html( this.template( this.collection.toJSON() ) );
             return this;
         },
-        show: function () {
-            // TODO
+        events: {
+            "show" : "show",
         },
-        hide: function () {
-            // TODO
+        show: function () {
+            this.$el.css({'display':'block'});
+            if (!$('#scoreboard').html()) {
+                $('#scoreboard').html(this.$el);
+            }            
+            this.trigger("show");
+        },
+        hide: function () {            
+            this.$el.css({'display':'none'})
         }
 
     });

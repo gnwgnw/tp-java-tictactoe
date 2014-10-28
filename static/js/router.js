@@ -3,34 +3,38 @@ define([
     'views/main',
     'views/game',
     'views/login',
-    'views/scoreboard'
+    'views/scoreboard',
+    'views/manager'
     ],
     function(
         Backbone,
         main,
         game,
         login,
-        scoreboard
+        scoreboard,
+        manager
     )
 {
     var Router = Backbone.Router.extend({
+        initialize: function() {
+	},
         routes: {
             'scoreboard': 'scoreboardAction',
             'game': 'gameAction',
             'login': 'loginAction',
             '*default': 'defaultActions'
         },
-        defaultActions: function () {
-            $('#page').html(main.$el);
+        defaultActions: function () {            
+            main.show();            
         },
-        scoreboardAction: function () {
-            $('#page').html(scoreboard.$el);
+        scoreboardAction: function () {            
+            scoreboard.show();
         },
-        gameAction: function () {
-            $('#page').html(game.$el);
+        gameAction: function () {            
+            game.show()            
         },
-        loginAction: function () {
-            $('#page').html(login.$el);
+        loginAction: function () {            
+            login.show();
         }
     });
 

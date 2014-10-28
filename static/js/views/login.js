@@ -11,17 +11,24 @@ define([
 
         template: tmpl,
         initialize: function () {
-            this.render();
+            this.render();            
         },
-        render: function () {
+        render: function () {            
             this.$el.html(this.template);
             return this;
         },
-        show: function () {
-            // TODO
+        events: {
+            "show" : "show",
         },
-        hide: function () {
-            // TODO
+        show: function () {
+            this.$el.css({'display':'block'});
+            if (!$('#login').html()) {
+                $('#login').html(this.$el);                
+            }            
+            this.trigger("show");
+        },
+        hide: function () {            
+            this.$el.css({'display':'none'})
         }
 
     });

@@ -6,8 +6,7 @@ define([
 	)
 {
     var Model = Backbone.Model.extend({
-	initialize: function() {
-	    console.log('model init')	   
+	initialize: function() {	    	
 	},
         defaults: {
             status: 'none',
