@@ -35,7 +35,7 @@ define([
             if (!$('#game').html()) {            
                 $('#game').html(this.$el);
             }                        
-            this.trigger("show");
+            this.trigger("show", this);
         },
         hide: function () {
             this.$el.css({'display':'none'})

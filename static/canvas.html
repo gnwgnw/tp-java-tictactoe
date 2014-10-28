@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            color: #ffffff;
+            background: #808080;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="mycanvas" width="800" height="600"></canvas>
+    <script>
+        var canvas = document.getElementById("mycanvas");
+        var buttonStartX = 250;
+        var buttonStartY = 50;
+        var buttonWidth = 200;
+        var buttonHeight = 100;
+
+        var drawStartX = 0;
+        var drawStartY = buttonStartY + buttonHeight + 10;
+        var drawWidth = canvas.width;
+        var drawHeight = canvas.height - drawStartY;
+
+        var runAnimation = false;
+        var amplitude = 100;
+        var frequency = 0.05;
+        var speed = 1;
+        var radius = 60;
+        var mousePosX = 0;
+        var mousePosY = 0;
+        var timeout;
+        var x = 0, y = 0;
+
+        // --------------------------------------------------------------------
+        function f(x) {
+            return Math.sin(frequency * x) * amplitude + 
+                drawStartY + drawHeight / 2;
+        }
+
+        // --------------------------------------------------------------------
+        function rectButt(context) {
+            context.beginPath();
+            context.rect(buttonStartX, buttonStartY, buttonWidth, buttonHeight);               
+            context.fillStyle = '#FF9966';
+            context.lineWidth = 10;
+            context.strokeStyle = '#FF9966';
+            context.stroke();
+            context.closePath();
+        }
+
+        // --------------------------------------------------------------------
+          function pause(context) {
+            context.beginPath();
+            context.clearRect(buttonStartX, buttonStartY, 
+                              buttonWidth, buttonHeight);
+            if (runAnimation) {
+                context.rect(buttonStartX + 55, buttonStartY + 15, 30, 70);               
+                context.rect(buttonStartX + 115, buttonStartY + 15, 30, 70); 
+            } else {
+                context.moveTo(buttonStartX + 70, buttonStartY + 15);
+                context.lineTo(buttonStartX + buttonWidth - 60, 
+              	               buttonStartY + buttonHeight / 2);
+                context.lineTo(buttonStartX + 70, 
+              	               buttonStartY + buttonHeight - 15);
+                context.closePath();
+            }
+            context.fill();
+            context.fillStyle = '#FF9966';
+            context.strokeStyle = '#FF9966';
+            context.stroke();
+            context.closePath();
+          }
+
+        // --------------------------------------------------------------------
+        function ball(context, x) {
+            context.beginPath();             
+            for(var i = 0; i < drawWidth - radius; i++) {
+                x = x + speed;
+                y = f(x);  
+            }
+            context.arc(i, y, radius - 10, 0, 2 * Math.PI, false);               
+            context.fill();
+            context.fillStyle = '#FF9966';
+            context.strokeStyle = '#FF9966';
+            context.stroke();
+            context.closePath();
+        }
+
+        // --------------------------------------------------------------------
+        function sinus(context, x) {      
+            context.beginPath();
+            for(var i = 0; i < drawWidth - radius; i++) {
+                x = x + speed;
+                y = f(x);  
+                context.lineTo(i, y);
+            }
+            context.lineWidth = 10;
+            context.strokeStyle = '#40C781';
+            context.stroke();
+            context.closePath();
+        }
+
+        // --------------------------------------------------------------------
+        function animate(context) {
+            context.lineWidth = 10;
+            timeout = setInterval(function() {
+                if (runAnimation) {
+                    context.clearRect(drawStartX, drawStartY, 
+                                      drawWidth, drawHeight);
+                    x += speed;
+                    sinus(context, x);
+                    ball(context, x);                
+                } else {
+                    clearInterval(timeout);
+                    if (x > 2 * drawWidth) {
+                	   x = x - Math.floor(x / drawWidth) * drawWidth;   
+                    }                   
+                }              
+            }, 10);
+        }
+
+        // --------------------------------------------------------------------
+        function getMousePos(canvas, evt) {
+            var rect = canvas.getBoundingClientRect();
+            return {
+                x: evt.clientX - rect.left,
+                y: evt.clientY - rect.top
+            };
+        }
+
+        // ====================================================================
+        var canvas = document.getElementById("mycanvas");
+        if (canvas.getContext) {
+            var context = canvas.getContext("2d");
+
+            canvas.addEventListener('click', function(evt) {
+                var pos = getMousePos(canvas, evt);
+                mousePosX = pos.x;
+                mousePosY = pos.y;
+            }, false);
+
+
+            rectButt(context);
+            pause(context);
+            // ----------------------------------------------------------------
+            document.getElementById('mycanvas').onclick = function() {
+                if (mousePosX > buttonStartX && 
+                    mousePosX < buttonStartX + buttonWidth && 
+                    mousePosY > buttonStartY && 
+                    mousePosY < buttonStartY + buttonHeight) {
+                    runAnimation = !runAnimation;
+                    animate(context);
+                    rectButt(context);
+                    pause(context);
+                }
+            }
+        	// ----------------------------------------------------------------
+            document.onkeydown = function(e) {
+                e = e || window.event;
+                if (e.keyCode == 38 && amplitude < drawHeight / 2 - radius) {
+                    amplitude += 5;
+                }
+                if (e.keyCode == 40 && amplitude > 5) {
+                    amplitude -= 5;
+                }
+                if (e.keyCode == 37 && frequency > 0.02) {
+                    frequency -= 0.005;
+                }
+                if (e.keyCode == 39 && frequency < 0.15) {
+                    frequency += 0.005;
+                }
+                if (e.keyCode == 32) {
+                    runAnimation = !runAnimation;
+                    rectButt(context);
+                    pause(context);
+                }
+                clearInterval(timeout); 
+                animate(context);
+            }        
+        }
+</script>
+</body>
+</html>     
+
+
