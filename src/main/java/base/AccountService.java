@@ -14,5 +14,5 @@ public interface AccountService {
 
     int countSignUp();
 
-    UserProfile getUserProfile(String httpSessionId);
+    UserDataSet getUserDataSet(String httpSessionId);
 }
