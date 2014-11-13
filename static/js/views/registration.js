@@ -1,6 +1,6 @@
 define([
     'backbone',
-    'tmpl/login'
+    'tmpl/registration'
     ],
     function(
         Backbone,
@@ -11,9 +11,9 @@ define([
 
         template: tmpl,
         initialize: function () {
-            this.render();            
+            this.render();
         },
-        render: function () {            
+        render: function () {
             this.$el.html(this.template);
             return this;
         },
@@ -22,12 +22,12 @@ define([
         },
         show: function () {
             this.$el.css({'display':'block'});
-            if (!$('#login').html()) {
-                $('#login').html(this.$el);                
-            }            
+            if (!$('#registration').html()) {
+                $('#registration').html(this.$el);
+            }
             this.trigger("show", this);
         },
-        hide: function () {            
+        hide: function () {
             this.$el.css({'display':'none'})
         }
 

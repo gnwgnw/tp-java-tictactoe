@@ -10,8 +10,8 @@ define([
 	},
         defaults: {
             status: 'none',
-	    position: -1,
-	    img_url: '/img/none.jpg'
+            position: -1,
+            img_url: '/img/none.jpg'
         }
     });
 

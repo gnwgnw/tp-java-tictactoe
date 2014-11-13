@@ -18,7 +18,7 @@ define([
             return this;
         },
         events: {
-            "show" : "show",
+            "show" : "show"
         },
         show: function () {
             this.$el.css({'display':'block'});

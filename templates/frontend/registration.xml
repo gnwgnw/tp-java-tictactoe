@@ -1,14 +1,20 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
 
-    <h1>SignIn</h1>
+    <h1>SignUp</h1>
 
     <a href='#'><button class="button__back_button">Back</button></a>
 
-    <form method="POST" action="/signin">
+    <form method="POST" action="/signup">
         <div>
             <label>
                 Login:<br/>
                 <input name="login"/>
+            </label>
+        </div>
+        <div>
+            <label>
+                Email:<br/>
+                <input name="email" type="email"/>
             </label>
         </div>
         <div>

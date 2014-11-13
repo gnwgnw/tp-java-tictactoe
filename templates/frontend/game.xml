@@ -1,14 +1,14 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name='collection'>
-	<h1>GAME !</h1>
-	<div class='battlefield'>
-		<fest:each iterate='collection' index='i' value='cell'>			
-			<div class='battlefield_cell'>
-				<img src='{cell.img_url}' height='100px' width='100px'/>
-			</div>
+
+    <a href='#'><button class="button__back_button">Back</button></a>
+
+    <div class='div__battlefield'>
+		<fest:each iterate='collection' index='i' value='cell'>
+			<div class='div__battlefield__cell'>
+				<img src='{cell.img_url}' height='160px' width='160px'/>
+
+            </div>
 		</fest:each>
 	</div>
-	<p>		
-		<a href='#'>Back</a>
-	</p>
 	
 </fest:template>

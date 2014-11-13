@@ -3,6 +3,7 @@ define([
     'views/main',
     'views/game',
     'views/login',
+    'views/registration',
     'views/scoreboard',
     'views/manager'
     ],
@@ -11,6 +12,7 @@ define([
         main,
         game,
         login,
+        registration,
         scoreboard,
         manager
     )
@@ -22,6 +24,7 @@ define([
             'scoreboard': 'scoreboardAction',
             'game': 'gameAction',
             'login': 'loginAction',
+            'registration': 'registrationAction',
             '*default': 'defaultActions'
         },
         defaultActions: function () {            
@@ -35,6 +38,10 @@ define([
         },
         loginAction: function () {            
             login.show();
+        },
+        registrationAction: function () {
+            console.log(22);
+            registration.show();
         }
     });
 

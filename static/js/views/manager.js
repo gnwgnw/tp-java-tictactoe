@@ -3,6 +3,7 @@ define([
     'views/main',
     'views/game',
     'views/login',
+    'views/registration',
     'views/scoreboard'
     ],
     function(
@@ -10,10 +11,11 @@ define([
         main,
         game,
         login,
+        registration,
         scoreboard
     )
 {
-    var views = [main, game, login, scoreboard];
+    var views = [main, game, login, registration, scoreboard];
     
     var Manager = Backbone.View.extend({
     
@@ -21,6 +23,7 @@ define([
             this.listenTo(main, 'show', this.lets_show);
             this.listenTo(game, 'show', this.lets_show);
             this.listenTo(login, 'show', this.lets_show);
+            this.listenTo(registration, 'show', this.lets_show);
             this.listenTo(scoreboard, 'show', this.lets_show);
             
         },

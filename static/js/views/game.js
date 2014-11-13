@@ -23,6 +23,9 @@ define([
                 else if (col.get('status')=='o') {
                     col.set({'img_url': '/img/o.jpg'});
                 }
+                else {
+                    col.set({'img_url': '/img/none.jpg'});
+                }
             });
             this.$el.html( this.template( this.collection.toJSON() ) );
             return this;

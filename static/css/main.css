@@ -1,13 +1,97 @@
-/* TODO */
-.battlefield{
-  width:306px;
-  height: 306px;
-  margin-left: auto;
-  margin-right: auto;
+body {
+    color: #ffffff;
+    background: #808080;
+    font-family: 'Comic Sanc MS';
 }
-.battlefield_cell{
-  width: 100px;
-  height: 100px;
-  float: left;
-  border: 1px solid black;
+div {
+    text-align: center;
+}
+.div__battlefield{
+    border: 10px solid rgba(255, 255, 255, .5);
+    width:510px;
+    height: 510px;
+    margin: 50px auto auto;
+}
+.div__battlefield__cell{
+    border: 5px solid rgba(255, 255, 255, .5);
+    width: 160px;
+    height: 160px;
+    float: left;
+}
+
+input {
+    padding: 10px;
+    font-size: 30px;
+    border: 10px solid rgba(255, 255, 255, .5);
+    background: rgba(255, 255, 255, .5);
+    color: #333;
+}
+table {
+    background: #808080;
+    border-collapse: collapse;
+    margin: 50px auto auto;
+    padding:5px;
+    max-width: 600px;
+    max-height: 600px;
+    width: 100%;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+    border: 10px solid rgba(255, 255, 255, 0.5);
+    font-size: 25px;
+    font-weight: 700;
+}
+th {
+    background: #40C781;
+    padding:24px;
+    /*border-radius: 0px;*/
+    border-bottom: 10px solid rgba(255, 255, 255, .5);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+td {
+    background: rgba(255, 255, 255, .5);
+    /*border-radius: 7px;*/
+    padding: 10px;
+    color: #333;
+}
+button{
+    font-family: 'Comic Sans MS';
+
+}
+.button__menu_button {
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    height: 60px;
+    color: white;
+    border-radius: 3px;
+    background: #40C781;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.button__submit_button {
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    height: 60px;
+    color: white;
+    border-radius: 3px;
+    background: #40C781;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.button__back_button {
+    padding: 10px;
+    margin: 10px;
+    font-size: 20px;
+    color: white;
+    border-color: #ffffff;
+    border-radius: 2px;
+    background: #808080;
+    position: absolute;
+    right: 50px;
 }
