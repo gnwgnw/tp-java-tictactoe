@@ -1,7 +1,7 @@
 package tests;
 
 import base.AccountService;
-import base.UserProfile;
+import base.UserDataSet;
 import org.junit.Test;
 import servlets.UserPageServlet;
 import utils.PageGenerator;
@@ -34,7 +34,7 @@ public class UserPageServletTest {
     String passwordString = "123";
     String sessionString = "session";
 
-    final UserProfile userProfile = new UserProfile(loginString, emailString, passwordString);
+    final UserDataSet UserDataSet = new UserDataSet(loginString, emailString, passwordString);
 
     @Test
     public void testDoGet() throws Exception {
@@ -44,7 +44,7 @@ public class UserPageServletTest {
 
         when(request.getSession()).thenReturn(httpSession);
         when(httpSession.getId()).thenReturn(sessionString);
-        when(accountService.getUserProfile(anyString())).thenReturn(userProfile);
+        when(accountService.getUserDataSet(anyString())).thenReturn(UserDataSet);
         when(response.getWriter()).thenReturn(printWriter);
 
         userPageServlet.doGet(request, response);
