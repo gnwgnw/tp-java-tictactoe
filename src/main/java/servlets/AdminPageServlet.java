@@ -19,6 +19,8 @@ public class AdminPageServlet extends HttpServlet implements PageUrlServlet {
     public static final String pageURL = "/admin";
     private final AccountService accountService;
 
+    public void shutdown() { System.exit(0); }
+
     public AdminPageServlet(AccountService accountService) {
         this.accountService = accountService;
     }
@@ -36,7 +38,7 @@ public class AdminPageServlet extends HttpServlet implements PageUrlServlet {
             }
 
             System.out.print("\nShutdown");
-            System.exit(0);
+            shutdown();
         }
 
         Map<String, Object> pageVariables = new HashMap<>();
