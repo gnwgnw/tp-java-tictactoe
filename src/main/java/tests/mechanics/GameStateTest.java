@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class GameSessionTest {
+public class GameStateTest {
     GameSession gameSession = new GameSession("firstGamer", "secondGamer");
 
     @Test
