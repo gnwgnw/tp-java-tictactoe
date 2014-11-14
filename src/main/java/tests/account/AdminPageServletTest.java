@@ -14,8 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 
 public class AdminPageServletTest {
@@ -48,11 +47,11 @@ public class AdminPageServletTest {
 
     @Test
     public void testDoGetShutdown() throws Exception {
+        AdminPageServlet spy = spy(adminPageServlet);
         int timeMS = 10;
         when(request.getParameter("Shutdown")).thenReturn(String.valueOf(timeMS));
-        Thread.sleep(timeMS);
-        //TODO Как проверить, действительно ли сервер остановился...?
-
-
+        spy.doGet(request, response);
+        Thread.sleep(timeMS + 10);
+        verify(spy, times(1)).shutdown();   //TODO need mock
     }
 }
