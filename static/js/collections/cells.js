@@ -18,7 +18,8 @@ define([
 		}
     });
 
-    return new Collection([{status: 'x', position: 0 },
+    return new Collection([
+               {status: 'x', position: 0},
 			   {status: 'o', position: 1},
 			   {status: 'o', position: 2},
 			   {status: 'x', position: 3},
@@ -28,4 +29,5 @@ define([
 			   {status: 'x', position: 7},
 			   {status: 'x', position: 8},
 			   ]);
+
 });

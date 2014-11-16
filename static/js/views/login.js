@@ -18,14 +18,14 @@ define([
             return this;
         },
         events: {
-            "show" : "show",
+            "show" : "show"
         },
         show: function () {
             this.$el.css({'display':'block'});
             if (!$('#login').html()) {
                 $('#login').html(this.$el);                
             }            
-            this.trigger("show");
+            this.trigger("show", this);
         },
         hide: function () {            
             this.$el.css({'display':'none'})

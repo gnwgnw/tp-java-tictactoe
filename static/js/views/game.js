@@ -23,6 +23,9 @@ define([
                 else if (col.get('status')=='o') {
                     col.set({'img_url': '/img/o.jpg'});
                 }
+                else {
+                    col.set({'img_url': '/img/none.jpg'});
+                }
             });
             this.$el.html( this.template( this.collection.toJSON() ) );
             return this;
@@ -35,7 +38,7 @@ define([
             if (!$('#game').html()) {            
                 $('#game').html(this.$el);
             }                        
-            this.trigger("show");
+            this.trigger("show", this);
         },
         hide: function () {
             this.$el.css({'display':'none'})

@@ -1,7 +1,7 @@
 package tests;
 
 import base.ResponsesCode;
-import base.UserProfile;
+import base.UserDataSet;
 import org.junit.Test;
 import service.AccountServiceImpl;
 
@@ -57,12 +57,12 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void testGetCurrentUserProfile() throws Exception {
-        UserProfile userProfile;
+    public void testGetCurrentUserDataSet() throws Exception {
+        UserDataSet UserDataSet;
         accountService.signIn("defaultUser1", "123", "session");
-        userProfile = accountService.getUserProfile("session");
-        assertEquals(userProfile.getLogin(), "defaultUser1");
-        assertEquals(userProfile.getEmail(), "defaultUser1@mail.ru");
-        assertEquals(userProfile.getPassword(), "123");
+        UserDataSet = accountService.getUserDataSet("session");
+        assertEquals(UserDataSet.getLogin(), "defaultUser1");
+        assertEquals(UserDataSet.getEmail(), "defaultUser1@mail.ru");
+        assertEquals(UserDataSet.getPassword(), "123");
     }
 }

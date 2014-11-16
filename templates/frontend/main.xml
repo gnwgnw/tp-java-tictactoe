@@ -1,7 +1,9 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
 	<h1>TicTacToe</h1>
-	
-	<p><a href='#login'>Login</a></p>
-	<p><a href='#scoreboard'>Scoreboard</a></p>
-	<p><a href='#game'>Game</a></p>
+
+    <div><a href='#game'><button class="button__menu_button">Game</button></a></div>
+    <div><a href='#login'><button class="button__menu_button">Login</button></a></div>
+    <div><a href='#registration'><button class="button__menu_button">Registration</button></a></div>
+    <div><a href='#scoreboard'><button class="button__menu_button">Scoreboard</button></a></div>
+
 </fest:template>

@@ -27,7 +27,7 @@ define([
             if (!$('#scoreboard').html()) {
                 $('#scoreboard').html(this.$el);
             }            
-            this.trigger("show");
+            this.trigger("show", this);
         },
         hide: function () {            
             this.$el.css({'display':'none'})

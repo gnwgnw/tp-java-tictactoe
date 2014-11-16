@@ -2,7 +2,7 @@ package servlets;
 
 import base.AccountService;
 import base.PageUrlServlet;
-import base.UserProfile;
+import base.UserDataSet;
 import utils.PageGenerator;
 
 import javax.servlet.ServletException;
@@ -28,16 +28,16 @@ public class UserPageServlet extends HttpServlet implements PageUrlServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserProfile userProfile = accountService.getUserProfile(request.getSession().getId());
+        UserDataSet UserDataSet = accountService.getUserDataSet(request.getSession().getId());
         Map<String, Object> pageVariables = new HashMap<>();
 
-        if (userProfile == null) {
+        if (UserDataSet == null) {
             response.sendRedirect(redirectUrl);
             return;
         }
 
-        pageVariables.put("login", userProfile.getLogin());
-        pageVariables.put("email", userProfile.getEmail());
+        pageVariables.put("login", UserDataSet.getLogin());
+        pageVariables.put("email", UserDataSet.getEmail());
 
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().println(PageGenerator.getPage("userpage.tml", pageVariables));

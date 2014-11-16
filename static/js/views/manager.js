@@ -3,6 +3,7 @@ define([
     'views/main',
     'views/game',
     'views/login',
+    'views/registration',
     'views/scoreboard'
     ],
     function(
@@ -10,44 +11,28 @@ define([
         main,
         game,
         login,
+        registration,
         scoreboard
     )
 {
-    var views = [main, game, login, scoreboard];
+    var views = [main, game, login, registration, scoreboard];
     
     var Manager = Backbone.View.extend({
     
         initialize: function () {
-            this.listenTo(main, 'show', this.lets_show_main);
-            this.listenTo(game, 'show', this.lets_show_game);
-            this.listenTo(login, 'show', this.lets_show_login);
-            this.listenTo(scoreboard, 'show', this.lets_show_scoreboard);
+            this.listenTo(main, 'show', this.lets_show);
+            this.listenTo(game, 'show', this.lets_show);
+            this.listenTo(login, 'show', this.lets_show);
+            this.listenTo(registration, 'show', this.lets_show);
+            this.listenTo(scoreboard, 'show', this.lets_show);
             
         },
-        lets_show_main:function () {                        
+        lets_show:function (cur_screen) {                        
             _.each(views, function(element){
-                if (element != main)
+                if (element != cur_screen)
                     element.hide();
             });            
-        },
-        lets_show_login:function () {                        
-            _.each(views, function(element){
-                if (element != login)
-                    element.hide();
-            });            
-        },
-        lets_show_scoreboard:function () {                        
-            _.each(views, function(element){
-                if (element != scoreboard)
-                    element.hide();
-            });            
-        },
-        lets_show_game:function () {
-            _.each(views, function(element){
-                if (element != game)
-                    element.hide();
-            });            
-        }        
+        }            
     });
     
     return new Manager();
