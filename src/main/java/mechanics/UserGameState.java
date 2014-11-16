@@ -8,7 +8,7 @@ public class UserGameState {
     private final GameUser enemyGameUser;
     private final int whoseTurn;
     private final int[] field;
-    private final int winner;
+    private final int winner;//TODO
     private final boolean isFinished;
 
     public UserGameState(GameUser myGameUser, GameUser enemyGameUser, int whoseTurn, int[] field, int winner, boolean isFinished) {

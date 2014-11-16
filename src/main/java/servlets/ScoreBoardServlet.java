@@ -13,7 +13,7 @@ import java.io.IOException;
  * @author s.titaevskiy on 02.10.14.
  */
 public class ScoreBoardServlet extends HttpServlet implements PageUrlServlet {
-    public static final String pageURL = "/scores";
+    private static final String pageURL = "/scores";
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setStatus(HttpServletResponse.SC_OK);

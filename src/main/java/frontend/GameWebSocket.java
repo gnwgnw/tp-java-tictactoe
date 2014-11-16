@@ -44,7 +44,7 @@ public class GameWebSocket {
 
     @OnWebSocketClose
     public void onClose(int statusCode, String reason) {
-        gameMechanics.closeGameSession(myLogin);
+        gameMechanics.closeGameSession(myLogin); //TODO ring
         webSocketService.removeSocket(this);
     }
 
@@ -61,7 +61,7 @@ public class GameWebSocket {
     }
 
     public void gameOver(UserGameState userGameState) {
-//TODO
+        updateGameState(userGameState);
         session.close();
     }
 

@@ -61,7 +61,7 @@ public class GameSession {
             field[position] = sign;
             whoseTurn = changeSign(sign);
 
-            checkGameState();
+            checkGameState();//TODO
         }
     }
 

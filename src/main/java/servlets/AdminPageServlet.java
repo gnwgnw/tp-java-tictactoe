@@ -3,6 +3,7 @@ package servlets;
 import base.AccountService;
 import base.PageUrlServlet;
 import utils.PageGenerator;
+import utils.TimeHelper;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +17,7 @@ import java.util.Map;
  * @author s.titaevskiy on 26.09.14.
  */
 public class AdminPageServlet extends HttpServlet implements PageUrlServlet {
-    public static final String pageURL = "/admin";
+    private static final String pageURL = "/admin";
     private final AccountService accountService;
 
     public AdminPageServlet(AccountService accountService) {
@@ -27,16 +28,7 @@ public class AdminPageServlet extends HttpServlet implements PageUrlServlet {
         String timeString = request.getParameter("shutdown");
         if (timeString != null) {
             int timeMS = Integer.valueOf(timeString);
-            System.out.print("Server will be down after: " + timeMS + " ms");
-
-            try {
-                Thread.sleep(timeMS);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            System.out.print("\nShutdown");
-            System.exit(0);
+            stopServer(timeMS);
         }
 
         Map<String, Object> pageVariables = new HashMap<>();
@@ -51,5 +43,12 @@ public class AdminPageServlet extends HttpServlet implements PageUrlServlet {
     @Override
     public String getPageUrl() {
         return pageURL;
+    }
+
+    private void stopServer(int timeMS) {
+        System.out.print("Server will be down after: " + timeMS + " ms");
+        TimeHelper.sleep(timeMS);
+        System.out.print("\nShutdown");
+        System.exit(0);
     }
 }

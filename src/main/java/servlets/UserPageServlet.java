@@ -17,7 +17,7 @@ import java.util.Map;
  * @author s.titaevskiy on 26.09.14.
  */
 public class UserPageServlet extends HttpServlet implements PageUrlServlet {
-    public static final String pageURL = "/userpage";
+    private static final String pageURL = "/userpage";
     private static final String redirectUrl = "/#login";
 
     private final AccountService accountService;

@@ -4,11 +4,13 @@ import base.AccountService;
 import base.ResponsesCode;
 import org.junit.Test;
 import servlets.SignInServlet;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 

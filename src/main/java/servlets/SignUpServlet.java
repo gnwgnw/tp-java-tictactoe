@@ -13,7 +13,7 @@ import java.io.IOException;
  * @author s.titaevskiy on 13.09.14.
  */
 public class SignUpServlet extends HttpServlet implements PageUrlServlet {
-    public static final String pageURL = "/signup";
+    private static final String pageURL = "/signup";
     private final AccountService accountService;
 
     public SignUpServlet(AccountService accountService) {
