@@ -8,19 +8,14 @@ import java.util.Random;
  * Created by titaevskiy.s on 24.10.14
  */
 public class GameSession {
-    private final static int SIZE = 3;
-    private final static int COUNT = SIZE * SIZE;
-
-    private final int[] field = new int[SIZE * SIZE];
     private final GameUser first;
     private final GameUser second;
     private final Map<String, GameUser> loginToGameUser = new HashMap<>();
 
+    private final Field field = new Field();
     private int whoseTurn;
     private int winner;
     private boolean isFinished = false;
-
-    private final GameState gameState = new GameState();
 
     public GameSession(String loginFirst, String loginSecond) {
         Random random = new Random();
@@ -48,7 +43,7 @@ public class GameSession {
         GameUser myGameUser = loginToGameUser.get(login);
         GameUser enemyGameUser = (myGameUser == first) ? second : first;
 
-        return new UserGameState(myGameUser, enemyGameUser, whoseTurn, field, winner, isFinished);
+        return new UserGameState(myGameUser, enemyGameUser, whoseTurn, field.getField(), winner, isFinished);
     }
 
     private int changeSign(int sign) {
@@ -59,11 +54,9 @@ public class GameSession {
         GameUser gameUser = loginToGameUser.get(login);
         int sign = gameUser.getSign();
 
-        if (sign == whoseTurn && field[position] == 0) {
-            field[position] = sign;
+        if (sign == whoseTurn && field.doTurn(position, sign) == Field.TurnStatus.OK) {
             whoseTurn = changeSign(sign);
-
-            checkGameState();//TODO
+            checkGameState();
         }
     }
 
@@ -76,13 +69,9 @@ public class GameSession {
     }
 
     private void checkGameState() {
-        gameState.setWinner(winner);                    //TODO may be by reference?
-        if (gameState.checkLines(field) ||
-            gameState.checkRows(field) ||
-            gameState.checkPriDiagonals(field) ||
-            gameState.checkAddDiagonals(field) ||
-            gameState.isFull(field)) {
+        if (field.isFinished()) {
             isFinished = true;
+            winner = field.getWinner();
         }
     }
 }

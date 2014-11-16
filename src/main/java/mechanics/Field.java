@@ -1,23 +1,27 @@
 package mechanics;
 
 /**
- * Created by marina on 14.11.14.
+ * Created by titaevskiy.s on 16.11.14
  */
-public class GameState {
+public class Field {
+    private final static int SIZE = 3;//TODO
+    private final static int COUNT = SIZE * SIZE;
+    private final int[] field = new int[COUNT];
+    private int winner;
 
-    private final static int SIZE = 3;              //TODO hardcode
-    private final static int COUNT = SIZE * SIZE;   //TODO hardcode
-    private int winner = 0;
-
-    public void setWinner(int win) {
-        winner = win;
+    public TurnStatus doTurn(int position, int sign) {
+        if (position >= 0 && position < COUNT && field[position] == 0) {
+            field[position] = sign;
+            return TurnStatus.OK;
+        }
+        return TurnStatus.ERROR;
     }
 
-    public int getWinner() {
-        return winner;
+    public boolean isFinished() {
+        return onLines() && onColumns() && onPriDiagonals() && onAddDiagonals() && isFull();
     }
 
-    public boolean isChosenWinner(int sum) {
+    private boolean isChosenWinner(int sum) {
         switch (sum) {
             case GameUser.O * SIZE:
                 winner = GameUser.O;
@@ -33,7 +37,7 @@ public class GameState {
         return true;
     }
 
-    public boolean checkLines(int[] field) {
+    private boolean onLines() {
         for (int i = 0; i < COUNT; i += SIZE) {
             int sum = 0;
             for (int j = 0; j < SIZE; ++j) {
@@ -46,7 +50,7 @@ public class GameState {
         return false;
     }
 
-    public boolean checkRows(int[] field) {
+    private boolean onColumns() {
         for (int i = 0; i < SIZE; ++i) {
             int sum = 0;
             for (int j = 0; j < COUNT; j += SIZE) {
@@ -59,7 +63,7 @@ public class GameState {
         return false;
     }
 
-    public boolean checkPriDiagonals(int[] field) {
+    private boolean onPriDiagonals() {
         int sum = 0;
         for (int i = 0; i < COUNT; i += SIZE + 1) {
             sum += field[i];
@@ -67,7 +71,7 @@ public class GameState {
         return isChosenWinner(sum);
     }
 
-    public boolean checkAddDiagonals(int[] field) {
+    private boolean onAddDiagonals() {
         int sum = 0;
         for (int i = SIZE - 1; i < COUNT - 1; i += SIZE - 1) {
             sum += field[i];
@@ -75,12 +79,25 @@ public class GameState {
         return isChosenWinner(sum);
     }
 
-    public boolean isFull(int[] field) {
+    private boolean isFull() {
         for (int i = 0; i < COUNT; ++i) {
             if (field[i] == 0) {
                 return false;
             }
         }
         return true;
+    }
+
+    public int[] getField() {
+        return field;
+    }
+
+    public int getWinner() {
+        return winner;
+    }
+
+    public static enum TurnStatus {
+        OK,
+        ERROR
     }
 }
