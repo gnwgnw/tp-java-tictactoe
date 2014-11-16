@@ -32,10 +32,8 @@ public class UserPageServletTest {
     String loginString = "defaultUser1";
     String emailString = "defaultUser1@mail.ru";
     String passwordString = "123";
-
-    String sessionString = "session";
-
     final UserDataSet UserDataSet = new UserDataSet(loginString, emailString, passwordString);
+    String sessionString = "session";
 
     @Test
     public void testDoGet() throws Exception {

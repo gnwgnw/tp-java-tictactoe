@@ -9,9 +9,10 @@ import org.hibernate.service.ServiceRegistry;
  * Created by kic on 11/9/14.
  */
 public class dbSessionFactory {
-    public dbSessionFactory(){
+    public dbSessionFactory() {
 
     }
+
     public SessionFactory createSessionFactory(Configuration configuration, String action) {
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         configuration.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");

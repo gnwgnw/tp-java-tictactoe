@@ -43,11 +43,13 @@ public class UserDataSetDAO {
         Session session = sessionFactory.openSession();
         Criteria criteria = session.createCriteria(UserDataSet.class);
         UserDataSet user = (UserDataSet) criteria.add(Restrictions.eq("login", user_login)).uniqueResult();
-        if (user != null)
+        if (user != null) {
             isExist = true;
+        }
         return isExist;
     }
-    public int count(){
+
+    public int count() {
         return 10;
     }
 

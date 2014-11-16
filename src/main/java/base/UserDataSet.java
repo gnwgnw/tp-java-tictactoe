@@ -7,21 +7,21 @@ import java.io.Serializable;
  * @author s.titaevskiy on 13.09.14.
  */
 @Entity
-@Table(name="Users")
+@Table(name = "Users")
 public class UserDataSet implements Serializable {
 
     @Id
-    @Column(name="id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name="login")
+    @Column(name = "login")
     private String login;
 
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
 
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
 
 
@@ -32,7 +32,7 @@ public class UserDataSet implements Serializable {
         this.setPassword(password);
     }
 
-    public UserDataSet(){
+    public UserDataSet() {
     }
 
     public long getId(Long id) {
@@ -43,28 +43,28 @@ public class UserDataSet implements Serializable {
         return login;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setPassword(String pw) {
         this.password = pw;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
 }

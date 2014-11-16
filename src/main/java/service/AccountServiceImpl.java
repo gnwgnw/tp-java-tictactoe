@@ -15,8 +15,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author s.titaevskiy on 13.09.14.
  */
 public class AccountServiceImpl implements AccountService {
-    private UserDataSetDAO users;
     private final Map<String, UserDataSet> sessions = new ConcurrentHashMap<>();
+    private UserDataSetDAO users;
 
     //TODO refactoring
     public AccountServiceImpl() {

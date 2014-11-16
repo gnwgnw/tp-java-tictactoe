@@ -55,11 +55,11 @@ public class Main {
 
         servlets.clear();
 
-        ResourceHandler resource_handler = new ResourceHandler();
-        resource_handler.setResourceBase("static");
+        ResourceHandler resourceHandler = new ResourceHandler();
+        resourceHandler.setResourceBase("static");
 
         HandlerList handlers = new HandlerList();
-        handlers.setHandlers(new Handler[]{resource_handler, context});
+        handlers.setHandlers(new Handler[]{resourceHandler, context});
         server.setHandler(handlers);
 
         server.start();
