@@ -29,7 +29,7 @@ public class GameWebSocket {
 
     @OnWebSocketConnect
     public void onConnect(Session session) {
-        setSession(session);
+        this.session = session;
         webSocketService.addSocket(this);
         gameMechanics.waitForEnemy(myLogin);
     }
@@ -46,10 +46,6 @@ public class GameWebSocket {
     public void onClose(int statusCode, String reason) {
         gameMechanics.closeGameSession(myLogin); //TODO ring
         webSocketService.removeSocket(this);
-    }
-
-    public void setSession(Session session) {
-        this.session = session;
     }
 
     public String getMyLogin() {

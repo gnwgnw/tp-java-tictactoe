@@ -43,4 +43,6 @@ public class UserGameState {
     public boolean isFinished() {
         return isFinished;
     }
+
+    //TODO jsonify method
 }
