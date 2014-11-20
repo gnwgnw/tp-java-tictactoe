@@ -20,7 +20,6 @@ public class AccountServiceImpl implements AccountService {
 
     //TODO refactoring
     public AccountServiceImpl() {
-
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(UserDataSet.class);
 

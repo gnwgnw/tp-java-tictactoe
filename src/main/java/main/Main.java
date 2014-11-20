@@ -11,6 +11,8 @@ import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import resource.ResourceFactory;
+import resource.ServerResource;
 import service.AccountServiceImpl;
 import service.WebSocketServiceImpl;
 import servlets.*;
@@ -24,16 +26,11 @@ import java.util.Set;
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-        if (args.length != 1) {
-            System.out.append("Use port as the first argument");
-            System.exit(1);
-        }
+        ServerResource serverResource = (ServerResource) ResourceFactory.instance().get("./data/server.xml");
 
-        String portString = args[0];
-        final int port = Integer.valueOf(portString);
-        System.out.append("Starting at port: ").append(portString).append('\n');
+        System.out.append("Starting at port: ").append(String.valueOf(serverResource.getPort())).append('\n');
 
-        Server server = new Server(port);
+        Server server = new Server(serverResource.getPort());
 
         AccountService accountService = new AccountServiceImpl();
         WebSocketService webSocketService = new WebSocketServiceImpl();
