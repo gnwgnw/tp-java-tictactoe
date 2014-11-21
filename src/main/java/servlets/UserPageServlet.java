@@ -28,16 +28,16 @@ public class UserPageServlet extends HttpServlet implements PageUrlServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserDataSet UserDataSet = accountService.getUserDataSet(request.getSession().getId());
+        UserDataSet userDataSet = accountService.getUserDataSet(request.getSession().getId());
         Map<String, Object> pageVariables = new HashMap<>();
 
-        if (UserDataSet == null) {
+        if (userDataSet == null) {
             response.sendRedirect(redirectUrl);
             return;
         }
 
-        pageVariables.put("login", UserDataSet.getLogin());
-        pageVariables.put("email", UserDataSet.getEmail());
+        pageVariables.put("login", userDataSet.getLogin());
+        pageVariables.put("email", userDataSet.getEmail());
 
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().println(PageGenerator.getPage("userpage.tml", pageVariables));

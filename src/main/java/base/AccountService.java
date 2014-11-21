@@ -1,5 +1,7 @@
 package base;
 
+import base.UserDataSet;
+
 /**
  * Created by titaevskiy.s on 17.10.14
  */

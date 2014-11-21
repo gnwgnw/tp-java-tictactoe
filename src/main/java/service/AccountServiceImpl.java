@@ -4,6 +4,7 @@ import base.AccountService;
 import base.ResponsesCode;
 import base.UserDataSet;
 import dao.UserDataSetDAO;
+import dao.UserDataSetImpl;
 import dao.dbSessionFactory;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -20,7 +21,6 @@ public class AccountServiceImpl implements AccountService {
 
     //TODO refactoring
     public AccountServiceImpl() {
-
         Configuration configuration = new Configuration();
         configuration.addAnnotatedClass(UserDataSet.class);
 
@@ -39,7 +39,7 @@ public class AccountServiceImpl implements AccountService {
             return ResponsesCode.ALREADY_EXISTS;
         }
         else {
-            UserDataSet UserDataSet = new UserDataSet(login, email, password);
+            UserDataSet UserDataSet = new UserDataSetImpl(login, email, password);
             users.save(UserDataSet);
             return ResponsesCode.OK;
         }

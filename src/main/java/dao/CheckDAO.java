@@ -3,6 +3,7 @@ package dao;
 import base.UserDataSet;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import tests.account.UserDataSetTest;
 
 /**
  * Created by kic on 11/9/14.
@@ -18,7 +19,7 @@ public class CheckDAO {
         SessionFactory sessionFactory = usersFactory.createSessionFactory(configuration, "update");
 
         UserDataSetDAO dao = new UserDataSetDAO(sessionFactory);
-        dao.save(new UserDataSet("user88", "lal@trall.ru", "123"));
+        dao.save(new UserDataSetTest("user88", "lal@trall.ru", "123"));
 
     }
 

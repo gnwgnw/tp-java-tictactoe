@@ -4,6 +4,7 @@ import base.ResponsesCode;
 import base.UserDataSet;
 import org.junit.Test;
 import service.AccountServiceImpl;
+import tests.account.UserDataSetTest;
 
 import static org.junit.Assert.assertEquals;
 
@@ -58,11 +59,10 @@ public class AccountServiceTest {
 
     @Test
     public void testGetCurrentUserDataSet() throws Exception {
-        UserDataSet UserDataSet;
         accountService.signIn("defaultUser1", "123", "session");
-        UserDataSet = accountService.getUserDataSet("session");
-        assertEquals(UserDataSet.getLogin(), "defaultUser1");
-        assertEquals(UserDataSet.getEmail(), "defaultUser1@mail.ru");
-        assertEquals(UserDataSet.getPassword(), "123");
+        UserDataSet user = accountService.getUserDataSet("session");
+        assertEquals(user.getLogin(), "defaultUser1");
+        assertEquals(user.getEmail(), "defaultUser1@mail.ru");
+        assertEquals(user.getPassword(), "123");
     }
 }

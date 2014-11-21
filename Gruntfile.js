@@ -7,7 +7,7 @@ module.exports = function (grunt) {
                 stderr: true
             },
             server: {
-                command: 'java -cp TicTacToe.jar main.Main 8088'
+                command: 'java -cp TicTacToe.jar main.Main'
             }
         },
         fest: {

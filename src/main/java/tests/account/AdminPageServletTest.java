@@ -13,7 +13,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 
 public class AdminPageServletTest {
@@ -42,15 +43,5 @@ public class AdminPageServletTest {
         adminPageServlet.doGet(request, response);
 
         assertTrue(stringWriter.toString().contains(PageGenerator.getPage("admin.tml", pageVariables)));
-    }
-
-    @Test
-    public void testDoGetShutdown() throws Exception {
-        AdminPageServlet spy = spy(adminPageServlet);
-        int timeMS = 10;
-        when(request.getParameter("Shutdown")).thenReturn(String.valueOf(timeMS));
-        spy.doGet(request, response);
-        Thread.sleep(timeMS + 10);
-        //verify(spy, times(1)).shutdown();   //TODO need mock
     }
 }
