@@ -18,7 +18,7 @@ public class Field {
     }
 
     public boolean isFinished() {
-        return onLines() && onColumns() && onPriDiagonals() && onAddDiagonals() && isFull();
+        return onLines() || onColumns() || onPriDiagonals() || onAddDiagonals() || isFull();
     }
 
     private boolean isChosenWinner(int sum) {
