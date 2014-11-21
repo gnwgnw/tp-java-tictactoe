@@ -1,7 +1,7 @@
 package service;
 
 import base.WebSocketService;
-import frontend.GameWebSocket;
+import frontend.PlayerWebSocket;
 import mechanics.UserGameState;
 
 import java.util.Map;
@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Created by titaevskiy.s on 24.10.14
  */
 public class WebSocketServiceImpl implements WebSocketService {
-    private final Map<String, GameWebSocket> loginToSocket = new ConcurrentHashMap<>();
+    private final Map<String, PlayerWebSocket> loginToSocket = new ConcurrentHashMap<>();
 
     @Override
     public void notifyStartGame(UserGameState userGameState) {
@@ -29,12 +29,12 @@ public class WebSocketServiceImpl implements WebSocketService {
     }
 
     @Override
-    public void addSocket(GameWebSocket gameWebSocket) {
-        loginToSocket.put(gameWebSocket.getMyLogin(), gameWebSocket);
+    public void addSocket(PlayerWebSocket playerWebSocket) {
+        loginToSocket.put(playerWebSocket.getMyLogin(), playerWebSocket);
     }
 
     @Override
-    public void removeSocket(GameWebSocket gameWebSocket) {
-        loginToSocket.remove(gameWebSocket.getMyLogin());
+    public void removeSocket(PlayerWebSocket playerWebSocket) {
+        loginToSocket.remove(playerWebSocket.getMyLogin());
     }
 }

@@ -26,6 +26,6 @@ public class CustomWebSocketCreator implements WebSocketCreator {
     public Object createWebSocket(ServletUpgradeRequest req, ServletUpgradeResponse resp) {
         String sessionId = req.getHttpServletRequest().getSession().getId();
         UserDataSet userDataSet = accountService.getUserDataSet(sessionId);
-        return new GameWebSocket(userDataSet.getLogin(), gameMechanics, webSocketService);
+        return new PlayerWebSocket(userDataSet.getLogin(), gameMechanics, webSocketService);
     }
 }

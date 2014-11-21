@@ -16,13 +16,13 @@ import java.io.IOException;
  * Created by titaevskiy.s on 23.10.14
  */
 @WebSocket
-public class GameWebSocket {
+public class PlayerWebSocket {
     private final String myLogin;
     private final GameMechanics gameMechanics;
     private final WebSocketService webSocketService;
     private Session session;
 
-    public GameWebSocket(String myLogin, GameMechanics gameMechanics, WebSocketService webSocketService) {
+    public PlayerWebSocket(String myLogin, GameMechanics gameMechanics, WebSocketService webSocketService) {
         this.myLogin = myLogin;
         this.gameMechanics = gameMechanics;
         this.webSocketService = webSocketService;
