@@ -1,6 +1,6 @@
 package base;
 
-import frontend.GameWebSocket;
+import frontend.PlayerWebSocket;
 import mechanics.UserGameState;
 
 /**
@@ -13,7 +13,7 @@ public interface WebSocketService {
 
     void notifyUpdateGameState(UserGameState userGameState);
 
-    void addSocket(GameWebSocket gameWebSocket);
+    void addSocket(PlayerWebSocket playerWebSocket);
 
-    void removeSocket(GameWebSocket gameWebSocket);
+    void removeSocket(PlayerWebSocket playerWebSocket);
 }
