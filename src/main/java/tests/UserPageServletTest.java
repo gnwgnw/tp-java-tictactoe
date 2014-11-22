@@ -4,7 +4,7 @@ import base.AccountService;
 import base.UserDataSet;
 import org.junit.Test;
 import servlets.UserPageServlet;
-import tests.account.UserDataSetTest;
+import tests.daoTest.UserDataSetImplTest;
 import utils.PageGenerator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +33,7 @@ public class UserPageServletTest {
     String loginString = "defaultUser1";
     String emailString = "defaultUser1@mail.ru";
     String passwordString = "123";
-    final UserDataSet UserDataSet = new UserDataSetTest(loginString, emailString, passwordString);
+    final UserDataSet UserDataSet = new UserDataSetImplTest(loginString, emailString, passwordString);
     String sessionString = "session";
 
     @Test

@@ -1,5 +1,7 @@
 package mechanics;
 
+import com.google.gson.Gson;
+
 /**
  * Created by titaevskiy.s on 24.10.14
  */
@@ -44,5 +46,8 @@ public class UserGameState {
         return isFinished;
     }
 
-    //TODO jsonify method
+    public String toJsonString() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
 }

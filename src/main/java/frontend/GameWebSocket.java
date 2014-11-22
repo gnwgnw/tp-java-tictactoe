@@ -2,14 +2,15 @@ package frontend;
 
 import base.GameMechanics;
 import base.WebSocketService;
+import com.google.gson.JsonParser;
 import mechanics.UserGameState;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketClose;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketMessage;
 import org.eclipse.jetty.websocket.api.annotations.WebSocket;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
+
+import java.io.IOException;
 
 /**
  * Created by titaevskiy.s on 23.10.14
@@ -36,15 +37,13 @@ public class GameWebSocket {
 
     @OnWebSocketMessage
     public void onMessage(String data) {
-        JSONObject jsonObject = (JSONObject) JSONValue.parse(data);
-//TODO: move frontend constant to file
-        final int position = (int) (long) jsonObject.get("position");
+        final int position = new JsonParser().parse(data).getAsInt();
         gameMechanics.doTurn(myLogin, position);
     }
 
     @OnWebSocketClose
     public void onClose(int statusCode, String reason) {
-        gameMechanics.closeGameSession(myLogin); //TODO ring
+        gameMechanics.closeGameSession(myLogin); //TODO lose game then out
         webSocketService.removeSocket(this);
     }
 
@@ -53,7 +52,7 @@ public class GameWebSocket {
     }
 
     public void startGame(UserGameState userGameState) {
-//TODO
+        updateGameState(userGameState);
     }
 
     public void gameOver(UserGameState userGameState) {
@@ -62,6 +61,10 @@ public class GameWebSocket {
     }
 
     public void updateGameState(UserGameState userGameState) {
-//TODO
+        try {
+            session.getRemote().sendString(userGameState.toJsonString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

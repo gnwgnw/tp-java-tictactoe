@@ -4,7 +4,6 @@ import base.ResponsesCode;
 import base.UserDataSet;
 import org.junit.Test;
 import service.AccountServiceImpl;
-import tests.account.UserDataSetTest;
 
 import static org.junit.Assert.assertEquals;
 
