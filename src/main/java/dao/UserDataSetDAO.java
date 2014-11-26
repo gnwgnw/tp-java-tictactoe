@@ -31,13 +31,18 @@ public class UserDataSetDAO {
 
     public UserDataSetImpl read(long id) {
         Session session = sessionFactory.openSession();
-        return (UserDataSetImpl) session.load(UserDataSetImpl.class, id);
+        UserDataSetImpl user = (UserDataSetImpl) session.load(UserDataSetImpl.class, id);
+        session.close();
+        return user;
+
     }
 
     public UserDataSetImpl readByLogin(String user_login) {
         Session session = sessionFactory.openSession();
         Criteria criteria = session.createCriteria(UserDataSetImpl.class);
-        return (UserDataSetImpl) criteria.add(Restrictions.eq("login", user_login)).uniqueResult();
+        UserDataSetImpl user = (UserDataSetImpl) criteria.add(Restrictions.eq("login", user_login)).uniqueResult();
+        session.close();
+        return user;
     }
 
     public boolean checkByLogin(String user_login) {
@@ -48,6 +53,7 @@ public class UserDataSetDAO {
         if (user != null) {
             isExist = true;
         }
+        session.close();
         return isExist;
     }
 
@@ -56,6 +62,7 @@ public class UserDataSetDAO {
         UserDataSetImpl result = (UserDataSetImpl) session.createCriteria(UserDataSetImpl.class)
                 .setProjection(Projections.rowCount()).uniqueResult();
         int count = Integer.parseInt(result.toString());
+        session.close();
         return count;
     }
 
@@ -63,6 +70,8 @@ public class UserDataSetDAO {
     public List<UserDataSet> readAll() {
         Session session = sessionFactory.openSession();
         Criteria criteria = session.createCriteria(UserDataSetImpl.class);
-        return (List<UserDataSet>) criteria.list();
+        List users = (List<UserDataSet>) criteria.list();
+        session.close();
+        return users;
     }
 }
