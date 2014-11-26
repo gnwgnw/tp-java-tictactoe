@@ -18,8 +18,6 @@ import service.WebSocketServiceImpl;
 import servlets.*;
 
 import javax.servlet.Servlet;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 /**
  * @author v.chibrikov
@@ -36,21 +34,15 @@ public class Main {
         WebSocketService webSocketService = new WebSocketServiceImpl();
         GameMechanics gameMechanics = new GameMechanicsImpl(webSocketService);
 
-        final Set<PageUrlServlet> servlets = new LinkedHashSet<>();
-        servlets.add(new SignUpServlet(accountService));
-        servlets.add(new SignInServlet(accountService));
-        servlets.add(new SignOutServlet(accountService));
-        servlets.add(new AdminPageServlet(accountService));
-        servlets.add(new UserPageServlet(accountService));
-        servlets.add(new ScoreBoardServlet());
-        servlets.add(new WebSocketGameServlet(gameMechanics, accountService, webSocketService));
-
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        for (PageUrlServlet servlet : servlets) {
-            context.addServlet(new ServletHolder((Servlet) servlet), servlet.getPageUrl());
-        }
 
-        servlets.clear();
+        addServlet(context, new SignUpServlet(accountService));
+        addServlet(context, new SignInServlet(accountService));
+        addServlet(context, new SignOutServlet(accountService));
+        addServlet(context, new AdminPageServlet(accountService));
+        addServlet(context, new UserPageServlet(accountService));
+        addServlet(context, new ScoreBoardServlet());
+        addServlet(context, new WebSocketGameServlet(gameMechanics, accountService, webSocketService));
 
         ResourceHandler resourceHandler = new ResourceHandler();
         resourceHandler.setResourceBase("static");
@@ -61,5 +53,9 @@ public class Main {
 
         server.start();
         gameMechanics.run();
+    }
+
+    private static void addServlet(ServletContextHandler contextHandler, PageUrlServlet servlet) {
+        contextHandler.addServlet(new ServletHolder((Servlet) servlet), servlet.getPageUrl());
     }
 }
