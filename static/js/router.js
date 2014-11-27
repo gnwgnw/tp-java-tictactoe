@@ -39,8 +39,7 @@ define([
         loginAction: function () {            
             login.show();
         },
-        registrationAction: function () {
-            console.log(22);
+        registrationAction: function () {               
             registration.show();
         }
     });
