@@ -1,20 +1,12 @@
 define([
-    'backbone',
-    'views/main',
-    'views/game',
-    'views/login',
-    'views/registration',
-    'views/scoreboard',
-    'views/manager'
+        'backbone',
+        'views/page-top',
+        'views/page-main'
     ],
     function(
         Backbone,
-        main,
-        game,
-        login,
-        registration,
-        scoreboard,
-        manager
+        page_top,
+        page_main
     )
 {
     var Router = Backbone.Router.extend({
@@ -27,21 +19,15 @@ define([
             'registration': 'registrationAction',
             '*default': 'defaultActions'
         },
-        defaultActions: function () {            
-            main.show();            
+        defaultActions: function () {
         },
-        scoreboardAction: function () {            
-            scoreboard.show();
+        scoreboardAction: function () {
         },
-        gameAction: function () {            
-            game.show()            
+        gameAction: function () {
         },
         loginAction: function () {            
-            login.show();
         },
         registrationAction: function () {
-            console.log(22);
-            registration.show();
         }
     });
 
