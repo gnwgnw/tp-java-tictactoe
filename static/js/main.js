@@ -18,8 +18,8 @@ require.config({
 });
 
 define([
-    'backbone',
-    'router'
+        'backbone',
+        'router'
     ],
     function(
         Backbone,
