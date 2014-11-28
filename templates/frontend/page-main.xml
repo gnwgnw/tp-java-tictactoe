@@ -1,0 +1,18 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="user">
+    <div>
+        <fest:choose>
+            <fest:when test="!user.isLogined()">
+                <!--TODO-->
+                <button id="signin">Signin</button>
+                <div><a href='#registration'>Registration</a></div>
+            </fest:when>
+
+            <fest:when test="user.isLogined()">
+                <!--TODO-->
+                <button id="start-game">Start</button>
+            </fest:when>
+        </fest:choose>
+        <button id="scoreboard">Scoreboard</button>
+
+    </div>
+</fest:template>
