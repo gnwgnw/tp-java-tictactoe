@@ -1,15 +1,10 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="user">
     <div>
-        <fest:choose>
-            <fest:when test="user.isLogined()">
-                <!--TODO-->
-                <button id="logout">Logout</button>
-            </fest:when>
+        <div>TicTacToe</div>
 
-            <fest:when test="!user.isLogined()">
-                <!--TODO-->
-                <button id="login">Login</button>
-            </fest:when>
-        </fest:choose>
+        <fest:if test="user.isLogined()">
+            <div><fest:value>user.get('name')</fest:value></div>
+            <div>User statistics drop-down</div>
+        </fest:if>
     </div>
 </fest:template>

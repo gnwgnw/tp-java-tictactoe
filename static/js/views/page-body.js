@@ -4,12 +4,14 @@
 define([
         'backbone',
         'models/user',
-        'tmpl/page-main'
+        'tmpl/page-body',
+        'views/menu'
     ],
     function(
         Backbone,
         user,
-        tmpl
+        tmpl,
+        menu
         )
     {
         var View = Backbone.View.extend({
@@ -17,6 +19,10 @@ define([
             el: "#page-main",
             template: tmpl,
             model: user,
+
+            views: {
+                "menu": menu
+            },
 
             events: {
             },
@@ -30,6 +36,17 @@ define([
             render: function () {
                 this.$el.html(this.template(this.model));
                 return this;
+            },
+
+            show: function (viewName) {
+                _.each(this.views, function(view, name){
+                    if (name == viewName) {
+                        view.show();
+                    }
+                    else {
+                        view.hide();
+                    }
+                });
             }
         });
 

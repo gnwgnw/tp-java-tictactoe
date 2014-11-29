@@ -1,14 +1,14 @@
 define([
-	'backbone'
+        'backbone'
 	],
 	function(
-		Backbone
+        Backbone
 	)
 {
     var Model = Backbone.Model.extend({
 
         defaults: function () {
-//            TODO
+            //TODO
             this.set({
                 name: "",
                 gameCount: 0,
@@ -23,7 +23,18 @@ define([
         },
 
         login: function () {
-//            TODO
+            //TODO
+            this.testLogin();
+        },
+
+        logout: function () {
+            //TODO
+            this.defaults();
+            console.log(this.toJSON());
+        },
+
+        //TODO testOnly
+        testLogin: function () {
             this.set({
                 name: "Gex",
                 gameCount: 5,
@@ -31,12 +42,6 @@ define([
                 gameWin: 3,
                 isLogined: true
             });
-            console.log(this.toJSON());
-        },
-
-        logout: function () {
-//            TODO
-            this.defaults();
             console.log(this.toJSON());
         }
     });

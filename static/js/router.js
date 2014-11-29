@@ -1,12 +1,12 @@
 define([
         'backbone',
         'views/page-top',
-        'views/page-main'
+        'views/page-body'
     ],
     function(
         Backbone,
         page_top,
-        page_main
+        page_body
     )
 {
     var Router = Backbone.Router.extend({
@@ -16,7 +16,7 @@ define([
             'scoreboard': 'scoreboardAction',
             'game': 'gameAction',
             'login': 'loginAction',
-            'registration': 'registrationAction',
+            'singup': 'signupAction',
             '*default': 'defaultActions'
         },
         defaultActions: function () {
@@ -27,7 +27,7 @@ define([
         },
         loginAction: function () {            
         },
-        registrationAction: function () {
+        signupAction: function () {
         }
     });
 
