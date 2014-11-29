@@ -17,9 +17,10 @@ define([
             'game': 'gameAction',
             'login': 'loginAction',
             'singup': 'signupAction',
-            '*default': 'defaultActions'
+            '*default': 'menuActions'
         },
-        defaultActions: function () {
+        menuActions: function () {
+            page_body.show('menu');
         },
         scoreboardAction: function () {
         },

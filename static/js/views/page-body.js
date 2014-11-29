@@ -16,7 +16,7 @@ define([
     {
         var View = Backbone.View.extend({
 
-            el: "#page-main",
+            el: "#page-body",
             template: tmpl,
             model: user,
 
@@ -24,17 +24,16 @@ define([
                 "menu": menu
             },
 
-            events: {
-            },
-
             initialize: function () {
-                this.listenTo(this.model, "change", this.render);
-                
                 this.render();
             },
 
             render: function () {
-                this.$el.html(this.template(this.model));
+                this.$el.html(this.template());
+                var that = this;
+                _.each(this.views, function (view) {
+                    that.$el.find('#app-views').append(view.$el.hide());
+                });
                 return this;
             },
 

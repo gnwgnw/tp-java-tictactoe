@@ -1,6 +1,6 @@
 define([
-	'backbone',
-	'models/score'
+		'backbone',
+		'models/user'
 	],
 	function(
 		Backbone,

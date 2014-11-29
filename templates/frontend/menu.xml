@@ -3,21 +3,21 @@
         <fest:choose>
             <fest:when test="!user.isLogined()">
                 <!--TODO-->
-                <button id="login">Login</button>
-                <button id="signup">Signin</button>
+                <a href="#login">Login</a>
+                <a href="#signup">Signin</a>
             </fest:when>
 
             <fest:when test="user.isLogined()">
                 <!--TODO-->
-                <button id="start-game">Start</button>
+                <a href="#game">Start</a>
             </fest:when>
         </fest:choose>
 
-        <button id="scoreboard">Scoreboard</button>
+        <a href="#scoreboard">Scoreboard</a>
 
         <fest:if test="user.isLogined()">
             <!--TODO-->
-            <button id="logout">Logout</button>
+            <a href="#logout">Logout</a>
         </fest:if>
     </div>
 </fest:template>
