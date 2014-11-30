@@ -1,37 +1,63 @@
 define([
-    'backbone',
-    'tmpl/registration'
+        'backbone',
+        'models/user',
+        'tmpl/signup'
     ],
     function(
         Backbone,
+        user,
         tmpl
     )
-{
-    var View = Backbone.View.extend({
+    {
+        var View = Backbone.View.extend({
 
-        template: tmpl,
-        initialize: function () {
-            this.render();
-        },
-        render: function () {
-            this.$el.html(this.template);
-            return this;
-        },
-        events: {
-            "show" : "show"
-        },
-        show: function () {
-            this.$el.css({'display':'block'});
-            if (!$('#registration').html()) {
-                $('#registration').html(this.$el);
+            id: "signup",
+            template: tmpl,
+            model: user,
+
+            events: {
+                "submit": "signup"
+            },
+
+            initialize: function () {
+                this.render();
+            },
+
+            render: function () {
+                this.$el.html(this.template());
+                return this;
+            },
+
+            show: function () {
+                this.$el.show();
+            },
+
+            hide: function () {
+                this.$el.hide();
+            },
+
+            signup: function (event) {
+                event.preventDefault();
+
+                var url = "/signup";
+                var data = this.$el.find('form').serializeObject();
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    dataType: "json",
+                    data: data,
+                    success: function (data) {
+                        //TODO
+                        console.log(data);
+                    },
+                    failure: function (data) {
+                        //TODO
+                        console.log(data);
+                    }
+                });
             }
-            this.trigger("show", this);
-        },
-        hide: function () {
-            this.$el.css({'display':'none'})
-        }
+        });
 
+        return new View();
     });
-
-    return new View();
-});
