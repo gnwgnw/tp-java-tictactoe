@@ -1,0 +1,46 @@
+@import "_consts";
+@import "_buttons";
+@import "_battlefield";
+
+body {
+    color: $white;
+    background: $main_gray;
+    font-family: $main_font;
+}
+
+div {
+    text-align: center;
+}
+input {
+    padding: 10px;
+    font-size: 30px;
+    border: 10px solid transparentize($white-half, 0);
+    background: transparentize($white-half, 0);
+    color: $names_color;
+}
+table {
+    background: $main_green;
+    border-collapse: collapse;
+    margin: 50px auto auto;
+    padding:5px;
+    max-width: 600px;
+    max-height: 600px;
+    width: 100%;
+    box-shadow: 0 10px 10px transparentize($black-half, 0);
+    border: 10px solid transparentize($white-half, 0);
+    font-size: 25px;
+    font-weight: 700;
+}
+th {
+    background: $main_green;
+    padding:24px;
+    /*border-radius: 0px;*/
+    border-bottom: 10px solid transparentize($white-half, 0);
+    text-shadow: 0 1px 1px transparentize($black-half, 0);
+}
+td {
+    background: transparentize($white-half, 0);
+    /*border-radius: 7px;*/
+    padding: 10px;
+    color: $names_color;
+}

@@ -1,70 +1,23 @@
 package base;
 
-import javax.persistence.*;
-import java.io.Serializable;
-
 /**
- * @author s.titaevskiy on 13.09.14.
+ * Created by kic on 11/21/14.
  */
-@Entity
-@Table(name = "Users")
-public class UserDataSet implements Serializable {
+public interface UserDataSet {
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    public long getId(Long id);
 
-    @Column(name = "login")
-    private String login;
+    public String getLogin();
 
-    @Column(name = "email")
-    private String email;
+    public void setLogin(String login);
 
-    @Column(name = "password")
-    private String password;
+    public String getEmail();
 
+    public void setEmail(String email);
 
-    public UserDataSet(String login, String email, String password) {
-        this.setId(-1);
-        this.setLogin(login);
-        this.setEmail(email);
-        this.setPassword(password);
-    }
+    public String getPassword();
 
-    public UserDataSet() {
-    }
+    public void setPassword(String pw);
 
-    public long getId(Long id) {
-        return id;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String pw) {
-        this.password = pw;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
+    public void setId(long id);
 }

@@ -28,6 +28,16 @@ module.exports = function (grunt) {
                 }
             }
         },
+        sass: {
+            dist: {
+                options: {
+                    style: 'compressed'
+                },
+                files: {
+                    'static/css/main.css': 'static/css/scss/main.scss'
+                }
+            }
+        },
         watch: {
             fest: {
                 files: ['templates/frontend/*.xml'],
@@ -45,6 +55,13 @@ module.exports = function (grunt) {
                 options: {
                     livereload: true
                 }
+            },
+            css: {
+                files: ['static/css/scss/*.scss'],
+                tasks: ['sass'],
+                options: {
+                    spawn: false,
+                }
             }
         },
         concurrent: {
@@ -59,6 +76,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-fest');
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
     grunt.registerTask('default', ['concurrent']);
 

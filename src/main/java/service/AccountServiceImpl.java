@@ -4,6 +4,7 @@ import base.AccountService;
 import base.ResponsesCode;
 import base.UserDataSet;
 import dao.UserDataSetDAO;
+import dao.UserDataSetImpl;
 import dao.dbSessionFactory;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -21,7 +22,7 @@ public class AccountServiceImpl implements AccountService {
     //TODO refactoring
     public AccountServiceImpl() {
         Configuration configuration = new Configuration();
-        configuration.addAnnotatedClass(UserDataSet.class);
+        configuration.addAnnotatedClass(UserDataSetImpl.class);
 
         dbSessionFactory factory = new dbSessionFactory();
 
@@ -38,8 +39,8 @@ public class AccountServiceImpl implements AccountService {
             return ResponsesCode.ALREADY_EXISTS;
         }
         else {
-            UserDataSet UserDataSet = new UserDataSet(login, email, password);
-            users.save(UserDataSet);
+            UserDataSetImpl userDataSet = new UserDataSetImpl(login, email, password);
+            users.save(userDataSet);
             return ResponsesCode.OK;
         }
     }
@@ -48,8 +49,9 @@ public class AccountServiceImpl implements AccountService {
     public ResponsesCode signIn(String login, String password, String httpSessionId) {
 //TODO validate the inputs param
 
-        if (users.checkByLogin(login) && users.readByLogin(login).getPassword().equals(password)) {
-            sessions.put(httpSessionId, users.readByLogin(login));
+        UserDataSetImpl user = users.readByLogin(login);
+        if (user != null && user.getPassword().equals(password)) {
+            sessions.put(httpSessionId, user);
             return ResponsesCode.OK;
         }
         else {
