@@ -5,14 +5,18 @@ define([
         'backbone',
         'models/user',
         'tmpl/page-body',
-        'views/menu'
+        'views/menu',
+        'views/login',
+        'views/signup'
     ],
     function(
         Backbone,
         user,
         tmpl,
-        menu
-        )
+        menu,
+        login,
+        signup
+    )
     {
         var View = Backbone.View.extend({
 
@@ -21,7 +25,9 @@ define([
             model: user,
 
             views: {
-                "menu": menu
+                "menu": menu,
+                "login": login,
+                "signup": signup
             },
 
             initialize: function () {
