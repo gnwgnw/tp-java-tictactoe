@@ -4,7 +4,7 @@
             <fest:when test="!user.isLogined()">
                 <!--TODO-->
                 <a href="#login">Login</a>
-                <a href="#signup">Signin</a>
+                <a href="#signup">Signup</a>
             </fest:when>
 
             <fest:when test="user.isLogined()">

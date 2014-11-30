@@ -10,7 +10,7 @@ define([
         Backbone,
         tmpl,
         user
-        )
+    )
     {
         var View = Backbone.View.extend({
 
