@@ -12,11 +12,11 @@ import java.io.IOException;
 /**
  * @author s.titaevskiy on 14.09.14.
  */
-public class SignOutServlet extends HttpServlet implements PageUrlServlet {
-    private static final String pageURL = "/signout";
+public class LogOutServlet extends HttpServlet implements PageUrlServlet {
+    private static final String pageURL = "/logout";
     private final AccountService accountService;
 
-    public SignOutServlet(AccountService accountService) {
+    public LogOutServlet(AccountService accountService) {
         this.accountService = accountService;
     }
 

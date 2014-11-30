@@ -3,7 +3,7 @@ package tests.account;
 import base.AccountService;
 import base.ResponsesCode;
 import org.junit.Test;
-import servlets.SignInServlet;
+import servlets.LogInServlet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,9 +14,9 @@ import java.io.StringWriter;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
-public class SignInServletTest {
+public class LogInServletTest {
     final AccountService accountService = mock(AccountService.class);
-    final SignInServlet signInServlet = new SignInServlet(accountService);
+    final LogInServlet logInServlet = new LogInServlet(accountService);
     final HttpServletRequest request = mock(HttpServletRequest.class);
     final HttpServletResponse response = mock(HttpServletResponse.class);
     final HttpSession httpSession = mock(HttpSession.class);
@@ -36,7 +36,7 @@ public class SignInServletTest {
         when(response.getWriter()).thenReturn(printWriter);
         when((accountService).signIn(loginString, passwordString, sessionString)).thenReturn(ResponsesCode.OK);
 
-        signInServlet.doPost(request, response);
+        logInServlet.doPost(request, response);
         verify(accountService, atLeastOnce()).signIn(loginString, passwordString, sessionString);
         assertTrue(stringWriter.toString().contains("The user defaultUser1 signin"));
     }
@@ -48,9 +48,9 @@ public class SignInServletTest {
         when(request.getSession()).thenReturn(httpSession);
         when(httpSession.getId()).thenReturn(sessionString);
         when(response.getWriter()).thenReturn(printWriter);
-        when(accountService.signIn(loginString, passwordString, sessionString)).thenReturn(ResponsesCode.WRONG_SIGNIN);
+        when(accountService.signIn(loginString, passwordString, sessionString)).thenReturn(ResponsesCode.WRONG_LOGIN);
 
-        signInServlet.doPost(request, response);
+        logInServlet.doPost(request, response);
         verify(accountService, atLeastOnce()).signIn(loginString, passwordString, sessionString);
         assertTrue(stringWriter.toString().contains("Enter correct login and password"));
     }
@@ -64,7 +64,7 @@ public class SignInServletTest {
         when(response.getWriter()).thenReturn(printWriter);
         when(accountService.signIn(loginString, passwordString, sessionString)).thenReturn(ResponsesCode.ALREADY_EXISTS);
 
-        signInServlet.doPost(request, response);
+        logInServlet.doPost(request, response);
         verify(accountService, atLeastOnce()).signIn(loginString, passwordString, sessionString);
         assertTrue(stringWriter.toString().contains("Unknown error"));
     }

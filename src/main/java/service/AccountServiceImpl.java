@@ -53,7 +53,7 @@ public class AccountServiceImpl implements AccountService {
             return ResponsesCode.OK;
         }
         else {
-            return ResponsesCode.WRONG_SIGNIN;
+            return ResponsesCode.WRONG_LOGIN;
         }
     }
 

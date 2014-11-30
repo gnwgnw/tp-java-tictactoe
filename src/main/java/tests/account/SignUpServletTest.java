@@ -67,7 +67,7 @@ public class SignUpServletTest {
         StringWriter stringWriter = new StringWriter();
         PrintWriter printWriter = new PrintWriter(stringWriter);
         when(response.getWriter()).thenReturn(printWriter);
-        when(accountService.signUp(anyString(), anyString(), anyString())).thenReturn(ResponsesCode.WRONG_SIGNIN);
+        when(accountService.signUp(anyString(), anyString(), anyString())).thenReturn(ResponsesCode.WRONG_LOGIN);
 
         signUpServlet.doPost(request, response);
         verify(accountService, atLeastOnce()).signUp(anyString(), anyString(), anyString());

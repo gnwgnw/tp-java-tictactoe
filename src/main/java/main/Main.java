@@ -37,8 +37,8 @@ public class Main {
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 
         addServlet(context, new SignUpServlet(accountService));
-        addServlet(context, new SignInServlet(accountService));
-        addServlet(context, new SignOutServlet(accountService));
+        addServlet(context, new LogInServlet(accountService));
+        addServlet(context, new LogOutServlet(accountService));
         addServlet(context, new AdminPageServlet(accountService));
         addServlet(context, new UserPageServlet(accountService));
         addServlet(context, new ScoreBoardServlet());

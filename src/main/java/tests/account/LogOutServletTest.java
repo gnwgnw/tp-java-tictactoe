@@ -3,7 +3,7 @@ package tests.account;
 import base.AccountService;
 import org.junit.Test;
 import service.AccountServiceImpl;
-import servlets.SignOutServlet;
+import servlets.LogOutServlet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,10 +15,10 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
 
-public class SignOutServletTest {
+public class LogOutServletTest {
     final AccountServiceImpl accountServiceReal = new AccountServiceImpl();
     final AccountService accountService = mock(AccountService.class);
-    final SignOutServlet signOutServlet = new SignOutServlet(accountService);
+    final LogOutServlet logOutServlet = new LogOutServlet(accountService);
     final HttpServletRequest request = mock(HttpServletRequest.class);
     final HttpServletResponse response = mock(HttpServletResponse.class);
     final HttpSession httpSession = mock(HttpSession.class);
@@ -37,7 +37,7 @@ public class SignOutServletTest {
         when(response.getWriter()).thenReturn(printWriter);
         accountService.signIn(loginString, passwordString, sessionString);
 
-        signOutServlet.doPost(request, response);
+        logOutServlet.doPost(request, response);
         verify(accountService, atLeastOnce()).signOut(sessionString);
         assertTrue(stringWriter.toString().contains("Done"));
     }

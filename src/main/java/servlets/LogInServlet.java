@@ -12,11 +12,11 @@ import java.io.IOException;
 /**
  * @author s.titaevskiy on 14.09.14.
  */
-public class SignInServlet extends HttpServlet implements PageUrlServlet {
-    private static final String pageURL = "/signin";
+public class LogInServlet extends HttpServlet implements PageUrlServlet {
+    private static final String pageURL = "/login";
     private final AccountService accountService;
 
-    public SignInServlet(AccountService accountService) {
+    public LogInServlet(AccountService accountService) {
         this.accountService = accountService;
     }
 
@@ -33,7 +33,7 @@ public class SignInServlet extends HttpServlet implements PageUrlServlet {
             case OK:
                 responseAnswer = "The user " + login + " signin";
                 break;
-            case WRONG_SIGNIN:
+            case WRONG_LOGIN:
                 responseAnswer = "Enter correct login and password";
                 break;
             default:
