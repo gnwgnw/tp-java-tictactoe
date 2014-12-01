@@ -36,7 +36,7 @@ public class AccountServiceDBTest {
     @Test
     public void testSignInWrongSighIn() throws Exception {
         response = accountService.signIn("unknownUser", "123", "unknownSession");
-        assertEquals(ResponsesCode.WRONG_SIGNIN, response);
+        assertEquals(ResponsesCode.WRONG_LOGIN, response);
     }
 
     @Test
