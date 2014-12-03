@@ -18,14 +18,17 @@ define([
             template: tmpl,
             model: user,
 
+            events: {
+                "submit #logout-form": "logout"
+            },
+
             initialize: function () {
                 this.listenTo(this.model, "change", this.render);
-
                 this.render();
             },
 
             render: function () {
-                this.$el.html(this.template(this.model));
+                this.$el.html(this.template(this.model.toJSON()));
                 return this;
             },
 
@@ -35,6 +38,11 @@ define([
 
             hide: function () {
                 this.$el.hide();
+            },
+
+            logout: function (event) {
+                event.preventDefault();
+                this.model.logout();
             }
         });
 

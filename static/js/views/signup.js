@@ -16,7 +16,7 @@ define([
             model: user,
 
             events: {
-                "submit": "signup"
+                "submit #signup-form": "signup"
             },
 
             initialize: function () {
@@ -38,24 +38,8 @@ define([
 
             signup: function (event) {
                 event.preventDefault();
-
-                var url = "/signup";
                 var data = this.$el.find('form').serializeObject();
-
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    dataType: "json",
-                    data: data,
-                    success: function (data) {
-                        //TODO
-                        console.log(data);
-                    },
-                    failure: function (data) {
-                        //TODO
-                        console.log(data);
-                    }
-                });
+                this.model.signup(data);
             }
         });
 

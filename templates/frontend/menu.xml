@@ -1,13 +1,13 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="user">
     <div>
         <fest:choose>
-            <fest:when test="!user.isLogined()">
+            <fest:when test="!user.isLogined">
                 <!--TODO-->
                 <a href="#login">Login</a>
                 <a href="#signup">Signup</a>
             </fest:when>
 
-            <fest:when test="user.isLogined()">
+            <fest:when test="user.isLogined">
                 <!--TODO-->
                 <a href="#game">Start</a>
             </fest:when>
@@ -15,9 +15,11 @@
 
         <a href="#scoreboard">Scoreboard</a>
 
-        <fest:if test="user.isLogined()">
+        <fest:if test="user.isLogined">
             <!--TODO-->
-            <a href="#logout">Logout</a>
+            <form method="POST" id="logout-form">
+                <input type="submit" value="Logout"/>
+            </form>
         </fest:if>
     </div>
 </fest:template>

@@ -22,7 +22,11 @@ define([
                 return this.get('isLogined');
             },
 
-            login: function () {
+            signup: function (data) {
+                //TODO ajax
+            },
+
+            login: function (data) {
                 //TODO
                 this.testLogin();
             },
@@ -30,7 +34,6 @@ define([
             logout: function () {
                 //TODO
                 this.defaults();
-                console.log(this.toJSON());
             },
 
             //TODO testOnly
