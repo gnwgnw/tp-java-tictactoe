@@ -1,23 +1,21 @@
 define([
 		'backbone',
-		'models/user'
+		'models/scoreNode'
 	],
 	function(
 		Backbone,
-		Model
+		scoreNode
 	)
-{
-    var Collection = Backbone.Collection.extend({
+	{
+		var Collection = Backbone.Collection.extend({
 
-		model: Model,
-		url: '/scores',
-		initialize: function() {
-			this.fetch({reset: true});
-		},
-		comparator: function(a, b) {
-			return b.get('score') - a.get('score');
-		}
-    });
+			model: scoreNode,
+			url: '/scores',
 
-    return new Collection();
-});
+			comparator: function(a, b) {
+				return b.get('gameCount') - a.get('gameCount');
+			}
+		});
+
+		return new Collection();
+	});

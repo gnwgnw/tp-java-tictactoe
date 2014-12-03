@@ -1,26 +1,10 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name='collection'>
+    <fest:each iterate='collection' index='i' value='score'>
+        <div>
+            <fest:value>score.name</fest:value>
+            <fest:value>score.gameCount</fest:value>
+        </div>
+    </fest:each>
 
-    <a href='#'><button class="button__back_button">Back</button></a>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Score</th>
-            </tr>
-        </thead>
-        <tbody>
-            <fest:each iterate='collection' index='i' value='score'>
-            <tr>
-                <td>
-                    <fest:value>score.name</fest:value>
-                </td>
-                <td>
-                    <fest:value>score.score</fest:value>
-                </td>
-            </tr>
-            </fest:each>
-        </tbody>
-    </table>
-
+    <a href='#'>Back</a>
 </fest:template>

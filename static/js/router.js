@@ -27,6 +27,7 @@ define([
             },
 
             scoreboardAction: function () {
+                page_body.show('scoreboard');
             },
 
             gameAction: function () {
