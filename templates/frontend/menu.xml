@@ -3,17 +3,25 @@
         <fest:choose>
             <fest:when test="!user.isLogined">
                 <!--TODO-->
-                <a href="#login">Login</a>
-                <a href="#signup">Signup</a>
+                <div>
+                    <a href="#login">Login</a>
+                </div>
+                <div>
+                    <a href="#signup">Signup</a>
+                </div>
             </fest:when>
 
             <fest:when test="user.isLogined">
                 <!--TODO-->
-                <a href="#game">Start</a>
+                <div>
+                    <a href="#game">Start</a>
+                </div>
             </fest:when>
         </fest:choose>
 
-        <a href="#scoreboard">Scoreboard</a>
+        <div>
+            <a href="#scoreboard">Scoreboard</a>
+        </div>
 
         <fest:if test="user.isLogined">
             <!--TODO-->

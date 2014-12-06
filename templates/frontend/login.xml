@@ -3,6 +3,8 @@
         <input name="login" required=""/>
         <input name="password" type="password" required=""/>
     </form>
-    <a href='#'>Back</a>
+    <div>
+        <a href='#'>Back</a>
+    </div>
     <input type="submit" form="login-form" value="Login"/>
 </fest:template>

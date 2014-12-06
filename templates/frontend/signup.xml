@@ -4,6 +4,10 @@
         <input name="email" type="email" required=""/>
         <input name="password" type="password" required=""/>
     </form>
-    <a href='#'>Back</a>
+
+    <div>
+        <a href='#'>Back</a>
+    </div>
+
     <input type="submit" value="SignUp" form="signup-form"/>
 </fest:template>

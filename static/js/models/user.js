@@ -10,7 +10,8 @@ define([
             defaults: function () {
                 //TODO
                 this.set({
-                    name: "",
+                    login: "",
+                    email: "",
                     gameCount: 0,
                     gameLose: 0,
                     gameWin: 0,
@@ -22,30 +23,53 @@ define([
                 return this.get('isLogined');
             },
 
-            signup: function (data) {
-                //TODO ajax
+            signup: function (data) {//TODO
+                var that = this;
+
+                $.post(
+                    "/signup",
+                    data,
+                    function(data) {
+                        console.log(data);
+                        if (data.status == "OK") {
+                            that.trigger('signup:ok');
+                        }
+                    },
+                    'json'
+                );
             },
 
-            login: function (data) {
-                //TODO
-                this.testLogin();
+            login: function (data) {//TODO
+                var that = this;
+
+                $.post(
+                    "/login",
+                    data,
+                    function(data) {
+                        if (data.status == "OK") {
+                            that.setUser(data);
+                            that.trigger('login:ok');
+                        }
+                    },
+                    'json'
+                );
             },
 
             logout: function () {
-                //TODO
+                $.post(
+                    "/logout",
+                    function(data) {
+                        console.log(data);
+                    },
+                    'json'
+                );
+
                 this.defaults();
             },
 
-            //TODO testOnly
-            testLogin: function () {
-                this.set({
-                    name: "Gex",
-                    gameCount: 5,
-                    gameLose: 1,
-                    gameWin: 3,
-                    isLogined: true
-                });
-                console.log(this.toJSON());
+            setUser: function (data) {
+                this.set(data.response.user);
+                this.set('isLogined', true);
             }
         });
 

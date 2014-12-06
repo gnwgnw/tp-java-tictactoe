@@ -1,32 +1,5 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name='collection'>
-
-    <a href='#'><button class="button__back_button">Back</button></a>
-
-<!--    <div class='div__battlefield'>
-		<fest:each iterate='collection' index='i' value='cell'>
-			<div class='div__battlefield__cell'>
-				<img src='{cell.img_url}' height='160px' width='160px'/>
-            </div>
-		</fest:each>
-	</div>-->
-
-<h1 id="status"></h1>
-
-    <div class='div__battlefield'>
-		<fest:for from="0" to="8" index="i">
-			<div class='div__battlefield__cell' id="{i}">
-				<img src='/img/none.jpg' height='160px' width='160px'/>
-            </div>
-		</fest:for>
-	</div>
-
-	<h1 id="my"></h1>
-	<button id="start" onclick="init()">Start game</button>
-	<h1 id="enemy"></h1>
-
-	<script type="text/javascript">
-        $('.div__battlefield__cell').on('click', function() {
-            sendMessage(this.id);
-        });
-	</script>
+	<div id="my-info"/>
+	<div id="enemy-info"/>
+	<div id="battlefield"/>
 </fest:template>

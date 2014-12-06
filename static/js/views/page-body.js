@@ -8,7 +8,8 @@ define([
         'views/menu',
         'views/login',
         'views/signup',
-        'views/scoreboard'
+        'views/scoreboard',
+        'views/game'
     ],
     function(
         Backbone,
@@ -17,7 +18,8 @@ define([
         menu,
         login,
         signup,
-        scoreboard
+        scoreboard,
+        game
     )
     {
         var View = Backbone.View.extend({
@@ -30,31 +32,38 @@ define([
                 "menu": menu,
                 "login": login,
                 "signup": signup,
-                "scoreboard": scoreboard
+                "scoreboard": scoreboard,
+                "game": game
             },
 
             initialize: function () {
+                _.each(this.views, function (view) {
+                    this.listenTo(view, 'show', this.show);
+                }, this);
+
                 this.render();
             },
 
             render: function () {
                 this.$el.html(this.template());
-                var that = this;
+
                 _.each(this.views, function (view) {
-                    that.$el.find('#app-views').append(view.$el.hide());
-                });
+                    this.$el.find('#app-views').append(view.$el.hide());
+                }, this);
+
                 return this;
             },
 
             show: function (viewName) {
                 _.each(this.views, function(view, name){
-                    if (name == viewName) {
-                        view.show();
-                    }
-                    else {
+                    if (name != viewName) {
                         view.hide();
                     }
                 });
+            },
+
+            getView: function (viewName) {
+                return this.views[viewName];
             }
         });
 

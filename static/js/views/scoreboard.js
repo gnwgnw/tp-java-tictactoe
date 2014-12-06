@@ -29,6 +29,7 @@ define([
             },
 
             show: function () {
+                this.trigger('show');
                 this.collection.fetch({reset: true});
                 this.$el.show();
             },

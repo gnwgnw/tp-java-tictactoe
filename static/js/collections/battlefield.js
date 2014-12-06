@@ -1,24 +1,16 @@
 define([
 		'backbone',
-		'models/cell'
+		'models/battlefieldNode'
 	],
 	function(
 		Backbone,
-		Model
+		node
 	)
 	{
 		var Collection = Backbone.Collection.extend({
 
-			model: Model,
-			url: '/game',
-
-			initialize: function() {
-			},
-
-			comparator: function(a, b) {
-				return a.get('position') - b.get('position');
-			}
+			model: node
 		});
 
-		return new Collection();
+		return Collection;
 	});

@@ -2,8 +2,12 @@
     <div>
         <div>TicTacToe</div>
         <fest:if test="user.isLogined">
-            <div><fest:value>user.name</fest:value></div>
-            <div>User statistics drop-down</div>
+            <div>
+                <div>
+                    <fest:value>user.login</fest:value>
+                </div>
+                <div>User statistics drop-down place here</div>
+            </div>
         </fest:if>
     </div>
 </fest:template>

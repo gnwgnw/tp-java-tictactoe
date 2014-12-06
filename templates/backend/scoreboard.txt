@@ -1,8 +1,8 @@
 [
-{"id": 1, "name": "John", "gameCount": 7},
-{"id": 2, "name": "Tom", "gameCount": 3},
-{"id": 3, "name": "fv", "gameCount": 234},
-{"id": 4, "name": "sdfv", "gameCount": 12},
-{"id": 5, "name": "dfv", "gameCount": 21},
-{"id": 6, "name": "sdfvsdfv", "gameCount": 51}
+{"id": 1, "login": "John", "gameCount": 7},
+{"id": 2, "login": "Tom", "gameCount": 3},
+{"id": 3, "login": "fv", "gameCount": 234},
+{"id": 4, "login": "sdfv", "gameCount": 12},
+{"id": 5, "login": "dfv", "gameCount": 21},
+{"id": 6, "login": "sdfvsdfv", "gameCount": 51}
 ]

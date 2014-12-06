@@ -1,15 +1,15 @@
 define([
 		'backbone',
-		'models/scoreNode'
+		'models/player'
 	],
 	function(
 		Backbone,
-		scoreNode
+		player
 	)
 	{
 		var Collection = Backbone.Collection.extend({
 
-			model: scoreNode,
+			model: player,
 			url: '/scores',
 
 			comparator: function(a, b) {

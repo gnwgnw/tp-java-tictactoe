@@ -12,7 +12,7 @@ define([
 
             defaults: function () {
                 this.set({
-                    name: "",
+                    login: "",
                     gameCount: 0,
                     gameLose: 0,
                     gameWin: 0
