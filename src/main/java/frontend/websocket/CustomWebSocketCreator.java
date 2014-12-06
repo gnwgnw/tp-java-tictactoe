@@ -1,9 +1,8 @@
-package frontend;
+package frontend.websocket;
 
-import base.AccountService;
-import base.GameMechanics;
-import base.WebSocketService;
-import dao.UserDataSet;
+import accounting.AccountService;
+import accounting.database.UserDataSet;
+import mechanics.GameMechanics;
 import org.eclipse.jetty.websocket.servlet.ServletUpgradeRequest;
 import org.eclipse.jetty.websocket.servlet.ServletUpgradeResponse;
 import org.eclipse.jetty.websocket.servlet.WebSocketCreator;

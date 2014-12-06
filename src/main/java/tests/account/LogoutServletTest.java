@@ -1,9 +1,9 @@
 package tests.account;
 
-import base.AccountService;
+import accounting.AccountService;
+import accounting.AccountServiceImpl;
+import frontend.servlets.LogoutServlet;
 import org.junit.Test;
-import service.AccountServiceImpl;
-import servlets.LogoutServlet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

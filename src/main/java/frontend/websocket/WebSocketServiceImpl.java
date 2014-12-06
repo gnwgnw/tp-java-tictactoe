@@ -1,7 +1,5 @@
-package service;
+package frontend.websocket;
 
-import base.WebSocketService;
-import frontend.PlayerWebSocket;
 import mechanics.UserGameState;
 
 import java.util.Map;

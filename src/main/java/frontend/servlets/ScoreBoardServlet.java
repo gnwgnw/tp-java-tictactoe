@@ -1,6 +1,5 @@
-package servlets;
+package frontend.servlets;
 
-import base.PageUrlServlet;
 import utils.PageGenerator;
 
 import javax.servlet.ServletException;

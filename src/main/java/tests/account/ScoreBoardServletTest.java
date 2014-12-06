@@ -1,7 +1,7 @@
 package tests.account;
 
+import frontend.servlets.ScoreBoardServlet;
 import org.junit.Test;
-import servlets.ScoreBoardServlet;
 import utils.PageGenerator;
 
 import javax.servlet.http.HttpServletRequest;

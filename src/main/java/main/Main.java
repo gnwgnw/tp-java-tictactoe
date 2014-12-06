@@ -1,9 +1,11 @@
 package main;
 
-import base.AccountService;
-import base.GameMechanics;
-import base.PageUrlServlet;
-import base.WebSocketService;
+import accounting.AccountService;
+import accounting.AccountServiceImpl;
+import frontend.servlets.*;
+import frontend.websocket.WebSocketService;
+import frontend.websocket.WebSocketServiceImpl;
+import mechanics.GameMechanics;
 import mechanics.GameMechanicsImpl;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
@@ -13,9 +15,6 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import resource.ResourceFactory;
 import resource.ServerResource;
-import service.AccountServiceImpl;
-import service.WebSocketServiceImpl;
-import servlets.*;
 
 import javax.servlet.Servlet;
 

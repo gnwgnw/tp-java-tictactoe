@@ -1,6 +1,4 @@
-package base;
-
-import dao.UserDataSet;
+package accounting.database;
 
 /**
  * Created by titaevskiy.s on 05.12.14

@@ -1,9 +1,9 @@
 //package tests.account;
 //
-//import base.AccountService;
+//import accounting.AccountService;
 //import base.UserProfile;
 //import org.junit.Test;
-//import servlets.UserPageServlet;
+//import frontend.servlets.UserPageServlet;
 //import utils.PageGenerator;
 //
 //import javax.servlet.http.HttpServletRequest;

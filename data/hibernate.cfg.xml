@@ -15,7 +15,7 @@
         <property name="connection.password">0</property>
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping class="dao.UserDataSet" />
+        <mapping class="accounting.database.UserDataSet" />
 
     </session-factory>
 </hibernate-configuration>

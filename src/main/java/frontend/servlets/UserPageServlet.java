@@ -1,8 +1,7 @@
-package servlets;
+package frontend.servlets;
 
-import base.AccountService;
-import base.PageUrlServlet;
-import dao.UserDataSet;
+import accounting.AccountService;
+import accounting.database.UserDataSet;
 import utils.PageGenerator;
 
 import javax.servlet.ServletException;

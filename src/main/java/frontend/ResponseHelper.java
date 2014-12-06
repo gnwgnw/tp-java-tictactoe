@@ -1,6 +1,5 @@
-package servlets;
+package frontend;
 
-import base.ResponsesCode;
 import com.google.gson.Gson;
 
 import java.util.HashMap;

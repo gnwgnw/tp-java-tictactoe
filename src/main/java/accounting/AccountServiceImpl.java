@@ -1,10 +1,9 @@
-package service;
+package accounting;
 
-import base.AccountService;
-import base.ResponsesCode;
-import base.UsersDAO;
-import dao.DatabaseService;
-import dao.UserDataSet;
+import accounting.database.DatabaseService;
+import accounting.database.UserDataSet;
+import accounting.database.UsersDAO;
+import frontend.ResponsesCode;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

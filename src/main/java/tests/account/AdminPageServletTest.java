@@ -1,8 +1,8 @@
 package tests.account;
 
-import base.AccountService;
+import accounting.AccountService;
+import frontend.servlets.AdminPageServlet;
 import org.junit.Test;
-import servlets.AdminPageServlet;
 import utils.PageGenerator;
 
 import javax.servlet.http.HttpServletRequest;

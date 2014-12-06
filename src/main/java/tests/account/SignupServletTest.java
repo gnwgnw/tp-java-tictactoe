@@ -1,9 +1,9 @@
 package tests.account;
 
-import base.AccountService;
-import base.ResponsesCode;
+import accounting.AccountService;
+import frontend.ResponsesCode;
+import frontend.servlets.SignupServlet;
 import org.junit.Test;
-import servlets.SignupServlet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

@@ -1,6 +1,7 @@
-package base;
+package accounting;
 
-import dao.UserDataSet;
+import accounting.database.UserDataSet;
+import frontend.ResponsesCode;
 
 /**
  * Created by titaevskiy.s on 17.10.14

@@ -1,8 +1,8 @@
-package servlets;
+package frontend.servlets;
 
-import base.AccountService;
-import base.PageUrlServlet;
-import base.ResponsesCode;
+import accounting.AccountService;
+import frontend.ResponseHelper;
+import frontend.ResponsesCode;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,12 +13,12 @@ import java.io.IOException;
 /**
  * @author s.titaevskiy on 14.09.14.
  */
-public class LoginServlet extends HttpServlet implements PageUrlServlet {
+public class LogoutServlet extends HttpServlet implements PageUrlServlet {
 
-    private static final String pageURL = "/login";
+    private static final String pageURL = "/logout";
     private final AccountService accountService;
 
-    public LoginServlet(AccountService accountService) {
+    public LogoutServlet(AccountService accountService) {
         this.accountService = accountService;
     }
 
@@ -29,28 +29,11 @@ public class LoginServlet extends HttpServlet implements PageUrlServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String login = request.getParameter("login");
-        String password = request.getParameter("password");
-
-        ResponsesCode status = accountService.login(login, password, request.getSession().getId());
+        accountService.logout(request.getSession().getId());
 
         ResponseHelper responseHelper = new ResponseHelper();
-        responseHelper.setStatus(status);
 
-        switch (status) {//TODO
-            case OK:
-                responseHelper.addToResponse("user", accountService.getUserDataSet(request.getSession().getId()));
-                break;
-
-            case WRONG_LOGIN:
-                break;
-
-            case BAD_INPUT:
-                break;
-
-            default:
-                break;
-        }
+        responseHelper.setStatus(ResponsesCode.OK);
 
         response.setStatus(HttpServletResponse.SC_OK);
         response.setContentType("application/json");

@@ -1,6 +1,5 @@
-package dao;
+package accounting.database;
 
-import base.UsersDAO;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

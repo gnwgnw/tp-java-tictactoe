@@ -1,9 +1,9 @@
 //package tests.account;
 //
-//import base.ResponsesCode;
+//import frontend.ResponsesCode;
 //import base.UserProfile;
 //import org.junit.Test;
-//import service.AccountServiceImpl;
+//import accounting.AccountServiceImpl;
 //
 //import static org.junit.Assert.assertEquals;
 //

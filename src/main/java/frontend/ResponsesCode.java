@@ -1,4 +1,4 @@
-package base;
+package frontend;
 
 /**
  * @author s.titaevskiy on 13.09.14.

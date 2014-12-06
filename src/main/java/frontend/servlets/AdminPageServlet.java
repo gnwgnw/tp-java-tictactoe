@@ -1,7 +1,6 @@
-package servlets;
+package frontend.servlets;
 
-import base.AccountService;
-import base.PageUrlServlet;
+import accounting.AccountService;
 import utils.PageGenerator;
 import utils.TimeHelper;
 

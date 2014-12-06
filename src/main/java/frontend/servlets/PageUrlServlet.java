@@ -1,4 +1,4 @@
-package base;
+package frontend.servlets;
 
 /**
  * Created by titaevskiy.s on 23.10.14

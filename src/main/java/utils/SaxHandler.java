@@ -1,9 +1,8 @@
-package resource;
+package utils;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-import utils.ReflectionHelper;
 
 /**
  * Created by titaevskiy.s on 20.11.14

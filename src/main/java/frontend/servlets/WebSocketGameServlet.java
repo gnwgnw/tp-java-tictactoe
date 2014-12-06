@@ -1,10 +1,9 @@
-package servlets;
+package frontend.servlets;
 
-import base.AccountService;
-import base.GameMechanics;
-import base.PageUrlServlet;
-import base.WebSocketService;
-import frontend.CustomWebSocketCreator;
+import accounting.AccountService;
+import frontend.websocket.CustomWebSocketCreator;
+import frontend.websocket.WebSocketService;
+import mechanics.GameMechanics;
 import org.eclipse.jetty.websocket.servlet.WebSocketServlet;
 import org.eclipse.jetty.websocket.servlet.WebSocketServletFactory;
 

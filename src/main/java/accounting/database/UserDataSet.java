@@ -1,4 +1,4 @@
-package dao;
+package accounting.database;
 
 import javax.persistence.*;
 import java.io.Serializable;

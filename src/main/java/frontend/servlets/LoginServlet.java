@@ -1,8 +1,8 @@
-package servlets;
+package frontend.servlets;
 
-import base.AccountService;
-import base.PageUrlServlet;
-import base.ResponsesCode;
+import accounting.AccountService;
+import frontend.ResponseHelper;
+import frontend.ResponsesCode;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,14 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author s.titaevskiy on 13.09.14.
+ * @author s.titaevskiy on 14.09.14.
  */
-public class SignupServlet extends HttpServlet implements PageUrlServlet {
+public class LoginServlet extends HttpServlet implements PageUrlServlet {
 
-    private static final String pageURL = "/signup";
+    private static final String pageURL = "/login";
     private final AccountService accountService;
 
-    public SignupServlet(AccountService accountService) {
+    public LoginServlet(AccountService accountService) {
         this.accountService = accountService;
     }
 
@@ -30,19 +30,19 @@ public class SignupServlet extends HttpServlet implements PageUrlServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
-        String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        ResponsesCode status = accountService.signup(login, email, password);
+        ResponsesCode status = accountService.login(login, password, request.getSession().getId());
 
         ResponseHelper responseHelper = new ResponseHelper();
         responseHelper.setStatus(status);
 
         switch (status) {//TODO
             case OK:
+                responseHelper.addToResponse("user", accountService.getUserDataSet(request.getSession().getId()));
                 break;
 
-            case ALREADY_EXISTS:
+            case WRONG_LOGIN:
                 break;
 
             case BAD_INPUT:
