@@ -1,7 +1,5 @@
 package dao;
 
-import base.UserDataSet;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -10,7 +8,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "Users")
-public class UserDataSetImpl implements Serializable, UserDataSet {
+public class UserDataSet implements Serializable {
 
     @Id
     @Column(name = "id")
@@ -27,18 +25,19 @@ public class UserDataSetImpl implements Serializable, UserDataSet {
     private String password;
 
 
-    public UserDataSetImpl(String login, String email, String password) {
-        this.setId(-1);
-        this.setLogin(login);
-        this.setEmail(email);
-        this.setPassword(password);
-    }
-
-    public UserDataSetImpl() {
+    public UserDataSet(String login, String email, String password) {
+        this.id = -1;
+        this.login= login;
+        this.email = email;
+        this.password = password;
     }
 
     public long getId(Long id) {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getLogin() {
@@ -63,10 +62,6 @@ public class UserDataSetImpl implements Serializable, UserDataSet {
 
     public void setPassword(String pw) {
         this.password = pw;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
 }

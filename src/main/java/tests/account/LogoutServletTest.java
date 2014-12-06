@@ -3,7 +3,7 @@ package tests.account;
 import base.AccountService;
 import org.junit.Test;
 import service.AccountServiceImpl;
-import servlets.LogOutServlet;
+import servlets.LogoutServlet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,10 +15,10 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
 
-public class LogOutServletTest {
+public class LogoutServletTest {
     final AccountServiceImpl accountServiceReal = new AccountServiceImpl();
     final AccountService accountService = mock(AccountService.class);
-    final LogOutServlet logOutServlet = new LogOutServlet(accountService);
+    final LogoutServlet logoutServlet = new LogoutServlet(accountService);
     final HttpServletRequest request = mock(HttpServletRequest.class);
     final HttpServletResponse response = mock(HttpServletResponse.class);
     final HttpSession httpSession = mock(HttpSession.class);
@@ -31,14 +31,14 @@ public class LogOutServletTest {
 
     @Test
     public void testDoPost() throws Exception {
-        accountServiceReal.signIn(loginString, passwordString, sessionString);
+        accountServiceReal.login(loginString, passwordString, sessionString);
         when(request.getSession()).thenReturn(httpSession);
         when(httpSession.toString()).thenReturn(sessionString);
         when(response.getWriter()).thenReturn(printWriter);
-        accountService.signIn(loginString, passwordString, sessionString);
+        accountService.login(loginString, passwordString, sessionString);
 
-        logOutServlet.doPost(request, response);
-        verify(accountService, atLeastOnce()).signOut(sessionString);
+        logoutServlet.doPost(request, response);
+        verify(accountService, atLeastOnce()).logout(sessionString);
         assertTrue(stringWriter.toString().contains("Done"));
     }
 }

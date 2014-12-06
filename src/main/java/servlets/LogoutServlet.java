@@ -12,11 +12,11 @@ import java.io.IOException;
 /**
  * @author s.titaevskiy on 14.09.14.
  */
-public class LogInServlet extends HttpServlet implements PageUrlServlet {
-    private static final String pageURL = "/login";
+public class LogoutServlet extends HttpServlet implements PageUrlServlet {
+    private static final String pageURL = "/logout";
     private final AccountService accountService;
 
-    public LogInServlet(AccountService accountService) {
+    public LogoutServlet(AccountService accountService) {
         this.accountService = accountService;
     }
 
@@ -25,24 +25,10 @@ public class LogInServlet extends HttpServlet implements PageUrlServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String login = request.getParameter("login");
-        String password = request.getParameter("password");
-
-        String responseAnswer;
-        switch (accountService.signIn(login, password, request.getSession().getId())) {
-            case OK:
-                responseAnswer = "The user " + login + " signin";
-                break;
-            case WRONG_LOGIN:
-                responseAnswer = "Enter correct login and password";
-                break;
-            default:
-                responseAnswer = "Unknown error";
-                break;
-        }
+        accountService.logout(request.getSession().toString());
 
         response.setStatus(HttpServletResponse.SC_OK);
-        response.getWriter().println(responseAnswer);
+        response.getWriter().println("Done");
     }
 
     @Override
