@@ -6,5 +6,6 @@ package base;
 public enum ResponsesCode {
     OK,
     ALREADY_EXISTS,
-    WRONG_LOGIN
+    WRONG_LOGIN,
+    BAD_INPUT
 }

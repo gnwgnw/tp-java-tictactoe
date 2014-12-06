@@ -35,10 +35,10 @@ public class SignupServletTest {
         when(request.getParameter("email")).thenReturn(newEmailString);
         when(request.getParameter("password")).thenReturn(newPasswordString);
         when(response.getWriter()).thenReturn(printWriter);
-        when(accountService.signUp(newLoginString, newEmailString, newPasswordString)).thenReturn(ResponsesCode.OK);
+        when(accountService.signup(newLoginString, newEmailString, newPasswordString)).thenReturn(ResponsesCode.OK);
 
         signupServlet.doPost(request, response);
-        verify(accountService, atLeastOnce()).signUp(newLoginString, newEmailString, newPasswordString);
+        verify(accountService, atLeastOnce()).signup(newLoginString, newEmailString, newPasswordString);
         assertTrue(stringWriter.toString().contains("The user testUser created"));
     }
 
@@ -51,10 +51,10 @@ public class SignupServletTest {
         StringWriter stringWriter = new StringWriter();
         PrintWriter printWriter = new PrintWriter(stringWriter);
         when(response.getWriter()).thenReturn(printWriter);
-        when(accountService.signUp(oldLoginString, oldEmailString, oldPasswordString)).thenReturn(ResponsesCode.ALREADY_EXISTS);
+        when(accountService.signup(oldLoginString, oldEmailString, oldPasswordString)).thenReturn(ResponsesCode.ALREADY_EXISTS);
 
         signupServlet.doPost(request, response);
-        verify(accountService, atLeastOnce()).signUp(oldLoginString, oldEmailString, oldPasswordString);
+        verify(accountService, atLeastOnce()).signup(oldLoginString, oldEmailString, oldPasswordString);
         assertTrue(stringWriter.toString().contains("The user defaultUser1 already exists"));
     }
 
@@ -67,10 +67,10 @@ public class SignupServletTest {
         StringWriter stringWriter = new StringWriter();
         PrintWriter printWriter = new PrintWriter(stringWriter);
         when(response.getWriter()).thenReturn(printWriter);
-        when(accountService.signUp(anyString(), anyString(), anyString())).thenReturn(ResponsesCode.WRONG_LOGIN);
+        when(accountService.signup(anyString(), anyString(), anyString())).thenReturn(ResponsesCode.WRONG_LOGIN);
 
         signupServlet.doPost(request, response);
-        verify(accountService, atLeastOnce()).signUp(anyString(), anyString(), anyString());
+        verify(accountService, atLeastOnce()).signup(anyString(), anyString(), anyString());
         assertTrue(stringWriter.toString().contains("Unknown error"));
     }
 }

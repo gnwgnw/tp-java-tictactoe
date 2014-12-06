@@ -1,18 +1,20 @@
 package base;
 
+import dao.UserDataSet;
+
 /**
  * Created by titaevskiy.s on 17.10.14
  */
 public interface AccountService {
-    ResponsesCode signUp(String login, String email, String password);
+    ResponsesCode signup(String login, String email, String password);
 
-    ResponsesCode signIn(String login, String password, String httpSessionId);
+    ResponsesCode login(String login, String password, String httpSessionId);
 
-    void signOut(String httpSessionId);
+    void logout(String httpSessionId);
 
-    int countSignIn();
+    int getCountActiveUsers();
 
-    int countSignUp();
+    long getCountSignupUsers();
 
     UserDataSet getUserDataSet(String httpSessionId);
 }

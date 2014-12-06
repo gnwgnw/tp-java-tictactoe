@@ -9,7 +9,8 @@ public class ReflectionHelper {
     public static Object createInstance(String className) {
         try {
             return Class.forName(className).newInstance();
-        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+        }
+        catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return null;
@@ -28,7 +29,8 @@ public class ReflectionHelper {
             }
 
             field.setAccessible(false);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
+        }
+        catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
     }

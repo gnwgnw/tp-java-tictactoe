@@ -17,6 +17,7 @@ import java.util.Map;
  * @author s.titaevskiy on 26.09.14.
  */
 public class AdminPageServlet extends HttpServlet implements PageUrlServlet {
+
     private static final String pageURL = "/admin";
     private final AccountService accountService;
 
@@ -24,20 +25,31 @@ public class AdminPageServlet extends HttpServlet implements PageUrlServlet {
         this.accountService = accountService;
     }
 
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String timeString = request.getParameter("shutdown");
         if (timeString != null) {
-            int timeMS = Integer.valueOf(timeString);
-            stopServer(timeMS);
+            try {
+                int timeMS = Integer.valueOf(timeString);
+                stopServer(timeMS);
+            }
+            catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
         }
 
         Map<String, Object> pageVariables = new HashMap<>();
         pageVariables.put("status", "run");
-        pageVariables.put("signup", accountService.countSignUp());
-        pageVariables.put("signin", accountService.countSignIn());
+        pageVariables.put("signup", accountService.getCountSignupUsers());
+        pageVariables.put("signin", accountService.getCountActiveUsers());
 
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().println(PageGenerator.getPage("admin.tml", pageVariables));
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     @Override

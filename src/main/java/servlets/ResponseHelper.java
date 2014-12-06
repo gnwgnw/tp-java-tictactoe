@@ -1,5 +1,6 @@
 package servlets;
 
+import base.ResponsesCode;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
@@ -10,24 +11,22 @@ import java.util.Map;
  */
 public class ResponseHelper {
 
-    private StatusCode status = StatusCode.ERROR;
-    private Map<String, Object> map = new HashMap<>();
+    private ResponsesCode status;
+    private Map<String, Object> response;
 
-    public void setStatusOk() {
-        this.status = StatusCode.OK;
+    public void setStatus(ResponsesCode status) {
+        this.status = status;
     }
 
     public void addToResponse(String name, Object obj) {
-        map.put(name, obj);
+        if (response == null) {
+            response = new HashMap<>();
+        }
+        response.put(name, obj);
     }
 
     public String toJsonString() {
         Gson gson = new Gson();
         return gson.toJson(this);
-    }
-
-    private enum StatusCode {
-        OK,
-        ERROR
     }
 }

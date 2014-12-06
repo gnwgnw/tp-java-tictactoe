@@ -24,15 +24,25 @@ public class UserDataSet implements Serializable {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "gameCount")
+    private long gameCount = 0;
+
+    @Column(name = "gameWin")
+    private long gameWin = 0;
+
+    @Column(name = "gameLose")
+    private long gameLose = 0;
 
     public UserDataSet(String login, String email, String password) {
         this.id = -1;
-        this.login= login;
+        this.login = login;
         this.email = email;
         this.password = password;
     }
 
-    public long getId(Long id) {
+    public UserDataSet() {}
+
+    public long getId() {
         return id;
     }
 
@@ -60,8 +70,31 @@ public class UserDataSet implements Serializable {
         return password;
     }
 
-    public void setPassword(String pw) {
-        this.password = pw;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
+    public long getGameCount() {
+        return gameCount;
+    }
+
+    public void setGameCount(long gameCount) {
+        this.gameCount = gameCount;
+    }
+
+    public long getGameWin() {
+        return gameWin;
+    }
+
+    public void setGameWin(long gameWin) {
+        this.gameWin = gameWin;
+    }
+
+    public long getGameLose() {
+        return gameLose;
+    }
+
+    public void setGameLose(long gameLose) {
+        this.gameLose = gameLose;
+    }
 }

@@ -2,7 +2,7 @@ package servlets;
 
 import base.AccountService;
 import base.PageUrlServlet;
-import base.UserDataSet;
+import dao.UserDataSet;
 import utils.PageGenerator;
 
 import javax.servlet.ServletException;
@@ -17,6 +17,7 @@ import java.util.Map;
  * @author s.titaevskiy on 26.09.14.
  */
 public class UserPageServlet extends HttpServlet implements PageUrlServlet {
+
     private static final String pageURL = "/userpage";
     private static final String redirectUrl = "/#login";
 
@@ -41,6 +42,11 @@ public class UserPageServlet extends HttpServlet implements PageUrlServlet {
 
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().println(PageGenerator.getPage("userpage.tml", pageVariables));
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
     @Override

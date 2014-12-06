@@ -63,7 +63,8 @@ public class PlayerWebSocket {
     public void updateGameState(UserGameState userGameState) {
         try {
             session.getRemote().sendString(userGameState.toJsonString());
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }

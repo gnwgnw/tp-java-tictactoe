@@ -2,6 +2,7 @@ package servlets;
 
 import base.AccountService;
 import base.PageUrlServlet;
+import base.ResponsesCode;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +14,7 @@ import java.io.IOException;
  * @author s.titaevskiy on 14.09.14.
  */
 public class LoginServlet extends HttpServlet implements PageUrlServlet {
+
     private static final String pageURL = "/login";
     private final AccountService accountService;
 
@@ -20,29 +22,39 @@ public class LoginServlet extends HttpServlet implements PageUrlServlet {
         this.accountService = accountService;
     }
 
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
+    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
-        String responseAnswer;
-        switch (accountService.login(login, password, request.getSession().getId())) {
+        ResponsesCode status = accountService.login(login, password, request.getSession().getId());
+
+        ResponseHelper responseHelper = new ResponseHelper();
+        responseHelper.setStatus(status);
+
+        switch (status) {//TODO
             case OK:
-                responseAnswer = "The user " + login + " signin";
+                responseHelper.addToResponse("user", accountService.getUserDataSet(request.getSession().getId()));
                 break;
+
             case WRONG_LOGIN:
-                responseAnswer = "Enter correct login and password";
                 break;
+
+            case BAD_INPUT:
+                break;
+
             default:
-                responseAnswer = "Unknown error";
                 break;
         }
 
         response.setStatus(HttpServletResponse.SC_OK);
-        response.getWriter().println(responseAnswer);
+        response.setContentType("application/json");
+        response.getWriter().println(responseHelper.toJsonString());
     }
 
     @Override

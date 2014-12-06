@@ -1,8 +1,33 @@
 package dao;
 
-import base.DatabaseService;
+import base.UsersDAO;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 /**
  * Created by titaevskiy.s on 05.12.14
  */
-public class DatabaseService implements DatabaseService {}
+public class DatabaseService {
+
+    private static SessionFactory sessionFactory;
+    private static UsersDAO usersDAO;
+
+    static {
+        Configuration configuration = new Configuration();
+        configuration.configure();
+
+        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
+                .build();
+
+        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+    }
+
+    public static UsersDAO getUsersDAO() {
+        if (usersDAO == null) {
+            usersDAO = new UsersDAOImpl(sessionFactory);
+        }
+        return usersDAO;
+    }
+}

@@ -33,7 +33,8 @@ public class ResourceFactory {
             saxParser.parse(fileName, handler);
 
             return handler.getObject();
-        } catch (ParserConfigurationException | SAXException | IOException e) {
+        }
+        catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
 

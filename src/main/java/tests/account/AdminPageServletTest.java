@@ -36,8 +36,8 @@ public class AdminPageServletTest {
         pageVariables.put("signin", signInCount);
 
         when(request.getParameter("Shutdown")).thenReturn(null);
-        when(accountService.countSignIn()).thenReturn(signInCount);
-        when(accountService.countSignUp()).thenReturn(signUpCount);
+        when(accountService.getCountActiveUsers()).thenReturn(signInCount);
+        when(accountService.getCountSignupUsers()).thenReturn((long) signUpCount);
         when(response.getWriter()).thenReturn(printWriter);
 
         adminPageServlet.doGet(request, response);

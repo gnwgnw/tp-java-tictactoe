@@ -1,74 +1,69 @@
 package dao;
 
-import org.hibernate.Criteria;
+import base.UsersDAO;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
-import java.util.List;
-
 /**
- * Created by kic on 11/9/14.
+ * Created by titaevskiy.s on 12/5/14
  */
-public class UsersDAOImpl implements UsersDAOImpl {
+public class UsersDAOImpl implements UsersDAO {
+
     private SessionFactory sessionFactory;
 
     public UsersDAOImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
-    public void save(UserDataSet dataSet) {
+    public void saveUser(UserDataSet dataSet) {
         Session session = sessionFactory.openSession();
-        Transaction trx = session.beginTransaction();
+        session.beginTransaction();
         session.save(dataSet);
-        trx.commit();
-        session.close();
+        try {
+            session.getTransaction().commit();
+        }
+        catch (HibernateException e) {
+            e.printStackTrace();
+        }
+        finally {
+            session.close();
+        }
     }
 
-    public UserDataSet read(long id) {
+    public UserDataSet getUserById(long id) {
         Session session = sessionFactory.openSession();
         UserDataSet user = (UserDataSet) session.load(UserDataSet.class, id);
         session.close();
         return user;
-
     }
 
-    public UserDataSet readByLogin(String user_login) {
+    public UserDataSet getUserByLogin(String userLogin) {
         Session session = sessionFactory.openSession();
-        Criteria criteria = session.createCriteria(UserDataSet.class);
-        UserDataSet user = (UserDataSet) criteria.add(Restrictions.eq("login", user_login)).uniqueResult();
+        UserDataSet user = (UserDataSet) session.createCriteria(UserDataSet.class)
+                .add(Restrictions.eq("login", userLogin))
+                .uniqueResult();
         session.close();
         return user;
     }
 
-    public boolean checkByLogin(String user_login) {
-        boolean isExist = false;
+    public boolean isUserExists(String userLogin) {
         Session session = sessionFactory.openSession();
-        Criteria criteria = session.createCriteria(UserDataSet.class);
-        UserDataSet user = (UserDataSet) criteria.add(Restrictions.eq("login", user_login)).uniqueResult();
-        if (user != null) {
-            isExist = true;
-        }
+        UserDataSet user = (UserDataSet) session.createCriteria(UserDataSet.class)
+                .add(Restrictions.eq("login", userLogin))
+                .uniqueResult();
         session.close();
-        return isExist;
+        return (user != null);
     }
 
-    public int count() {
+    public long getUsersCount() {
         Session session = sessionFactory.openSession();
-        UserDataSet result = (UserDataSet) session.createCriteria(UserDataSet.class).setProjection(Projections.rowCount()).uniqueResult();
-        int count = Integer.parseInt(result.toString());
+        long result = (long) session.createCriteria(UserDataSet.class)
+                .setProjection(Projections.rowCount())
+                .uniqueResult();
         session.close();
-        return count;
-    }
-
-    @SuppressWarnings("unchecked")
-    public List<UserDataSet> readAll() {
-        Session session = sessionFactory.openSession();
-        Criteria criteria = session.createCriteria(UserDataSet.class);
-        List users = (List<UserDataSet>) criteria.list();
-        session.close();
-        return users;
+        return result;
     }
 }

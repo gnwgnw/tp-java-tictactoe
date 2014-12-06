@@ -2,6 +2,7 @@ package servlets;
 
 import base.AccountService;
 import base.PageUrlServlet;
+import base.ResponsesCode;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +14,7 @@ import java.io.IOException;
  * @author s.titaevskiy on 14.09.14.
  */
 public class LogoutServlet extends HttpServlet implements PageUrlServlet {
+
     private static final String pageURL = "/logout";
     private final AccountService accountService;
 
@@ -20,15 +22,22 @@ public class LogoutServlet extends HttpServlet implements PageUrlServlet {
         this.accountService = accountService;
     }
 
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
     }
 
+    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        accountService.logout(request.getSession().toString());
+        accountService.logout(request.getSession().getId());
+
+        ResponseHelper responseHelper = new ResponseHelper();
+
+        responseHelper.setStatus(ResponsesCode.OK);
 
         response.setStatus(HttpServletResponse.SC_OK);
-        response.getWriter().println("Done");
+        response.setContentType("application/json");
+        response.getWriter().println(responseHelper.toJsonString());
     }
 
     @Override
