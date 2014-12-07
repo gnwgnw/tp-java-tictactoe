@@ -13,9 +13,7 @@ define([
             defaults: function () {
                 this.set({
                     login: "",
-                    gameCount: 0,
-                    gameLose: 0,
-                    gameWin: 0
+                    sign: ""
                 });
             }
         });

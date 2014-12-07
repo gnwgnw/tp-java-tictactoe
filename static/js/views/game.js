@@ -43,14 +43,20 @@ define([
 
             startGame: function () {
                 //TODO validate ws
-
-                this.initField();
-                this.initWS();
+                if (this.ws == undefined) {
+                    this.initField();
+                    this.initWS();
+                }
             },
 
             doTurn: function (position) {
                 //TODO
+                //TODO validate ws
                 console.log(position);
+
+                if (this.ws != undefined) {
+                    this.ws.send(position);
+                }
             },
 
             initField: function () {
@@ -58,24 +64,29 @@ define([
                 this.listenTo(this.field, 'turn', this.doTurn);
 
                 this.$el.find('#battlefield').html(this.field.$el);
-
-                //TODO test
-                this.field.setField([1, 4, 1, 0, 0, 0, 4, 1, 4]);
             },
 
             initWS: function () {
+                var that = this;
                 this.ws = new WebSocket("ws://127.0.0.1:8080/gameplay");
 
-                this.ws.onopen = function () {
-                    //TODO
+                this.ws.onopen = function (event) {
+                    //TODO show status of connection
+                    console.log(event);
                 };
 
-                this.ws.onmessage = function () {
+                this.ws.onmessage = function (event) {
+                    var data = JSON.parse(event.data);
+
                     //TODO
+                    console.log(data);
+
+                    that.field.setField(data.field);
                 };
 
                 this.ws.onclose = function () {
-                    //TODO
+                    //TODO clear players, battelfield
+                    that.ws = undefined;
                 };
             }
         });
