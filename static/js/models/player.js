@@ -12,9 +12,23 @@ define([
 
             defaults: function () {
                 this.set({
-                    login: "",
-                    sign: ""
+                    sign: "none"
                 });
+            },
+
+            setPlayer: function (data) {
+                switch (data.sign) {
+                    case 1:
+                        data.sign = 'x';
+                        break;
+                    case 4:
+                        data.sign = 'o';
+                        break;
+                    default :
+                        data.sign = "none";
+                }
+
+                this.set(data);
             }
         });
 

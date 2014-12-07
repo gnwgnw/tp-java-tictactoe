@@ -2,13 +2,17 @@ define([
         'backbone',
         'tmpl/game',
         'views/battlefield',
-        'models/user'
+        'views/player-status',
+        'models/user',
+        'models/player'
     ],
     function(
         Backbone,
         tmpl,
         battlefield,
-        user
+        playerStatus,
+        user,
+        player
     )
     {
         var View = Backbone.View.extend({
@@ -45,6 +49,7 @@ define([
                 //TODO validate ws
                 if (this.ws == undefined) {
                     this.initField();
+                    this.initBattleStatus();
                     this.initWS();
                 }
             },
@@ -82,12 +87,26 @@ define([
                     console.log(data);
 
                     that.field.setField(data.field);
+
+                    that.myPlayer.setPlayer(data.myGameUser);
+                    that.enemyPlayer.setPlayer(data.enemyGameUser);
+
+                    that.myStatus.show();
+                    that.enemyStatus.show();
                 };
 
                 this.ws.onclose = function () {
                     //TODO clear players, battelfield
                     that.ws = undefined;
                 };
+            },
+
+            initBattleStatus: function () {
+                this.myPlayer = new player();
+                this.enemyPlayer = new player();
+
+                this.myStatus = new playerStatus({model: this.myPlayer, el: '#my-info'});
+                this.enemyStatus = new playerStatus({model: this.enemyPlayer, el: '#enemy-info'});
             }
         });
 
