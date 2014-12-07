@@ -12,6 +12,7 @@ define([
 
             defaults: function () {
                 this.set({
+                    login: "",
                     sign: "none"
                 });
             },

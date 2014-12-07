@@ -2,4 +2,5 @@
 	<div id="my-info"/>
 	<div id="enemy-info"/>
 	<div id="battlefield"/>
+	<div id="status"/>
 </fest:template>

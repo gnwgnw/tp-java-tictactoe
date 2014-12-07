@@ -3,6 +3,7 @@ define([
         'tmpl/game',
         'views/battlefield',
         'views/player-status',
+        'views/battle-status',
         'models/user',
         'models/player'
     ],
@@ -11,6 +12,7 @@ define([
         tmpl,
         battlefield,
         playerStatus,
+        battleStatus,
         user,
         player
     )
@@ -49,7 +51,7 @@ define([
                 //TODO validate ws
                 if (this.ws == undefined) {
                     this.initField();
-                    this.initBattleStatus();
+                    this.initStatus();
                     this.initWS();
                 }
             },
@@ -90,9 +92,11 @@ define([
 
                     that.myPlayer.setPlayer(data.myGameUser);
                     that.enemyPlayer.setPlayer(data.enemyGameUser);
+                    that.battleStatus.setStatus(_.pick(data, "whoseTurn", "isFinished", "winner"));
 
                     that.myStatus.show();
                     that.enemyStatus.show();
+                    that.battleStatus.show();
                 };
 
                 this.ws.onclose = function () {
@@ -101,12 +105,14 @@ define([
                 };
             },
 
-            initBattleStatus: function () {
+            initStatus: function () {
                 this.myPlayer = new player();
                 this.enemyPlayer = new player();
 
                 this.myStatus = new playerStatus({model: this.myPlayer, el: '#my-info'});
                 this.enemyStatus = new playerStatus({model: this.enemyPlayer, el: '#enemy-info'});
+
+                this.battleStatus = new battleStatus({el: '#status'});
             }
         });
 
