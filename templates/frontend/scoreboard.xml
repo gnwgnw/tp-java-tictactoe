@@ -1,4 +1,7 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name='collection'>
+
+    <a href='#' class="button_right">Back</a>
+
     <fest:each iterate='collection' index='i' value='score'>
         <div>
             <fest:value>score.login</fest:value>
@@ -6,5 +9,4 @@
         </div>
     </fest:each>
 
-    <a href='#'>Back</a>
 </fest:template>
