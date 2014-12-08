@@ -12,11 +12,11 @@
                 <a href='#'>Back</a>
 
                 <fest:choose>
-                    <fest:when test="status.whoseTurn == 'none">
+                    <fest:when test="status.winner == 'none'">
                         <div>Nobody win</div>
                     </fest:when>
 
-                    <fest:when test="status.whoseTurn != 'none">
+                    <fest:when test="status.winner != 'none'">
                         <div>Win</div>
                         <div>
                             <img src="/img/{status.whoseTurn}.jpg"/>
