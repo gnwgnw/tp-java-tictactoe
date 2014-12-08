@@ -85,7 +85,7 @@ public class GameMechanicsImpl implements GameMechanics {
         webSocketService.notifyUpdateGameState(second);
     }
 
-    private void clearGameSessions() {
+    private void    clearGameSessions() {
         allGameSessions.stream().filter(GameSession::isFinished).forEach(gameSession -> {
             loginToGameSession.remove(gameSession.getFirstLogin());
             loginToGameSession.remove(gameSession.getSecondLogin());

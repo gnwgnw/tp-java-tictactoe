@@ -20,6 +20,7 @@ public class GameSession {
     public GameSession(String loginFirst, String loginSecond) {
         Random random = new Random();
         int signFirst = (random.nextInt(100) > 50) ? GameUser.X : GameUser.O;
+
         int signSecond = changeSign(signFirst);
 
         first = new GameUser(loginFirst, signFirst);
