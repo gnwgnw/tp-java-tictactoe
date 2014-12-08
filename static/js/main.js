@@ -1,5 +1,5 @@
 require.config({
-    urlArgs: "_=" + (new Date()).getTime(),
+//    urlArgs: "_=" + (new Date()).getTime(),
     baseUrl: "js",
     paths: {
         jquery: "lib/jquery",
@@ -18,13 +18,13 @@ require.config({
 });
 
 define([
-    'backbone',
-    'router'
+        'backbone',
+        'router'
     ],
     function(
         Backbone,
         router
     )
-{
-    Backbone.history.start();
-});
+    {
+        Backbone.history.start();
+    });

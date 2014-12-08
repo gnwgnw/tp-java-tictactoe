@@ -1,6 +1,7 @@
 package resource;
 
 import org.xml.sax.SAXException;
+import utils.SaxHandler;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -33,7 +34,8 @@ public class ResourceFactory {
             saxParser.parse(fileName, handler);
 
             return handler.getObject();
-        } catch (ParserConfigurationException | SAXException | IOException e) {
+        }
+        catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
 

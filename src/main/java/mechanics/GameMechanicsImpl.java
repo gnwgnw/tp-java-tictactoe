@@ -1,7 +1,6 @@
 package mechanics;
 
-import base.GameMechanics;
-import base.WebSocketService;
+import frontend.websocket.WebSocketService;
 import utils.TimeHelper;
 
 import java.util.Collections;

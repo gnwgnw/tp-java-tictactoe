@@ -1,0 +1,13 @@
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="user">
+    <div>
+        <div>TicTacToe</div>
+        <fest:if test="user.isLogined">
+            <div>
+                <div>
+                    <fest:value>user.login</fest:value>
+                </div>
+                <div>User statistics drop-down place here</div>
+            </div>
+        </fest:if>
+    </div>
+</fest:template>
