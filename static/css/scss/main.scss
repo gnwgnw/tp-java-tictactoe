@@ -1,46 +1,46 @@
 @import "_consts";
 @import "_button";
-@import "_battlefield";
 @import "_input";
+@import "_div";
+@import "_img";
 
 body {
     color: $white;
     background: $main_gray;
     font-family: $main_font;
 }
-h1 {
-    text-align: center;
-}
 label {
     display: block;
     text-align: center;
 }
+a {
+    text-decoration: none;
+}
 table {
-    background: $main_green;
-    border-collapse: collapse;
-    margin: 50px auto auto;
-    padding:5px;
+    margin: auto;
+    padding: 5px;
     max-width: 600px;
     max-height: 600px;
     width: 100%;
+    background: $main_green;
+    border-collapse: collapse;
     box-shadow: 0 10px 10px transparentize($black-half, 0);
     border: 10px solid transparentize($white-half, 0);
     font-size: 25px;
     font-weight: 700;
+    text-align: center;
 }
 th {
-    background: $main_green;
     padding:24px;
-    /*border-radius: 0px;*/
+    background: $main_green;
     border-bottom: 10px solid transparentize($white-half, 0);
+    /*border-radius: 0px;*/
     text-shadow: 0 1px 1px transparentize($black-half, 0);
 }
 td {
-    background: transparentize($white-half, 0);
-    /*border-radius: 7px;*/
     padding: 10px;
+    background: transparentize($white-half, 0);
     color: $names_color;
-}
-a {
-    text-decoration: none;
+    /*border-radius: 7px;*/
+    text-align: center;
 }

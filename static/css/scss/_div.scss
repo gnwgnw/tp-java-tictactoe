@@ -1,0 +1,76 @@
+@import "_consts";
+
+.div_menu {
+  margin: 110px auto auto auto;
+}
+.div_title {
+  position: absolute;
+  left: 0;
+  top: 25px;
+  right: 0;
+  margin: auto;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+}
+.div_logout {
+  position: absolute;
+  top: 0px;
+  right: 5%;
+}
+.div_user-info {
+  position: absolute;
+  top: 0px;
+  right: 200px;
+  margin: 10px;
+  text-align: right;
+  font-size: 30px;
+}
+.div_back {
+  position: absolute;
+  top: 80px;
+  left: 10%;
+}
+.div_player-info {
+  position: absolute;
+  top: 170px;
+  right: 10%;
+  text-align: center;
+}
+.div_enemy-info {
+  position: absolute;
+  top: 170px;
+  left: 10%;
+  text-align: center;
+}
+.div_game-status {
+  position: absolute;
+  top: 25px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+}
+.div_battlefield {
+  position: absolute;
+  top: 110px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 318px;
+  height: 310px;
+  border: 2px solid $white;
+}
+.div-battlefield-cell {
+  display: inline;
+}
+.div-scoreboard {
+  position: absolute;
+  top: 110px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+

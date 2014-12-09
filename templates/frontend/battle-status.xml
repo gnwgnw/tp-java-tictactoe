@@ -1,32 +1,29 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name='status'>
-    <div>
-        <fest:choose>
-            <fest:when test="!status.isFinished">
-                <div>Turn</div>
-                <div>
-                    <img src="/img/{status.whoseTurn}.jpg"/>
-                </div>
-            </fest:when>
 
-            <fest:when test="status.isFinished">
-                <a href='#'>Back</a>
+    <fest:choose>
+        <fest:when test="!status.isFinished">
+            Let's '<b><fest:value>status.whoseTurn</fest:value></b>'
+        </fest:when>
 
-                <fest:choose>
-                    <fest:when test="status.winner == 'none'">
-                        <div>Nobody win</div>
-                    </fest:when>
+        <!--TODO-->
+        <fest:when test="status.isFinished">
+            <a href='#'>Back</a>
 
-                    <fest:when test="status.winner != 'none'">
-                        <div>Win</div>
-                        <div>
-                            <img src="/img/{status.whoseTurn}.jpg"/>
-                        </div>
-                    </fest:when>
-                </fest:choose>
+            <fest:choose>
+                <fest:when test="status.winner == 'none'">
+                    <div>Nobody win</div>
+                </fest:when>
 
-                <!--TODO-->
-                <div>New game</div>
-            </fest:when>
-        </fest:choose>
-    </div>
+                <fest:when test="status.winner != 'none'">
+                    <div>Win</div>
+                    <div>
+                        <img src="/img/{status.whoseTurn}.png"/>
+                    </div>
+                </fest:when>
+            </fest:choose>
+
+            <!--TODO-->
+            <div>New game</div>
+        </fest:when>
+    </fest:choose>
 </fest:template>
