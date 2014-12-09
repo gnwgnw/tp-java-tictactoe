@@ -1,16 +1,20 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
 
-    <a href='#' class="button_right">Back</a>
+    <div class="div_back">
+        <a href='#' class="button_back">Back</a>
+    </div>
 
-    <form method="POST" id="signup-form">
-        <label>Login:</label>
-        <input class="input_authorization" name="login" required=""/>
-        <label>Email:</label>
-        <input class="input_authorization" name="email" type="email" required=""/>
-        <label>Password:</label>
-        <input class="input_authorization" name="password" type="password" required=""/>
-    </form>
+    <div class="div_menu">
+        <form method="POST" id="signup-form">
+            <label>Login:</label>
+            <input class="input_authorization" name="login" required=""/>
+            <label>Email:</label>
+            <input class="input_authorization" name="email" type="email" required=""/>
+            <label>Password:</label>
+            <input class="input_authorization" name="password" type="password" required=""/>
+        </form>
 
-    <input class="button_submit" type="submit" value="SignUp" form="signup-form"/>
+        <input class="button_submit" type="submit" value="SignUp" form="signup-form"/>
+    </div>
 
 </fest:template>

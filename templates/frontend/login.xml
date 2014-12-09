@@ -1,14 +1,19 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
 
-    <a href='#' class="button_right">Back</a>
+    <div class="div_back">
+        <a href='#' class="button_back">Back</a>
+    </div>
 
-    <form method="POST" id="login-form">
-        <label>Login:</label>
-        <input class="input_authorization" name="login" required=""/>
-        <label>Password:</label>
-        <input class="input_authorization" name="password" type="password" required=""/>
-    </form>
 
-    <input class="button_submit" type="submit" form="login-form" value="LogIn"/>
+    <div class="div_menu">
+        <form method="POST" id="login-form">
+            <label>Login:</label>
+            <input class="input_authorization" name="login" required=""/>
+            <label>Password:</label>
+            <input class="input_authorization" name="password" type="password" required=""/>
+        </form>
+
+        <input class="button_submit" type="submit" form="login-form" value="LogIn"/>
+    </div>
 
 </fest:template>

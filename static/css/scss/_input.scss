@@ -4,8 +4,8 @@
   display: block;
   margin: 0px auto 25px auto;
   padding: 10px;
-  font-size: 30px;
-  border: 10px solid transparentize($white-half, 0);
   background: transparentize($white-half, 0);
   color: $names_color;
+  border: 10px solid transparentize($white-half, 0);
+  font-size: 30px;
 }
