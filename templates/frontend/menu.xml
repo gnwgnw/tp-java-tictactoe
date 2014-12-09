@@ -1,33 +1,30 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="user">
-    <div>
-        <fest:choose>
-            <fest:when test="!user.isLogined">
-                <!--TODO-->
-                <div>
-                    <a href="#login">Login</a>
-                </div>
-                <div>
-                    <a href="#signup">Signup</a>
-                </div>
-            </fest:when>
 
-            <fest:when test="user.isLogined">
-                <!--TODO-->
-                <div>
-                    <a href="#game">Start</a>
-                </div>
-            </fest:when>
-        </fest:choose>
+    <fest:if test="user.isLogined">
+        <!--TODO-->
+        <form method="POST" id="logout-form">
+            <input class="button_logout" type="submit" value="Logout"/>
+        </form>
 
-        <div>
-            <a href="#scoreboard">Scoreboard</a>
-        </div>
+    </fest:if>
 
-        <fest:if test="user.isLogined">
+    <fest:choose>
+        <fest:when test="!user.isLogined">
             <!--TODO-->
-            <form method="POST" id="logout-form">
-                <input type="submit" value="Logout"/>
-            </form>
-        </fest:if>
-    </div>
+            <a href="#login" class="button_menu">Login</a>
+            <a href="#signup" class="button_menu">Signup</a>
+        </fest:when>
+
+        <fest:when test="user.isLogined">
+            <!--TODO-->
+            <a href="#game" class="button_menu">Start</a>
+        </fest:when>
+    </fest:choose>
+
+    <a href="#scoreboard" class="button_menu">Scoreboard</a>
+
+
+
+
+
 </fest:template>

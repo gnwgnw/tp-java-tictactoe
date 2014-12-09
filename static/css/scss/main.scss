@@ -1,22 +1,19 @@
 @import "_consts";
-@import "_buttons";
+@import "_button";
 @import "_battlefield";
+@import "_input";
 
 body {
     color: $white;
     background: $main_gray;
     font-family: $main_font;
 }
-
-div {
+h1 {
     text-align: center;
 }
-input {
-    padding: 10px;
-    font-size: 30px;
-    border: 10px solid transparentize($white-half, 0);
-    background: transparentize($white-half, 0);
-    color: $names_color;
+label {
+    display: block;
+    text-align: center;
 }
 table {
     background: $main_green;
@@ -43,4 +40,7 @@ td {
     /*border-radius: 7px;*/
     padding: 10px;
     color: $names_color;
+}
+a {
+    text-decoration: none;
 }
