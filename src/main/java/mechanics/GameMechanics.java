@@ -1,9 +1,11 @@
 package mechanics;
 
+import messageSystem.Abonent;
+
 /**
  * Created by titaevskiy.s on 23.10.14
  */
-public interface GameMechanics {
+public interface GameMechanics extends Abonent {
     void run();
 
     void waitForEnemy(String login);

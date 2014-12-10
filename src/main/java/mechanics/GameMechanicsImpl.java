@@ -1,6 +1,7 @@
 package mechanics;
 
 import frontend.websocket.WebSocketService;
+import messageSystem.Address;
 import utils.TimeHelper;
 
 import java.util.Collections;
@@ -12,7 +13,10 @@ import java.util.concurrent.ConcurrentHashMap;
  * Created by titaevskiy.s on 24.10.14
  */
 public class GameMechanicsImpl implements GameMechanics {
+
     private static final int STEP_TIME = 1000;
+
+    private final Address address = new Address();
 
     private final WebSocketService webSocketService;
 
@@ -20,7 +24,9 @@ public class GameMechanicsImpl implements GameMechanics {
     private final Map<String, GameSession> loginToGameSession = new ConcurrentHashMap<>();
     private String waiter;
 
-    public GameMechanicsImpl(WebSocketService webSocketService) { this.webSocketService = webSocketService;}
+    public GameMechanicsImpl(WebSocketService webSocketService) {
+        this.webSocketService = webSocketService;
+    }
 
     @SuppressWarnings("InfiniteLoopStatement")
     @Override
@@ -84,11 +90,16 @@ public class GameMechanicsImpl implements GameMechanics {
         webSocketService.notifyUpdateGameState(second);
     }
 
-    private void    clearGameSessions() {
+    private void clearGameSessions() {
         allGameSessions.stream().filter(GameSession::isFinished).forEach(gameSession -> {
             loginToGameSession.remove(gameSession.getFirstLogin());
             loginToGameSession.remove(gameSession.getSecondLogin());
             allGameSessions.remove(gameSession);
         });
+    }
+
+    @Override
+    public Address getAddress() {
+        return address;
     }
 }
