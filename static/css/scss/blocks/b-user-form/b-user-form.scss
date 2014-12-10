@@ -1,0 +1,31 @@
+@import "../../consts";
+
+.b-user-form {
+  margin: 120px auto auto auto;
+}
+
+.b-user-form__input {
+  display: block;
+  margin: 0px auto 25px auto;
+  padding: 10px;
+  background: transparentize($white-half, 0);
+  color: $names_color;
+  border: 10px solid transparentize($white-half, 0);
+  font-size: 30px;
+}
+
+.b-user-form__button {
+  display: block;
+  margin: 25px auto 25px auto;
+  padding: 10px;
+  width: 200px;
+  height: 60px;
+  background: $main_green;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 10px 10px transparentize($black-half, 0);
+  font-size: 25px;
+  font-weight: 700;
+  text-align: center;
+}

@@ -1,11 +1,14 @@
-@import "_consts";
-@import "_button";
-@import "_input";
-@import "_div";
-@import "_img";
+@import "blocks/b-page-top/b-page-top";
+@import "blocks/b-menu/b-menu";
+@import "blocks/b-back/b-back";
+@import "blocks/b-user-form/b-user-form";
+@import "blocks/b-scoreboard/b-scoreboard";
+@import "blocks/b-battle-status/b-battle-status";
+@import "blocks/b-battlefield/b-battlefield";
+@import "blocks/b-player-info/b-player-info";
 
 body {
-    color: $white;
+    color: white;
     background: $main_gray;
     font-family: $main_font;
 }

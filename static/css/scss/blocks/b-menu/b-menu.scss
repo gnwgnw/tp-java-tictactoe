@@ -1,0 +1,20 @@
+@import "../../consts";
+
+.b-menu {
+  margin: 150px auto auto auto;
+}
+
+.b-menu__button {
+  display: block;
+  margin: 25px auto 25px auto;
+  padding: 10px;
+  width: 400px;
+  height: 60px;
+  background: $main_green;
+  color: white;
+  border-radius: 3px;
+  box-shadow: 0 10px 10px transparentize($black-half, 0);
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+}

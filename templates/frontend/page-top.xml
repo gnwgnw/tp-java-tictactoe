@@ -1,12 +1,8 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="user">
 
-    <div class="div_title">
-        <fest:if test="!user.isLogined">
-            Welcome to TicTacToe!
-        </fest:if>
-    </div>
+    <div class="b-page-top b-page-top__title">TicTacToe</div>
 
-    <div class="div_user-info">
+    <div class="b-page-top b-page-top__user-info">
         <fest:if test="user.isLogined">
             <!--TODO-->
             <b><fest:value>user.login</fest:value></b>

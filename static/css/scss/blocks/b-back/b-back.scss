@@ -1,0 +1,17 @@
+@import "../../consts";
+
+.b-back {
+  position: absolute;
+  top: 200px;
+  left: 10%;
+}
+
+.b-back__button {
+  margin: 10px;
+  padding: 10px;
+  background: $main_gray;
+  color: white;
+  border: 2px solid white;
+  font-size: 20px;
+  text-align: center;
+}

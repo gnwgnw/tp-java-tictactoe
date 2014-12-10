@@ -1,29 +1,35 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name='status'>
 
     <fest:choose>
+        <!--<fest:when test="!status.isFinished">-->
+            <!--Let's [<fest:value>status.whoseTurn</fest:value>]-->
+        <!--</fest:when>-->
+
         <fest:when test="!status.isFinished">
-            Let's '<b><fest:value>status.whoseTurn</fest:value></b>'
+            Let's [<fest:value>status.whoseTurn</fest:value>] !
         </fest:when>
 
         <!--TODO-->
         <fest:when test="status.isFinished">
-            <a href='#'>Back</a>
+
+            <div class="b-back">
+                <a href='#' class="b-back__button">Back</a>
+            </div>
 
             <fest:choose>
                 <fest:when test="status.winner == 'none'">
-                    <div>Nobody win</div>
+                    <div>Nobody win :(</div>
                 </fest:when>
 
                 <fest:when test="status.winner != 'none'">
-                    <div>Win</div>
-                    <div>
-                        <img src="/img/{status.winner}.png"/>
-                    </div>
+                    WIN [<fest:value>status.winner</fest:value>] !!!
                 </fest:when>
             </fest:choose>
 
             <!--TODO-->
-            <div>New game</div>
+            <div class="b-battle-new-game-button">New game</div>
+
         </fest:when>
     </fest:choose>
+
 </fest:template>

@@ -1,0 +1,15 @@
+@import "../../consts";
+
+.b-player-info {
+  position: absolute;
+  top: 210px;
+  text-align: center;
+}
+
+.b-player-info__current-player {
+  left: 20%;
+}
+
+.b-player-info__enemy-player {
+  right: 20%;
+}

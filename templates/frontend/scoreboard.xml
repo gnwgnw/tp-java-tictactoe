@@ -1,19 +1,10 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name='collection'>
 
-    <div class="div_back">
-        <a href='#' class="button_back">Back</a>
+    <div class="b-back">
+        <a href='#' class="b-back__button">Back</a>
     </div>
 
-    <!--<fest:each iterate='collection' index='i' value='score'>-->
-        <!--<div>-->
-            <!--<fest:value>score.login</fest:value>-->
-            <!--<fest:value>score.gameCount</fest:value>-->
-        <!--</div>-->
-    <!--</fest:each>-->
-
-
-
-    <div class="div-scoreboard">
+    <div class="b-scoreboard">
         <table>
             <thead>
                 <tr>
@@ -24,17 +15,12 @@
             <tbody>
                 <fest:each iterate='collection' index='i' value='score'>
                     <tr>
-                        <td>
-                            <fest:value>score.login</fest:value>
-                        </td>
-                        <td>
-                            <fest:value>score.gameCount</fest:value>
-                        </td>
+                        <td><fest:value>score.login</fest:value></td>
+                        <td><fest:value>score.gameCount</fest:value></td>
                     </tr>
                 </fest:each>
             </tbody>
         </table>
     </div>
-
 
 </fest:template>

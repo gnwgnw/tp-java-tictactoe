@@ -1,6 +1,6 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
-	<div class="div_player-info" id="my-info"/>
-	<div class="div_enemy-info" id="enemy-info"/>
-	<div class="div_battlefield" id="battlefield"/>
-	<div class="div_game-status" id="status"/>
+	<div class="b-player-info b-player-info__current-player" id="my-info"/>
+	<div class="b-player-info b-player-info__enemy-player" id="enemy-info"/>
+	<div class="b-battle-status" id="status"/>
+	<div class="b-battlefield" id="battlefield"/>
 </fest:template>

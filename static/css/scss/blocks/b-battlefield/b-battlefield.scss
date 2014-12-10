@@ -1,0 +1,15 @@
+@import "../../consts";
+
+.b-battlefield {
+  margin: 50px auto auto auto;
+  width: 318px;
+  height: 315px;
+}
+
+.b-battlefield__cell {
+  display: inline;
+}
+
+.b-battlefield__picture {
+  margin: 0 2px 0 2px;
+}

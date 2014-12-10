@@ -1,4 +1,38 @@
-.button_menu {
+.b-page-top {
+  position: absolute;
+  top: 0px;
+  margin: 10px; }
+
+.b-page-top__title {
+  left: 3%;
+  font-size: 60px;
+  font-weight: bold; }
+
+.b-page-top__user-info {
+  right: 160px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: right; }
+
+.b-page-top__logout {
+  right: 50px; }
+
+.b-page-top__button-logout {
+  display: block;
+  margin: 10px;
+  padding: 10px;
+  background: gray;
+  color: white;
+  border: none;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center; }
+
+.b-menu {
+  margin: 150px auto auto auto; }
+
+.b-menu__button {
   display: block;
   margin: 25px auto 25px auto;
   padding: 10px;
@@ -12,19 +46,12 @@
   font-weight: 700;
   text-align: center; }
 
-.button_logout {
-  display: block;
-  margin: 10px;
-  padding: 10px;
-  background: gray;
-  color: white;
-  border: none;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-  font-size: 20px;
-  font-weight: 500;
-  text-align: center; }
+.b-back {
+  position: absolute;
+  top: 200px;
+  left: 10%; }
 
-.button_back {
+.b-back__button {
   margin: 10px;
   padding: 10px;
   background: gray;
@@ -33,7 +60,19 @@
   font-size: 20px;
   text-align: center; }
 
-.button_submit {
+.b-user-form {
+  margin: 120px auto auto auto; }
+
+.b-user-form__input {
+  display: block;
+  margin: 0px auto 25px auto;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  color: #333333;
+  border: 10px solid rgba(255, 255, 255, 0.5);
+  font-size: 30px; }
+
+.b-user-form__button {
   display: block;
   margin: 25px auto 25px auto;
   padding: 10px;
@@ -48,91 +87,50 @@
   font-weight: 700;
   text-align: center; }
 
-.input_authorization {
-  display: block;
-  margin: 0px auto 25px auto;
+.b-scoreboard {
+  margin: 120px auto auto auto; }
+
+.b-battle-status {
+  text-align: center;
+  margin: 150px 25% 10px 25%;
+  color: #40c781;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+  font-size: 35px;
+  font-weight: bold; }
+
+.b-battle-new-game-button {
+  position: absolute;
+  top: 360px;
+  left: 38%;
+  right: 38%;
   padding: 10px;
-  background: rgba(255, 255, 255, 0.5);
-  color: #333333;
-  border: 10px solid rgba(255, 255, 255, 0.5);
-  font-size: 30px; }
-
-.div_menu {
-  margin: 110px auto auto auto; }
-
-.div_title {
-  position: absolute;
-  left: 0;
-  top: 25px;
-  right: 0;
-  margin: auto;
-  font-size: 50px;
-  font-weight: bold;
+  background: #40c781;
+  color: white;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+  font-size: 20px;
   text-align: center; }
 
-.div_logout {
-  position: absolute;
-  top: 0px;
-  right: 5%; }
-
-.div_user-info {
-  position: absolute;
-  top: 0px;
-  right: 200px;
-  margin: 10px;
-  text-align: right;
-  font-size: 30px; }
-
-.div_back {
-  position: absolute;
-  top: 80px;
-  left: 10%; }
-
-.div_player-info {
-  position: absolute;
-  top: 170px;
-  right: 10%;
-  text-align: center; }
-
-.div_enemy-info {
-  position: absolute;
-  top: 170px;
-  left: 10%;
-  text-align: center; }
-
-.div_game-status {
-  position: absolute;
-  top: 25px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  font-size: 50px;
-  font-weight: bold;
-  text-align: center; }
-
-.div_battlefield {
-  position: absolute;
-  top: 110px;
-  left: 0;
-  right: 0;
-  margin: auto;
+.b-battlefield {
+  margin: 50px auto auto auto;
   width: 318px;
-  height: 310px;
-  border: 2px solid white; }
+  height: 315px; }
 
-.div-battlefield-cell {
+.b-battlefield__cell {
   display: inline; }
 
-.div-scoreboard {
-  position: absolute;
-  top: 110px;
-  left: 0;
-  right: 0;
-  margin: auto; }
+.b-battlefield__picture {
+  margin: 0 2px 0 2px; }
 
-.img_battlefield-sign {
-  padding: 0px 3px 0px 3px;
-  margin: auto; }
+.b-player-info {
+  position: absolute;
+  top: 210px;
+  text-align: center; }
+
+.b-player-info__current-player {
+  left: 20%; }
+
+.b-player-info__enemy-player {
+  right: 20%; }
 
 body {
   color: white;

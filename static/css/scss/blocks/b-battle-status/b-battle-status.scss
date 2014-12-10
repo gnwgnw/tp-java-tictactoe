@@ -1,0 +1,23 @@
+@import "../../consts";
+
+.b-battle-status {
+    text-align: center;
+    margin: 150px 25% 10px 25%;
+    color: $main_green;
+    box-shadow: 0 10px 10px transparentize($black-half, 0);
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.b-battle-new-game-button {
+    position: absolute;
+    top: 360px;
+    left: 38%;
+    right: 38%;
+    padding: 10px;
+    background: $main_green;
+    color: white;
+    box-shadow: 0 10px 10px transparentize($black-half, 0);
+    font-size: 20px;
+    text-align: center;
+}
