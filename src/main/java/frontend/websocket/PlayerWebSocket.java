@@ -1,7 +1,6 @@
 package frontend.websocket;
 
 import com.google.gson.JsonParser;
-import mechanics.GameMechanics;
 import mechanics.UserGameState;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketClose;
@@ -18,13 +17,11 @@ import java.io.IOException;
 public class PlayerWebSocket {
 
     private final String myLogin;
-    private final GameMechanics gameMechanics;
     private final WebSocketService webSocketService;
     private Session session;
 
-    public PlayerWebSocket(String myLogin, GameMechanics gameMechanics, WebSocketService webSocketService) {
+    public PlayerWebSocket(String myLogin, WebSocketService webSocketService) {
         this.myLogin = myLogin;
-        this.gameMechanics = gameMechanics;
         this.webSocketService = webSocketService;
     }
 
@@ -32,18 +29,18 @@ public class PlayerWebSocket {
     public void onConnect(Session session) {
         this.session = session;
         webSocketService.addSocket(this);
-        gameMechanics.waitForEnemy(myLogin);
+        webSocketService.startGame(myLogin);
     }
 
     @OnWebSocketMessage
     public void onMessage(String data) {
         final int position = new JsonParser().parse(data).getAsInt();
-        gameMechanics.doTurn(myLogin, position);
+        webSocketService.doTurn(myLogin, position);
     }
 
     @OnWebSocketClose
     public void onClose(int statusCode, String reason) {
-        gameMechanics.closeGameSession(myLogin); //TODO lose game then out
+        webSocketService.closeGameSession(myLogin);
         webSocketService.removeSocket(this);
     }
 

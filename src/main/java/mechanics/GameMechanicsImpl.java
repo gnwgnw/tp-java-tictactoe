@@ -1,7 +1,11 @@
 package mechanics;
 
-import frontend.websocket.WebSocketService;
+import frontend.websocket.messages.MessageGameOver;
+import frontend.websocket.messages.MessageGameStarted;
+import frontend.websocket.messages.MessageGameUpdated;
 import messageSystem.Address;
+import messageSystem.Message;
+import messageSystem.MessageSystem;
 import utils.TimeHelper;
 
 import java.util.Collections;
@@ -14,24 +18,26 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class GameMechanicsImpl implements GameMechanics {
 
-    private static final int STEP_TIME = 1000;
+    private static final int STEP_TIME = 50;
 
     private final Address address = new Address();
-
-    private final WebSocketService webSocketService;
+    private final MessageSystem messageSystem;
 
     private final Set<GameSession> allGameSessions = Collections.newSetFromMap(new ConcurrentHashMap<>());
     private final Map<String, GameSession> loginToGameSession = new ConcurrentHashMap<>();
     private String waiter;
 
-    public GameMechanicsImpl(WebSocketService webSocketService) {
-        this.webSocketService = webSocketService;
+    public GameMechanicsImpl(MessageSystem messageSystem) {
+        this.messageSystem = messageSystem;
+        messageSystem.addService(this);
+        messageSystem.getAddressService().registerGameMechanics(this);
     }
 
     @SuppressWarnings("InfiniteLoopStatement")
     @Override
     public void run() {
         while (true) {
+            messageSystem.execForAbonent(this);
             clearGameSessions();
             TimeHelper.sleep(STEP_TIME);
         }
@@ -66,7 +72,10 @@ public class GameMechanicsImpl implements GameMechanics {
 
     @Override
     public void closeGameSession(String login) {
-        loginToGameSession.get(login).closeGameSession();
+        final GameSession gameSession = loginToGameSession.get(login);
+        if (gameSession != null) {
+            gameSession.closeGameSession();
+        }
     }
 
     private void startGame(String waiter, String login) {
@@ -76,18 +85,24 @@ public class GameMechanicsImpl implements GameMechanics {
         loginToGameSession.put(waiter, gameSession);
         loginToGameSession.put(login, gameSession);
 
-        webSocketService.notifyStartGame(gameSession.getUserGameState(waiter));
-        webSocketService.notifyStartGame(gameSession.getUserGameState(login));
+        final Message message = new MessageGameStarted(address, messageSystem.getAddressService()
+                .getWebSocketServiceAddress(), gameSession.getUserGameState(waiter), gameSession.getUserGameState(login));
+
+        messageSystem.sendMessage(message);
     }
 
     private void gameOver(UserGameState first, UserGameState second) {
-        webSocketService.notifyGameOver(first);
-        webSocketService.notifyGameOver(second);
+        final Message message = new MessageGameOver(address, messageSystem.getAddressService()
+                .getWebSocketServiceAddress(), first, second);
+
+        messageSystem.sendMessage(message);
     }
 
     private void gameUpdate(UserGameState first, UserGameState second) {
-        webSocketService.notifyUpdateGameState(first);
-        webSocketService.notifyUpdateGameState(second);
+        final Message message = new MessageGameUpdated(address, messageSystem.getAddressService()
+                .getWebSocketServiceAddress(), first, second);
+
+        messageSystem.sendMessage(message);
     }
 
     private void clearGameSessions() {

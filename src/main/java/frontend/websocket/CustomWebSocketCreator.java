@@ -2,7 +2,6 @@ package frontend.websocket;
 
 import accounting.AccountService;
 import accounting.database.UserDataSet;
-import mechanics.GameMechanics;
 import org.eclipse.jetty.websocket.servlet.ServletUpgradeRequest;
 import org.eclipse.jetty.websocket.servlet.ServletUpgradeResponse;
 import org.eclipse.jetty.websocket.servlet.WebSocketCreator;
@@ -12,12 +11,10 @@ import org.eclipse.jetty.websocket.servlet.WebSocketCreator;
  */
 public class CustomWebSocketCreator implements WebSocketCreator {
 
-    private final GameMechanics gameMechanics;
     private final AccountService accountService;
     private final WebSocketService webSocketService;
 
-    public CustomWebSocketCreator(GameMechanics gameMechanics, AccountService accountService, WebSocketService webSocketService) {
-        this.gameMechanics = gameMechanics;
+    public CustomWebSocketCreator(AccountService accountService, WebSocketService webSocketService) {
         this.accountService = accountService;
         this.webSocketService = webSocketService;
     }
@@ -26,6 +23,6 @@ public class CustomWebSocketCreator implements WebSocketCreator {
     public Object createWebSocket(ServletUpgradeRequest req, ServletUpgradeResponse resp) {
         String sessionId = req.getHttpServletRequest().getSession().getId();
         UserDataSet userDataSet = accountService.getUserDataSet(sessionId);
-        return new PlayerWebSocket(userDataSet.getLogin(), gameMechanics, webSocketService);
+        return new PlayerWebSocket(userDataSet.getLogin(), webSocketService);
     }
 }
