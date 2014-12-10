@@ -4,6 +4,7 @@ package mechanics;
  * Created by titaevskiy.s on 16.11.14
  */
 public class Field {
+
     private final static int SIZE = 3;//TODO
     private final static int COUNT = SIZE * SIZE;
     private final int[] field = new int[COUNT];

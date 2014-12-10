@@ -8,6 +8,7 @@ import java.util.Random;
  * Created by titaevskiy.s on 24.10.14
  */
 public class GameSession {
+
     private final GameUser first;
     private final GameUser second;
     private final Map<String, GameUser> loginToGameUser = new HashMap<>();

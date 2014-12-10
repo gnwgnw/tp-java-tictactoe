@@ -6,6 +6,7 @@ import com.google.gson.Gson;
  * Created by titaevskiy.s on 24.10.14
  */
 public class UserGameState {
+
     private final GameUser myGameUser;
     private final GameUser enemyGameUser;
     private final int whoseTurn;

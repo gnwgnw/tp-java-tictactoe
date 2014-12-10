@@ -16,6 +16,7 @@ import java.io.IOException;
  */
 @WebSocket
 public class PlayerWebSocket {
+
     private final String myLogin;
     private final GameMechanics gameMechanics;
     private final WebSocketService webSocketService;

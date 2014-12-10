@@ -12,6 +12,7 @@ import java.io.IOException;
  * Created by titaevskiy.s on 20.11.14
  */
 public class ResourceFactory {
+
     private static ResourceFactory resourceFactory;
 
     private ResourceFactory() {

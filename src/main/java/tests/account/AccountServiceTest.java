@@ -1,4 +1,3 @@
-
 package tests.account;
 
 import accounting.AccountService;

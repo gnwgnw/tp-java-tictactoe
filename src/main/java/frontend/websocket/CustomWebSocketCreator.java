@@ -11,6 +11,7 @@ import org.eclipse.jetty.websocket.servlet.WebSocketCreator;
  * Created by titaevskiy.s on 23.10.14
  */
 public class CustomWebSocketCreator implements WebSocketCreator {
+
     private final GameMechanics gameMechanics;
     private final AccountService accountService;
     private final WebSocketService webSocketService;

@@ -8,6 +8,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * Created by titaevskiy.s on 20.11.14
  */
 public class SaxHandler extends DefaultHandler {
+
     private static final String CLASSNAME = "class";
     private String element = null;
     private Object object = null;
