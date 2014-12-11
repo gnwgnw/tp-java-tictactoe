@@ -13,7 +13,8 @@ define([
             defaults: function () {
                 this.set({
                     login: "",
-                    sign: "none"
+                    sign: "none",
+                    who: ""
                 });
             },
 

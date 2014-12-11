@@ -1,6 +1,6 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name='player'>
 
     <h1><fest:value>player.login</fest:value></h1>
-    <img src="/img/user_{player.sign}.png"/>
+    <img src="/img/{player.who}_{player.sign}.png"/>
 
 </fest:template>

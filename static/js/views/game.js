@@ -106,8 +106,8 @@ define([
             },
 
             initStatus: function () {
-                this.myPlayer = new player();
-                this.enemyPlayer = new player();
+                this.myPlayer = new player({who: "user"});
+                this.enemyPlayer = new player({who: "enemy"});
 
                 this.myStatus = new playerStatus({model: this.myPlayer, el: '#my-info'});
                 this.enemyStatus = new playerStatus({model: this.enemyPlayer, el: '#enemy-info'});
