@@ -34,10 +34,13 @@
         var timeout;
         var x = 0, y = 0;
 
+        localStorage.setItem('amplitude', amplitude);
+        localStorage.setItem('frequency', frequency);
+
         // --------------------------------------------------------------------
         function f(x) {
-            return Math.sin(frequency * x) * amplitude + 
-                drawStartY + drawHeight / 2;
+            return Math.sin( parseFloat(localStorage.getItem('frequency') ) * x) * 
+                   parseInt(localStorage.getItem('amplitude')) + drawStartY + drawHeight / 2;
         }
 
         // --------------------------------------------------------------------
@@ -152,25 +155,30 @@
                     mousePosY > buttonStartY && 
                     mousePosY < buttonStartY + buttonHeight) {
                     runAnimation = !runAnimation;
-                    animate(context);
                     rectButt(context);
                     pause(context);
+                    clearInterval(timeout); 
+                    animate(context);
                 }
             }
         	// ----------------------------------------------------------------
             document.onkeydown = function(e) {
                 e = e || window.event;
-                if (e.keyCode == 38 && amplitude < drawHeight / 2 - radius) {
-                    amplitude += 5;
+                if (e.keyCode == 38 && parseInt(localStorage.getItem('amplitude')) < drawHeight / 2 - radius) {
+                    // amplitude += 5;
+                    localStorage.setItem('amplitude', parseInt(localStorage.getItem('amplitude')) + 5);
                 }
-                if (e.keyCode == 40 && amplitude > 5) {
-                    amplitude -= 5;
+                if (e.keyCode == 40 && parseInt(localStorage.getItem('amplitude')) > 5) {
+                    // amplitude -= 5;
+                    localStorage.setItem('amplitude', parseInt(localStorage.getItem('amplitude')) - 5);
                 }
-                if (e.keyCode == 37 && frequency > 0.02) {
-                    frequency -= 0.005;
+                if (e.keyCode == 37 && parseFloat(localStorage.getItem('frequency')) > 0.02) {
+                    // frequency -= 0.005;
+                    localStorage.setItem('frequency', parseFloat(localStorage.getItem('frequency')) - 0.005);
                 }
-                if (e.keyCode == 39 && frequency < 0.15) {
-                    frequency += 0.005;
+                if (e.keyCode == 39 && parseFloat(localStorage.getItem('frequency')) < 0.15) {
+                    // frequency += 0.005;
+                    localStorage.setItem('frequency', parseFloat(localStorage.getItem('frequency')) + 0.005);
                 }
                 if (e.keyCode == 32) {
                     runAnimation = !runAnimation;
