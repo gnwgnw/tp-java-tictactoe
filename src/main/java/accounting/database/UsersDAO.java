@@ -14,4 +14,6 @@ public interface UsersDAO {
     boolean isUserExists(String userLogin);
 
     long getUsersCount();
+
+    void updateUser(UserDataSet dataSet);
 }

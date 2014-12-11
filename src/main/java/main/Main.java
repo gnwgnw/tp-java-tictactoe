@@ -30,7 +30,7 @@ public class Main {
         final Server server = new Server(serverResource.getPort());
 
         final MessageSystem messageSystem = new MessageSystem();
-        final AccountService accountService = new AccountServiceImpl();
+        final AccountService accountService = new AccountServiceImpl(messageSystem);
         final WebSocketService webSocketService = new WebSocketServiceImpl(messageSystem);
         final GameMechanics gameMechanics = new GameMechanicsImpl(messageSystem);
 
@@ -54,6 +54,7 @@ public class Main {
         server.start();
         new Thread(gameMechanics).start();
         new Thread(webSocketService).start();
+        new Thread(accountService).start();
     }
 
     private static void addServlet(ServletContextHandler contextHandler, PageUrlServlet servlet) {

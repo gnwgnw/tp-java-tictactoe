@@ -1,5 +1,6 @@
 package messageSystem;
 
+import accounting.AccountService;
 import frontend.websocket.WebSocketService;
 import mechanics.GameMechanics;
 
@@ -10,6 +11,7 @@ public class AddressService {
 
     private Address gameMechanicsAddress;
     private Address webSocketServiceAddress;
+    private Address accountServiceAddress;
 
     public void registerGameMechanics(GameMechanics gameMechanics) {
         this.gameMechanicsAddress = gameMechanics.getAddress();
@@ -19,11 +21,19 @@ public class AddressService {
         this.webSocketServiceAddress = webSocketService.getAddress();
     }
 
+    public void registerAccountService(AccountService accountService) {
+        this.accountServiceAddress = accountService.getAddress();
+    }
+
     public Address getGameMechanicsAddress() {
         return gameMechanicsAddress;
     }
 
     public Address getWebSocketServiceAddress() {
         return webSocketServiceAddress;
+    }
+
+    public Address getAccountServiceAddress() {
+        return accountServiceAddress;
     }
 }

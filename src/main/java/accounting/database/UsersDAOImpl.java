@@ -25,6 +25,7 @@ public class UsersDAOImpl implements UsersDAO {
             session.getTransaction().commit();
         }
         catch (HibernateException e) {
+            session.getTransaction().rollback();
             e.printStackTrace();
         }
         finally {
@@ -64,5 +65,22 @@ public class UsersDAOImpl implements UsersDAO {
                 .uniqueResult();
         session.close();
         return result;
+    }
+
+    @Override
+    public void updateUser(UserDataSet dataSet) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.update(dataSet);
+        try {
+            session.getTransaction().commit();
+        }
+        catch (HibernateException e) {
+            session.getTransaction().rollback();
+            e.printStackTrace();
+        }
+        finally {
+            session.close();
+        }
     }
 }

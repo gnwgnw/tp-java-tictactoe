@@ -1,5 +1,8 @@
 package mechanics;
 
+import accounting.messages.MessageUserLose;
+import accounting.messages.MessageUserPlay;
+import accounting.messages.MessageUserWin;
 import frontend.websocket.messages.MessageGameOver;
 import frontend.websocket.messages.MessageGameStarted;
 import frontend.websocket.messages.MessageGameUpdated;
@@ -85,17 +88,44 @@ public class GameMechanicsImpl implements GameMechanics {
         loginToGameSession.put(waiter, gameSession);
         loginToGameSession.put(login, gameSession);
 
-        final Message message = new MessageGameStarted(address, messageSystem.getAddressService()
+        final Message messageToWebSocket = new MessageGameStarted(address, messageSystem.getAddressService()
                 .getWebSocketServiceAddress(), gameSession.getUserGameState(waiter), gameSession.getUserGameState(login));
+        final Message messageToAccountWaiter = new MessageUserPlay(address, messageSystem.getAddressService()
+                .getAccountServiceAddress(), waiter);
+        final Message messageToAccountLogin = new MessageUserPlay(address, messageSystem.getAddressService()
+                .getAccountServiceAddress(), login);
 
-        messageSystem.sendMessage(message);
+        messageSystem.sendMessage(messageToWebSocket);
+        messageSystem.sendMessage(messageToAccountWaiter);
+        messageSystem.sendMessage(messageToAccountLogin);
     }
 
     private void gameOver(UserGameState first, UserGameState second) {
-        final Message message = new MessageGameOver(address, messageSystem.getAddressService()
+        if (first.getWinner() != 0) {
+            String winner;
+            String loser;
+            if (first.getMyGameUser().getSign() == first.getWinner()) {
+                winner = first.getMyGameUser().getLogin();
+                loser = second.getMyGameUser().getLogin();
+            }
+            else {
+                winner = second.getMyGameUser().getLogin();
+                loser = first.getMyGameUser().getLogin();
+            }
+
+            final Message messageToAccountWinner = new MessageUserWin(address, messageSystem.getAddressService()
+                    .getAccountServiceAddress(), winner);
+            final Message messageToAccountLoser = new MessageUserLose(address, messageSystem.getAddressService()
+                    .getAccountServiceAddress(), loser);
+
+            messageSystem.sendMessage(messageToAccountWinner);
+            messageSystem.sendMessage(messageToAccountLoser);
+        }
+
+        final Message messageToWebSocket = new MessageGameOver(address, messageSystem.getAddressService()
                 .getWebSocketServiceAddress(), first, second);
 
-        messageSystem.sendMessage(message);
+        messageSystem.sendMessage(messageToWebSocket);
     }
 
     private void gameUpdate(UserGameState first, UserGameState second) {

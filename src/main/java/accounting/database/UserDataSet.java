@@ -97,4 +97,16 @@ public class UserDataSet implements Serializable {
     public void setGameLose(long gameLose) {
         this.gameLose = gameLose;
     }
+
+    public void increaseGameCount() {
+        ++gameCount;
+    }
+
+    public void increaseGameWin() {
+        ++gameWin;
+    }
+
+    public void increaseGameLose() {
+        ++gameLose;
+    }
 }
