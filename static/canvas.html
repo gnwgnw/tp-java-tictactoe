@@ -34,8 +34,14 @@
         var timeout;
         var x = 0, y = 0;
 
-        localStorage.setItem('amplitude', amplitude);
-        localStorage.setItem('frequency', frequency);
+
+        if (localStorage.getItem("amplitude") === null) {
+            localStorage.setItem('amplitude', amplitude);
+        }
+        if (localStorage.getItem("frequency") === null) {
+            localStorage.setItem('frequency', frequency);
+        }
+
 
         // --------------------------------------------------------------------
         function f(x) {
@@ -133,6 +139,7 @@
                 y: evt.clientY - rect.top
             };
         }
+
 
         // ====================================================================
         var canvas = document.getElementById("mycanvas");
