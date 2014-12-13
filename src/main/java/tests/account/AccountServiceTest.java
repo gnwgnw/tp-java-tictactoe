@@ -14,7 +14,7 @@ public class AccountServiceTest {
 
     static int signUpCount;
     static MessageSystem messageSystem = new MessageSystem();
-    static  DatabaseBuilder databaseBuilder = new DatabaseBuilder("hibernate_test.cfg.xml");
+    static DatabaseBuilder databaseBuilder = new DatabaseBuilder("hibernate_test.cfg.xml");
 
     static AccountService accountService = new AccountServiceImpl(messageSystem, databaseBuilder.getUsersDAO());
     ResponsesCode response;
