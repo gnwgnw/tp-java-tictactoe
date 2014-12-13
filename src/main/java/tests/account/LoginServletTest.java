@@ -38,7 +38,7 @@ public class LoginServletTest {
 
         loginServlet.doPost(request, response);
         verify(accountService, atLeastOnce()).login(loginString, passwordString, sessionString);
-        assertTrue(stringWriter.toString().contains("The user defaultUser1 signin"));
+        assertTrue(stringWriter.toString().contains("{\"status\": \"OK\"}"));
     }
 
     @Test

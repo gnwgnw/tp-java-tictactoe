@@ -13,6 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class AccountServiceTest {
 
     static int signUpCount;
+
     static MessageSystem messageSystem = new MessageSystem();
     static  DatabaseBuilder databaseBuilder = new DatabaseBuilder("hibernate_test.cfg.xml");
 
