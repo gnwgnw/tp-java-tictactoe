@@ -1,6 +1,5 @@
 package accounting;
 
-import accounting.database.DatabaseService;
 import accounting.database.UserDataSet;
 import accounting.database.UsersDAO;
 import frontend.ResponsesCode;
@@ -22,9 +21,10 @@ public class AccountServiceImpl implements AccountService {
     private final MessageSystem messageSystem;
 
     private final Map<String, UserDataSet> sessions = new ConcurrentHashMap<>();
-    private final UsersDAO users = DatabaseService.getUsersDAO();
+    private final UsersDAO users;
 
-    public AccountServiceImpl(MessageSystem messageSystem) {
+    public AccountServiceImpl(MessageSystem messageSystem, UsersDAO users) {
+        this.users = users;
         this.messageSystem = messageSystem;
         messageSystem.addService(this);
         messageSystem.getAddressService().registerAccountService(this);

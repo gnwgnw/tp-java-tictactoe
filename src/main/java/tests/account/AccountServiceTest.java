@@ -1,8 +1,8 @@
-
 package tests.account;
 
 import accounting.AccountService;
 import accounting.AccountServiceImpl;
+import accounting.database.DatabaseBuilder;
 import accounting.database.UserDataSet;
 import frontend.ResponsesCode;
 import messageSystem.MessageSystem;
@@ -13,11 +13,13 @@ import static org.junit.Assert.assertEquals;
 public class AccountServiceTest {
 
     static int signUpCount;
-    final MessageSystem messageSystem = new MessageSystem();
-    final AccountService accountService = new AccountServiceImpl(messageSystem);
+    static MessageSystem messageSystem = new MessageSystem();
+    static  DatabaseBuilder databaseBuilder = new DatabaseBuilder("hibernate_test.cfg.xml");
+
+    static AccountService accountService = new AccountServiceImpl(messageSystem, databaseBuilder.getUsersDAO());
     ResponsesCode response;
 
-    void incSignUpUsers(ResponsesCode res){
+    void incSignUpUsers(ResponsesCode res) {
         if (res.equals(ResponsesCode.OK))
             ++signUpCount;
     }

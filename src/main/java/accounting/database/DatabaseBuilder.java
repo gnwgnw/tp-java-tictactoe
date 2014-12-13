@@ -8,14 +8,14 @@ import org.hibernate.service.ServiceRegistry;
 /**
  * Created by titaevskiy.s on 05.12.14
  */
-public class DatabaseService {
+public class DatabaseBuilder {
 
-    private static SessionFactory sessionFactory;
-    private static UsersDAO usersDAO;
+    private SessionFactory sessionFactory;
+    private UsersDAO usersDAO;
 
-    static {
+    public DatabaseBuilder(String configString) {
         Configuration configuration = new Configuration();
-        configuration.configure("hibernate_test.cfg.xml");
+        configuration.configure(configString);
 
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
                 .build();
@@ -23,7 +23,7 @@ public class DatabaseService {
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
     }
 
-    public static UsersDAO getUsersDAO() {
+    public UsersDAO getUsersDAO() {
         if (usersDAO == null) {
             usersDAO = new UsersDAOImpl(sessionFactory);
         }
