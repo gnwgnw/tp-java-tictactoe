@@ -1,0 +1,21 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://127.0.0.1:3306/tic_tac_db_forTest</property>
+        <property name="connection.username">tic_tac_user</property>
+        <property name="connection.password">0</property>
+        <property name="hbm2ddl.auto">create</property>
+
+        <mapping class="accounting.database.UserDataSet" />
+
+    </session-factory>
+</hibernate-configuration>
