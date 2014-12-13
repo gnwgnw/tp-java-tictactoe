@@ -2,6 +2,7 @@ package main;
 
 import accounting.AccountService;
 import accounting.AccountServiceImpl;
+import accounting.database.DatabaseBuilder;
 import frontend.servlets.*;
 import frontend.websocket.WebSocketService;
 import frontend.websocket.WebSocketServiceImpl;
@@ -30,7 +31,9 @@ public class Main {
         final Server server = new Server(serverResource.getPort());
 
         final MessageSystem messageSystem = new MessageSystem();
-        final AccountService accountService = new AccountServiceImpl(messageSystem);
+        final DatabaseBuilder databaseBuilder = new DatabaseBuilder("hibernate.cfg.xml");
+
+        final AccountService accountService = new AccountServiceImpl(messageSystem, databaseBuilder.getUsersDAO());
         final WebSocketService webSocketService = new WebSocketServiceImpl(messageSystem);
         final GameMechanics gameMechanics = new GameMechanicsImpl(messageSystem);
 
