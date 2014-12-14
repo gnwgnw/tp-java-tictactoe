@@ -1,36 +1,21 @@
 .b-page-top {
-  position: absolute;
-  top: 0px;
-  margin: 10px; }
+  margin: 0 25px 0 25px;
+  display: inline; }
 
 .b-page-top__title {
-  left: 3%;
-  font-size: 60px;
+  text-align: left;
+  font-size: 50px;
   font-weight: bold; }
 
 .b-page-top__user-info {
-  right: 160px;
-  font-size: 30px;
-  font-weight: bold;
-  text-align: right; }
-
-.b-page-top__logout {
-  right: 50px; }
-
-.b-page-top__button-logout {
-  display: block;
+  float: right;
   margin: 10px;
-  padding: 10px;
-  background: gray;
-  color: white;
-  border: none;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-  font-size: 20px;
-  font-weight: 500;
-  text-align: center; }
+  text-align: right;
+  font-size: 30px;
+  font-weight: bold; }
 
 .b-menu {
-  margin: 150px auto auto auto; }
+  margin: 50px auto auto auto; }
 
 .b-menu__button {
   display: block;
@@ -47,12 +32,12 @@
   text-align: center; }
 
 .b-back {
-  position: absolute;
-  top: 200px;
-  left: 10%; }
+  float: left;
+  width: 100%;
+  margin-top: -30px; }
 
 .b-back__button {
-  margin: 10px;
+  margin: 30px;
   padding: 10px;
   background: gray;
   color: white;
@@ -61,7 +46,7 @@
   text-align: center; }
 
 .b-user-form {
-  margin: 120px auto auto auto; }
+  margin: 50px auto auto auto; }
 
 .b-user-form__input {
   display: block;
@@ -88,11 +73,12 @@
   text-align: center; }
 
 .b-scoreboard {
-  margin: 120px auto auto auto; }
+  margin: 50px auto auto auto;
+  padding: 10px; }
 
 .b-battle-status {
   text-align: center;
-  margin: 150px 25% 10px 25%;
+  margin: 50px 25% 10px 25%;
   color: #40c781;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
   font-size: 35px;
@@ -131,6 +117,20 @@
 
 .b-player-info__enemy-player {
   right: 20%; }
+
+.b-logout {
+  text-align: right; }
+
+.b-logout__button {
+  margin: 10px;
+  padding: 10px;
+  background: gray;
+  color: white;
+  border: none;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center; }
 
 body {
   color: white;

@@ -1,13 +1,14 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="user">
 
-    <div class="b-page-top b-page-top__logout">
+    <span class="b-logout">
         <fest:if test="user.isLogined">
             <!--TODO-->
-            <form method="POST" id="logout-form">
-                <input class="b-page-top__button-logout" type="submit" value="Logout"/>
-            </form>
+                <form method="POST" id="logout-form">
+                    <input class="b-logout__button" type="submit" value="Logout"/>
+                </form>
         </fest:if>
-    </div>
+    </span>
+
 
     <div class="b-menu">
         <fest:choose>

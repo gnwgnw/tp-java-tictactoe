@@ -1,0 +1,17 @@
+@import "../../consts";
+
+.b-logout {
+  text-align: right;
+}
+
+.b-logout__button {
+  margin: 10px;
+  padding: 10px;
+  background: $main_gray;
+  color: white;
+  border: none;
+  box-shadow: 0 10px 10px transparentize($black-half, 0);
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+}
