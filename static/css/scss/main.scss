@@ -7,6 +7,7 @@
 @import "blocks/b-battlefield/b-battlefield";
 @import "blocks/b-player-info/b-player-info";
 @import "blocks/b-logout/b-logout";
+@import "blocks/b-page-boby/b-page-body";
 
 body {
     color: white;
@@ -47,4 +48,7 @@ td {
     color: $names_color;
     /*border-radius: 7px;*/
     text-align: center;
+}
+h1 {
+    margin: 0;
 }

@@ -1,9 +1,11 @@
 @import "../../consts";
 
 .b-battlefield {
-  margin: 50px auto auto auto;
+  margin: 55px auto auto auto;
   width: 318px;
   height: 315px;
+  text-align: center;
+  display: flex;
 }
 
 .b-battlefield__cell {

@@ -1,9 +1,5 @@
 <fest:template xmlns:fest="http://fest.mail.ru">
 
-    <div class="b-back">
-        <a href='#' class="b-back__button">Back</a>
-    </div>
-
     <div class="b-user-form">
         <form method="POST" id="login-form">
             <label>Login:</label>
@@ -13,6 +9,10 @@
         </form>
 
         <input class="b-user-form__button" type="submit" form="login-form" value="LogIn"/>
+    </div>
+
+    <div class="b-back">
+        <a href='#' class="b-back__button">Back</a>
     </div>
 
 </fest:template>

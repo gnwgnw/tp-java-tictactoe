@@ -1,15 +1,19 @@
 @import "../../consts";
 
 .b-player-info {
-  position: absolute;
-  top: 210px;
-  text-align: center;
+//  display: inline-block;
 }
 
 .b-player-info__current-player {
-  left: 20%;
+  max-width: 200px;
+  margin: auto 0 0 10%;
+  float: left;
+  text-align: left;
 }
 
+
 .b-player-info__enemy-player {
-  right: 20%;
+  margin: auto 10% 0 0;
+  float: right;
+  text-align: right;
 }

@@ -1,19 +1,20 @@
 @import "../../consts";
 
 .b-page-top {
-  margin: 0 25px 0 25px;
+  margin: 0 20px 0 20px;
   display:  inline;
 }
 
 .b-page-top__title {
+  padding: 10px;
   text-align: left;
-  font-size: 50px;
+  font-size: 35px;
   font-weight: bold;
 }
 
 .b-page-top__user-info {
   float: right;
-  margin: 10px;
+  margin: 7px 10px 0 0;
   text-align: right;
   font-size: 30px;
   font-weight: bold;

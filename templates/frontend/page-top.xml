@@ -9,10 +9,9 @@
                 --info--
             </span>
             <span class="b-page-top__user-info">
-                <b><fest:value>user.login</fest:value></b>
+                <fest:value>user.login</fest:value>
             </span>
         </fest:if>
     </div>
-
 
 </fest:template>

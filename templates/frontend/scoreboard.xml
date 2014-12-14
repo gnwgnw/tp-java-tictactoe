@@ -1,9 +1,5 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name='collection'>
 
-    <div class="b-back">
-        <a href='#' class="b-back__button">Back</a>
-    </div>
-
     <div class="b-scoreboard">
         <table>
             <thead>
@@ -21,6 +17,10 @@
                 </fest:each>
             </tbody>
         </table>
+    </div>
+
+    <div class="b-back">
+        <a href='#' class="b-back__button">Back</a>
     </div>
 
 </fest:template>
