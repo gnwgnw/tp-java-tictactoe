@@ -9,13 +9,11 @@
             <label>Password:</label>
             <input class="b-user-form__input" name="password" type="password" required=""/>
         </form>
-
-        <input class="b-user-form__button" type="submit" value="SignUp" form="signup-form"/>
     </div>
 
-    <div class="b-back">
-        <a href='#' class="b-back__button">Back</a>
+    <div class="b-submit-button">
+        <button class="b-submit-button__button" type="submit" form="login-form">LogIn</button>
+        <a href='#'><button class="b-submit-button__button">Back</button></a>
     </div>
-
 
 </fest:template>

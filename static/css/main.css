@@ -59,21 +59,6 @@
   border: 10px solid rgba(255, 255, 255, 0.5);
   font-size: 30px; }
 
-.b-user-form__button {
-  display: block;
-  margin: 25px auto 25px auto;
-  padding: 10px;
-  width: 200px;
-  height: 60px;
-  background: #40c781;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-  font-size: 25px;
-  font-weight: 700;
-  text-align: center; }
-
 .b-scoreboard {
   margin: 50px auto auto auto;
   padding: 10px; }
@@ -94,7 +79,7 @@
   margin: -250px 30% 150px 30%;
   font-size: 40px;
   font-weight: bold;
-  background-clip: gray;
+  background: gray;
   color: #40c781;
   border: 2px solid;
   border-radius: 2px; }
@@ -150,6 +135,25 @@
 
 .b-page-body {
   margin-top: 1%; }
+
+.b-submit-button {
+  position: inherit;
+  text-align: center;
+  margin: 0px 30% 150px 30%; }
+
+.b-submit-button__button {
+  margin: 10px;
+  padding: 10px;
+  width: 150px;
+  height: 60px;
+  background: #40c781;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+  font-size: 25px;
+  font-weight: 700;
+  text-align: center; }
 
 body {
   color: white;

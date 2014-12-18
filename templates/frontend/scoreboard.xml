@@ -19,8 +19,8 @@
         </table>
     </div>
 
-    <div class="b-back">
-        <a href='#' class="b-back__button">Back</a>
+    <div class="b-submit-button">
+        <a href='#'><button class="b-submit-button__button">Back</button></a>
     </div>
 
 </fest:template>

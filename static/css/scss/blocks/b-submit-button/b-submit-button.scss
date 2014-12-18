@@ -1,0 +1,22 @@
+@import "../../consts";
+
+.b-submit-button {
+  position: inherit;
+  text-align: center;
+  margin: 0px 30% 150px 30%;
+}
+
+.b-submit-button__button {
+  margin: 10px;
+  padding: 10px;
+  width: 150px;
+  height: 60px;
+  background: $main_green;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 10px 10px transparentize($black-half, 0);
+  font-size: 25px;
+  font-weight: 700;
+  text-align: center;
+}
