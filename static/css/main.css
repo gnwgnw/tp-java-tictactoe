@@ -34,19 +34,6 @@
   font-family: "Comic Sanc MS";
   text-align: center; }
 
-.b-back {
-  position: relative;
-  top: 10px; }
-
-.b-back__button {
-  margin: 1%;
-  padding: 10px;
-  background: gray;
-  color: white;
-  border: 2px solid white;
-  font-size: 20px;
-  text-align: center; }
-
 .b-user-form {
   margin: 55px auto auto auto; }
 
