@@ -1,4 +1,4 @@
-package tests.message;
+package message;
 
 import messageSystem.*;
 import org.junit.Test;
