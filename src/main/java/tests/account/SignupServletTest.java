@@ -29,6 +29,10 @@ public class SignupServletTest {
     String oldEmailString = "defaultUser1@mail.ru";
     String oldPasswordString = "123";
 
+    String jsonOK           = "{\"status\":\"OK\"}\n";
+    String jsonWRONG_LOGIN   = "{\"status\":\"WRONG_LOGIN\"}\n";
+    String jsonALREADY_EXISTS   = "{\"status\":\"ALREADY_EXISTS\"}\n";
+
     @Test
     public void testDoPostOK() throws Exception {
         when(request.getParameter("login")).thenReturn(newLoginString);
@@ -39,7 +43,7 @@ public class SignupServletTest {
 
         signupServlet.doPost(request, response);
         verify(accountService, atLeastOnce()).signup(newLoginString, newEmailString, newPasswordString);
-        assertTrue(stringWriter.toString().contains("The user testUser created"));
+        assertTrue(stringWriter.toString().contains(jsonOK));
     }
 
     @Test
@@ -55,7 +59,7 @@ public class SignupServletTest {
 
         signupServlet.doPost(request, response);
         verify(accountService, atLeastOnce()).signup(oldLoginString, oldEmailString, oldPasswordString);
-        assertTrue(stringWriter.toString().contains("The user defaultUser1 already exists"));
+        assertTrue(stringWriter.toString().contains(jsonALREADY_EXISTS));
     }
 
     @Test
@@ -71,6 +75,6 @@ public class SignupServletTest {
 
         signupServlet.doPost(request, response);
         verify(accountService, atLeastOnce()).signup(anyString(), anyString(), anyString());
-        assertTrue(stringWriter.toString().contains("Unknown error"));
+        assertTrue(stringWriter.toString().contains(jsonWRONG_LOGIN));
     }
 }
