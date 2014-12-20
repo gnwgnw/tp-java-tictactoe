@@ -1,4 +1,4 @@
-package tests.account;
+package account;
 
 import accounting.AccountService;
 import frontend.ResponsesCode;
