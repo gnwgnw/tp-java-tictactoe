@@ -1,36 +1,22 @@
 .b-page-top {
-  position: absolute;
-  top: 0px;
-  margin: 10px; }
+  margin: 0 20px 0 20px;
+  display: inline; }
 
 .b-page-top__title {
-  left: 3%;
-  font-size: 60px;
+  padding: 10px;
+  text-align: left;
+  font-size: 35px;
   font-weight: bold; }
 
 .b-page-top__user-info {
-  right: 160px;
+  float: right;
+  margin: 7px 10px 0 0;
+  text-align: right;
   font-size: 30px;
-  font-weight: bold;
-  text-align: right; }
-
-.b-page-top__logout {
-  right: 50px; }
-
-.b-page-top__button-logout {
-  display: block;
-  margin: 10px;
-  padding: 10px;
-  background: gray;
-  color: white;
-  border: none;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-  font-size: 20px;
-  font-weight: 500;
-  text-align: center; }
+  font-weight: bold; }
 
 .b-menu {
-  margin: 150px auto auto auto; }
+  margin: 55px auto auto auto; }
 
 .b-menu__button {
   display: block;
@@ -40,28 +26,16 @@
   height: 60px;
   background: #40c781;
   color: white;
+  border: none;
   border-radius: 3px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
   font-size: 40px;
   font-weight: 700;
-  text-align: center; }
-
-.b-back {
-  position: absolute;
-  top: 200px;
-  left: 10%; }
-
-.b-back__button {
-  margin: 10px;
-  padding: 10px;
-  background: gray;
-  color: white;
-  border: 2px solid white;
-  font-size: 20px;
+  font-family: "Comic Sanc MS";
   text-align: center; }
 
 .b-user-form {
-  margin: 120px auto auto auto; }
+  margin: 55px auto auto auto; }
 
 .b-user-form__input {
   display: block;
@@ -72,11 +46,92 @@
   border: 10px solid rgba(255, 255, 255, 0.5);
   font-size: 30px; }
 
-.b-user-form__button {
-  display: block;
-  margin: 25px auto 25px auto;
+.b-scoreboard {
+  margin: 50px auto auto auto;
+  padding: 10px; }
+
+.b-battle-status__notification {
+  position: relative;
+  text-align: center;
+  margin: 0 25% 0 25%;
+  color: #40c781;
+  border-radius: 2px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+  font-size: 30px;
+  font-weight: bold; }
+
+.b-battle-status__game-result {
+  position: inherit;
+  text-align: center;
+  margin: -250px 30% 150px 30%;
+  font-size: 40px;
+  font-weight: bold;
+  background: gray;
+  color: #40c781;
+  border: 2px solid;
+  border-radius: 2px; }
+
+.b-battle-status__button {
+  margin: 10px;
+  border: none;
   padding: 10px;
-  width: 200px;
+  background: #40c781;
+  color: white;
+  border-radius: 2px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  font-weight: bold; }
+
+.b-battlefield {
+  margin: 55px auto auto auto;
+  width: 318px;
+  height: 315px;
+  text-align: center;
+  display: flex; }
+
+.b-battlefield__cell {
+  display: inline; }
+
+.b-battlefield__picture {
+  margin: 0 2px 0 2px; }
+
+.b-player-info__current-player {
+  max-width: 200px;
+  margin: auto 0 0 10%;
+  float: left;
+  text-align: left; }
+
+.b-player-info__enemy-player {
+  margin: auto 10% 0 0;
+  float: right;
+  text-align: right; }
+
+.b-logout {
+  text-align: right; }
+
+.b-logout__button {
+  margin: 10px;
+  padding: 10px;
+  background: gray;
+  color: white;
+  border: none;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center; }
+
+.b-page-body {
+  margin-top: 1%; }
+
+.b-submit-button {
+  position: inherit;
+  text-align: center;
+  margin: 0px 30% 150px 30%; }
+
+.b-submit-button__button {
+  margin: 10px;
+  padding: 10px;
+  width: 150px;
   height: 60px;
   background: #40c781;
   color: white;
@@ -86,51 +141,6 @@
   font-size: 25px;
   font-weight: 700;
   text-align: center; }
-
-.b-scoreboard {
-  margin: 120px auto auto auto; }
-
-.b-battle-status {
-  text-align: center;
-  margin: 150px 25% 10px 25%;
-  color: #40c781;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-  font-size: 35px;
-  font-weight: bold; }
-
-.b-battle-new-game-button {
-  position: absolute;
-  top: 360px;
-  left: 38%;
-  right: 38%;
-  padding: 10px;
-  background: #40c781;
-  color: white;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
-  font-size: 20px;
-  text-align: center; }
-
-.b-battlefield {
-  margin: 50px auto auto auto;
-  width: 318px;
-  height: 315px; }
-
-.b-battlefield__cell {
-  display: inline; }
-
-.b-battlefield__picture {
-  margin: 0 2px 0 2px; }
-
-.b-player-info {
-  position: absolute;
-  top: 210px;
-  text-align: center; }
-
-.b-player-info__current-player {
-  left: 20%; }
-
-.b-player-info__enemy-player {
-  right: 20%; }
 
 body {
   color: white;
@@ -171,3 +181,6 @@ td {
   color: #333333;
   /*border-radius: 7px;*/
   text-align: center; }
+
+h1 {
+  margin: 0; }

@@ -20,3 +20,4 @@ static/js/tmpl/
 target/
 node_modules/
 TicTacToe.iml
+*.log

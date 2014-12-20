@@ -16,16 +16,21 @@ import static org.mockito.Mockito.*;
 
 public class LoginServletTest {
     final AccountService accountService = mock(AccountService.class);
-    final LoginServlet loginServlet = new LoginServlet(accountService);
-    final HttpServletRequest request = mock(HttpServletRequest.class);
-    final HttpServletResponse response = mock(HttpServletResponse.class);
-    final HttpSession httpSession = mock(HttpSession.class);
-    final StringWriter stringWriter = new StringWriter();
-    final PrintWriter printWriter = new PrintWriter(stringWriter);
+    final HttpSession httpSession       = mock(HttpSession.class);
+    final HttpServletRequest request    = mock(HttpServletRequest.class);
+    final HttpServletResponse response  = mock(HttpServletResponse.class);
 
-    String loginString = "defaultUser1";
-    String passwordString = "123";
-    String sessionString = "session";
+    final LoginServlet loginServlet     = new LoginServlet(accountService);
+    final StringWriter stringWriter     = new StringWriter();
+    final PrintWriter printWriter       = new PrintWriter(stringWriter);
+
+    String loginString      = "defaultUser1";
+    String passwordString   = "123";
+    String sessionString    = "session";
+    String jsonOK           = "{\"status\":\"OK\",\"response\":{}}\n";
+    String jsonWRONG_LOGIN    = "{\"status\":\"WRONG_LOGIN\"}\n";
+    String jsonALREADY_EXISTS = "{\"status\":\"ALREADY_EXISTS\"}\n";
+
 
     @Test
     public void testDoPostResponseOk() throws Exception {
@@ -38,7 +43,7 @@ public class LoginServletTest {
 
         loginServlet.doPost(request, response);
         verify(accountService, atLeastOnce()).login(loginString, passwordString, sessionString);
-        assertTrue(stringWriter.toString().contains("{\"status\": \"OK\"}"));
+        assertTrue(stringWriter.toString().contains(jsonOK));
     }
 
     @Test
@@ -52,7 +57,7 @@ public class LoginServletTest {
 
         loginServlet.doPost(request, response);
         verify(accountService, atLeastOnce()).login(loginString, passwordString, sessionString);
-        assertTrue(stringWriter.toString().contains("Enter correct login and password"));
+        assertTrue(stringWriter.toString().contains(jsonWRONG_LOGIN));
     }
 
     @Test
@@ -66,6 +71,6 @@ public class LoginServletTest {
 
         loginServlet.doPost(request, response);
         verify(accountService, atLeastOnce()).login(loginString, passwordString, sessionString);
-        assertTrue(stringWriter.toString().contains("Unknown error"));
+        assertTrue(stringWriter.toString().contains(jsonALREADY_EXISTS));
     }
 }

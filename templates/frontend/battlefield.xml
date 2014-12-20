@@ -1,9 +1,9 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name='field'>
 
     <fest:each iterate='field' index='i' value='node'>
-        <div class="b-battlefield__cell battlefield-node" id="{i}">
+        <span class="b-battlefield__cell battlefield-node" id="{i}">
             <img class="b-battlefield__picture" src="/img/{node.status}.png"/>
-        </div>
+        </span>
     </fest:each>
 
 </fest:template>

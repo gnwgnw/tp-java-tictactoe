@@ -6,6 +6,9 @@
 @import "blocks/b-battle-status/b-battle-status";
 @import "blocks/b-battlefield/b-battlefield";
 @import "blocks/b-player-info/b-player-info";
+@import "blocks/b-logout/b-logout";
+@import "blocks/b-page-boby/b-page-body";
+@import "blocks/b-submit-button/b-submit-button";
 
 body {
     color: white;
@@ -46,4 +49,7 @@ td {
     color: $names_color;
     /*border-radius: 7px;*/
     text-align: center;
+}
+h1 {
+    margin: 0;
 }

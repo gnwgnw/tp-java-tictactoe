@@ -9,74 +9,12 @@
         <div id="page-top"></div>
 		<div id="page-body"></div>
 
+		<script type="text/javascript">
+			$("body").css("overflow", "hidden");
+		</script>
+
 		<script data-main="js/main" src="js/lib/require.js"></script>
 		<script data-main="js/main" src="js/lib/jquery.js"></script>
-        <script src="//127.0.0.1:35729/livereload.js"></script>
+        <script src="//192.168.0.104:35729/livereload.js"></script>
     </body>
 </html>
-
-    <script type="text/javascript">
-	    var ws;
-
-	    init = function () {
-	        ws = new WebSocket("ws://127.0.0.1:8080/gameplay");
-
-	        ws.onopen = function (event) {
-	        	console.log(event);
-	        }
-
-	        ws.onmessage = function (event) {
-	            var data = JSON.parse(event.data);
-
-	            console.log(data);
-
-            	$('#status').text("Turn " + data.whoseTurn);
-
-	        	$('#my').text(data.myGameUser.login + " " + data.myGameUser.sign)
-	        	$('#enemy').text(data.enemyGameUser.login  + " " + data.enemyGameUser.sign)
-
-	            for(var i = 0; i < 9; ++i) {
-	            	var imgSrc = '';
-	            	switch(data.field[i]) {
-	            		case 0:
-	            			imgSrc = '/img/none.jpg'
-	            			break
-	            		case 1:
-	            			imgSrc = '/img/x.jpg'
-	            			break
-	            		case 4:
-	            			imgSrc = '/img/o.jpg'
-	            			break
-	            		default:
-	            			imgSrc = '/img/none.jpg'
-	            			break
-	            	}
-	            	$('#' + i + " img").attr('src', imgSrc);
-	            }
-	            if (data.isFinished) {
-	            	var textStatus;
-	            	switch (data.winner) {
-	            		case data.myGameUser.sign:
-	            			textStatus = "You win"
-	            			break
-	            		case data.enemyGameUser.sign:
-	            			textStatus = "You lose"
-	            			break
-	            		default:
-	            			textStatus = "Nobody"
-	            			break
-	            	}
-	            	$('#status').text(textStatus);
-	            };
-	        }
-
-	        ws.onclose = function (event) {
-
-	        }
-
-	    };
-
-	    function sendMessage(message) {
-	        ws.send(message);
-	    }
-    </script>

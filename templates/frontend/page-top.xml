@@ -1,12 +1,16 @@
 <fest:template xmlns:fest="http://fest.mail.ru" context_name="user">
 
-    <div class="b-page-top b-page-top__title">TicTacToe</div>
+    <div class="b-page-top">
+        <span class="b-page-top__title">TicTacToe</span>
 
-    <div class="b-page-top b-page-top__user-info">
         <fest:if test="user.isLogined">
             <!--TODO-->
-            <b><fest:value>user.login</fest:value></b>
-            <div>User drop-down</div>
+            <span class="b-page-top__user-info">
+                --info--
+            </span>
+            <span class="b-page-top__user-info">
+                <fest:value>user.login</fest:value>
+            </span>
         </fest:if>
     </div>
 
