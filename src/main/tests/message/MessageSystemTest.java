@@ -1,7 +1,11 @@
 package message;
 
-import messageSystem.*;
+import messageSystem.Abonent;
+import messageSystem.Address;
+import messageSystem.Message;
+import messageSystem.MessageSystem;
 import org.junit.Test;
+
 import static org.mockito.Mockito.*;
 
 

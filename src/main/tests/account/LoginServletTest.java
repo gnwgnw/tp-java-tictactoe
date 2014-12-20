@@ -16,19 +16,19 @@ import static org.mockito.Mockito.*;
 
 public class LoginServletTest {
     final AccountService accountService = mock(AccountService.class);
-    final HttpSession httpSession       = mock(HttpSession.class);
-    final HttpServletRequest request    = mock(HttpServletRequest.class);
-    final HttpServletResponse response  = mock(HttpServletResponse.class);
+    final HttpSession httpSession = mock(HttpSession.class);
+    final HttpServletRequest request = mock(HttpServletRequest.class);
+    final HttpServletResponse response = mock(HttpServletResponse.class);
 
-    final LoginServlet loginServlet     = new LoginServlet(accountService);
-    final StringWriter stringWriter     = new StringWriter();
-    final PrintWriter printWriter       = new PrintWriter(stringWriter);
+    final LoginServlet loginServlet = new LoginServlet(accountService);
+    final StringWriter stringWriter = new StringWriter();
+    final PrintWriter printWriter = new PrintWriter(stringWriter);
 
-    String loginString      = "defaultUser1";
-    String passwordString   = "123";
-    String sessionString    = "session";
-    String jsonOK           = "{\"status\":\"OK\",\"response\":{}}\n";
-    String jsonWRONG_LOGIN    = "{\"status\":\"WRONG_LOGIN\"}\n";
+    String loginString = "defaultUser1";
+    String passwordString = "123";
+    String sessionString = "session";
+    String jsonOK = "{\"status\":\"OK\",\"response\":{}}\n";
+    String jsonWRONG_LOGIN = "{\"status\":\"WRONG_LOGIN\"}\n";
     String jsonALREADY_EXISTS = "{\"status\":\"ALREADY_EXISTS\"}\n";
 
 

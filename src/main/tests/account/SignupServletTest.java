@@ -29,9 +29,9 @@ public class SignupServletTest {
     String oldEmailString = "defaultUser1@mail.ru";
     String oldPasswordString = "123";
 
-    String jsonOK           = "{\"status\":\"OK\"}\n";
-    String jsonWRONG_LOGIN   = "{\"status\":\"WRONG_LOGIN\"}\n";
-    String jsonALREADY_EXISTS   = "{\"status\":\"ALREADY_EXISTS\"}\n";
+    String jsonOK = "{\"status\":\"OK\"}\n";
+    String jsonWRONG_LOGIN = "{\"status\":\"WRONG_LOGIN\"}\n";
+    String jsonALREADY_EXISTS = "{\"status\":\"ALREADY_EXISTS\"}\n";
 
     @Test
     public void testDoPostOK() throws Exception {
