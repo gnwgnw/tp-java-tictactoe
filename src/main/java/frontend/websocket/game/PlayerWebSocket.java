@@ -1,6 +1,7 @@
-package frontend.websocket;
+package frontend.websocket.game;
 
 import com.google.gson.JsonParser;
+import frontend.websocket.WebSocketService;
 import mechanics.UserGameState;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketClose;

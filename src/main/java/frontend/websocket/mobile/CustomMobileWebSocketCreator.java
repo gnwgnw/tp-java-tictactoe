@@ -1,4 +1,4 @@
-package frontend.websocket;
+package frontend.websocket.mobile;
 
 import org.eclipse.jetty.websocket.servlet.ServletUpgradeRequest;
 import org.eclipse.jetty.websocket.servlet.ServletUpgradeResponse;

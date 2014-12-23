@@ -1,7 +1,8 @@
-package frontend.websocket;
+package frontend.websocket.game;
 
 import accounting.AccountService;
 import accounting.database.UserDataSet;
+import frontend.websocket.WebSocketService;
 import org.eclipse.jetty.websocket.servlet.ServletUpgradeRequest;
 import org.eclipse.jetty.websocket.servlet.ServletUpgradeResponse;
 import org.eclipse.jetty.websocket.servlet.WebSocketCreator;
@@ -9,12 +10,12 @@ import org.eclipse.jetty.websocket.servlet.WebSocketCreator;
 /**
  * Created by titaevskiy.s on 23.10.14
  */
-public class CustomWebSocketCreator implements WebSocketCreator {
+public class CustomPlayerWebSocketCreator implements WebSocketCreator {
 
     private final AccountService accountService;
     private final WebSocketService webSocketService;
 
-    public CustomWebSocketCreator(AccountService accountService, WebSocketService webSocketService) {
+    public CustomPlayerWebSocketCreator(AccountService accountService, WebSocketService webSocketService) {
         this.accountService = accountService;
         this.webSocketService = webSocketService;
     }

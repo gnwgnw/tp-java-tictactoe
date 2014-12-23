@@ -1,6 +1,6 @@
 package frontend.servlets;
 
-import frontend.websocket.CustomMobileWebSocketCreator;
+import frontend.websocket.mobile.CustomMobileWebSocketCreator;
 import org.eclipse.jetty.websocket.servlet.WebSocketServlet;
 import org.eclipse.jetty.websocket.servlet.WebSocketServletFactory;
 

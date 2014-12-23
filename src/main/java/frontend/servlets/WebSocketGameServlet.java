@@ -1,7 +1,7 @@
 package frontend.servlets;
 
 import accounting.AccountService;
-import frontend.websocket.CustomWebSocketCreator;
+import frontend.websocket.game.CustomPlayerWebSocketCreator;
 import frontend.websocket.WebSocketService;
 import org.eclipse.jetty.websocket.servlet.WebSocketServlet;
 import org.eclipse.jetty.websocket.servlet.WebSocketServletFactory;
@@ -28,7 +28,7 @@ public class WebSocketGameServlet extends WebSocketServlet implements PageUrlSer
     @Override
     public void configure(WebSocketServletFactory factory) {
         factory.getPolicy().setIdleTimeout(IDLE_TIME);
-        factory.setCreator(new CustomWebSocketCreator(accountService, webSocketService));
+        factory.setCreator(new CustomPlayerWebSocketCreator(accountService, webSocketService));
     }
 
     @Override
