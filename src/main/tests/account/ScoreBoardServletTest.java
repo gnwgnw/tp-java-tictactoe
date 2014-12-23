@@ -1,4 +1,4 @@
-package tests.account;
+package account;
 
 import frontend.servlets.ScoreBoardServlet;
 import org.junit.Test;
