@@ -46,6 +46,7 @@ public class Main {
         addServlet(context, new UserPageServlet(accountService));
         addServlet(context, new ScoreBoardServlet());
         addServlet(context, new WebSocketGameServlet(accountService, webSocketService));
+        addServlet(context, new WebSocketMobileServlet());
 
         final ResourceHandler resourceHandler = new ResourceHandler();
         resourceHandler.setResourceBase("static");

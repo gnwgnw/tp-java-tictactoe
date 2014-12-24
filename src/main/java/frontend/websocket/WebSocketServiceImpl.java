@@ -1,5 +1,6 @@
 package frontend.websocket;
 
+import frontend.websocket.game.PlayerWebSocket;
 import mechanics.UserGameState;
 import mechanics.messages.MessageCloseGameSession;
 import mechanics.messages.MessageDoTurn;
