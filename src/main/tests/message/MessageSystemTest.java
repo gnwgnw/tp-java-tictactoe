@@ -4,7 +4,6 @@ import mechanics.GameMechanics;
 import mechanics.GameMechanicsImpl;
 import mechanics.messages.MessageCloseGameSession;
 import mechanics.messages.MessageDoTurn;
-import mechanics.messages.MessageStartGame;
 import messageSystem.Abonent;
 import messageSystem.Address;
 import messageSystem.Message;

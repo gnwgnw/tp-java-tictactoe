@@ -4,6 +4,8 @@ import accounting.database.UserDataSet;
 import frontend.ResponsesCode;
 import messageSystem.Abonent;
 
+import java.util.List;
+
 /**
  * Created by titaevskiy.s on 17.10.14
  */
@@ -26,4 +28,6 @@ public interface AccountService extends Abonent, Runnable {
     void userWin(String login);
 
     void userLose(String login);
+
+    List getTopUsers();
 }

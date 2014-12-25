@@ -1,5 +1,7 @@
 package accounting.database;
 
+import java.util.List;
+
 /**
  * Created by titaevskiy.s on 05.12.14
  */
@@ -16,4 +18,6 @@ public interface UsersDAO {
     long getUsersCount();
 
     void updateUser(UserDataSet dataSet);
+
+    List getTopUsers();
 }

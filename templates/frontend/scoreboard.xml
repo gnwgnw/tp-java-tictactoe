@@ -12,7 +12,7 @@
                 <fest:each iterate='collection' index='i' value='score'>
                     <tr>
                         <td><fest:value>score.login</fest:value></td>
-                        <td><fest:value>score.gameCount</fest:value></td>
+                        <td><fest:value>score.gameWin</fest:value></td>
                     </tr>
                 </fest:each>
             </tbody>

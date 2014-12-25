@@ -1,5 +1,6 @@
 package account;
 
+import accounting.AccountService;
 import frontend.servlets.ScoreBoardServlet;
 import org.junit.Test;
 import utils.PageGenerator;
@@ -15,11 +16,12 @@ import static org.mockito.Mockito.when;
 
 
 public class ScoreBoardServletTest {
-    final ScoreBoardServlet scoreBoardServlet = new ScoreBoardServlet();
     final HttpServletRequest request = mock(HttpServletRequest.class);
     final HttpServletResponse response = mock(HttpServletResponse.class);
     final StringWriter stringWriter = new StringWriter();
     final PrintWriter printWriter = new PrintWriter(stringWriter);
+    private AccountService accountService;
+    final ScoreBoardServlet scoreBoardServlet = new ScoreBoardServlet(accountService);
 
     @Test
     public void testDoGet() throws Exception {

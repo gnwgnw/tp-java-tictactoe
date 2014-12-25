@@ -7,6 +7,7 @@ import messageSystem.Address;
 import messageSystem.MessageSystem;
 import utils.TimeHelper;
 
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -109,6 +110,11 @@ public class AccountServiceImpl implements AccountService {
 
         userDataSet.increaseGameLose();
         users.updateUser(userDataSet);
+    }
+
+    @Override
+    public List getTopUsers() {
+        return users.getTopUsers();
     }
 
     @Override

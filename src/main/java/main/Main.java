@@ -44,7 +44,7 @@ public class Main {
         addServlet(context, new LogoutServlet(accountService));
         addServlet(context, new AdminPageServlet(accountService));
         addServlet(context, new UserPageServlet(accountService));
-        addServlet(context, new ScoreBoardServlet());
+        addServlet(context, new ScoreBoardServlet(accountService));
         addServlet(context, new WebSocketGameServlet(accountService, webSocketService));
         addServlet(context, new WebSocketMobileServlet());
 

@@ -13,7 +13,7 @@ define([
 			url: '/scores',
 
 			comparator: function(a, b) {
-				return b.get('gameCount') - a.get('gameCount');
+				return b.get('gameWin') - a.get('gameWin');
 			}
 		});
 

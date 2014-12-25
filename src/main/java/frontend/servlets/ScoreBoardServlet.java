@@ -1,12 +1,14 @@
 package frontend.servlets;
 
-import utils.PageGenerator;
+import accounting.AccountService;
+import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author s.titaevskiy on 02.10.14.
@@ -14,12 +16,19 @@ import java.io.IOException;
 public class ScoreBoardServlet extends HttpServlet implements PageUrlServlet {
 
     private static final String pageURL = "/scores";
+    private final AccountService accountService;
+
+    public ScoreBoardServlet(AccountService accountService) {this.accountService = accountService;}
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List topUsers = accountService.getTopUsers();
+
+        Gson gson = new Gson();
+
         response.setStatus(HttpServletResponse.SC_OK);
         response.setContentType("application/json");
-        response.getWriter().println(PageGenerator.getPage("scoreboard.txt", null));
+        response.getWriter().println(gson.toJson(topUsers));
     }
 
     @Override

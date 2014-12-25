@@ -3,8 +3,11 @@ package accounting.database;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+
+import java.util.List;
 
 /**
  * Created by titaevskiy.s on 12/5/14
@@ -82,5 +85,16 @@ public class UsersDAOImpl implements UsersDAO {
         finally {
             session.close();
         }
+    }
+
+    @Override
+    public List getTopUsers() {
+        Session session = sessionFactory.openSession();
+        List userDataSets = session.createCriteria(UserDataSet.class)
+                .addOrder(Order.desc("gameWin"))
+                .setMaxResults(10)
+                .list();
+        session.close();
+        return userDataSets;
     }
 }
