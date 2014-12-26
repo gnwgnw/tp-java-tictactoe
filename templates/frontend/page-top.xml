@@ -6,9 +6,6 @@
         <fest:if test="user.isLogined">
             <!--TODO-->
             <span class="b-page-top__user-info">
-                --info--
-            </span>
-            <span class="b-page-top__user-info">
                 <fest:value>user.login</fest:value>
             </span>
         </fest:if>

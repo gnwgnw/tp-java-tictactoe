@@ -24,6 +24,7 @@ define([
             model: user,
 
             events:{
+                "click #new-game-js": "show"
             },
 
             initialize: function () {

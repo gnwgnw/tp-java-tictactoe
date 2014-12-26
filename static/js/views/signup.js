@@ -38,6 +38,7 @@ define([
             },
 
             signup: function (event) {
+                console.log(1);
                 event.preventDefault();
                 var data = this.$el.find('form').serializeObject();
                 this.model.signup(data);

@@ -27,7 +27,7 @@
                 </fest:choose>
 
 
-                <button class="b-battle-status__button">New game</button>
+                <button class="b-battle-status__button" id="new-game-js">New game</button>
                 <a href='#'>
                     <button class="b-battle-status__button">Back</button>
                 </a>
